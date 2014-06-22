@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB181FAC-44C3-495F-90F8-6BAA6CFEE812}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>W3CValidator</RootNamespace>
+    <AssemblyName>W3CValidator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\W3CValidator.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Catharsis.Commons, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Catharsis.Commons.2.6.1\lib\net40-client\Catharsis.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\W3CValidator.4.0\Css\CssMedium.cs">
+      <Link>Css\CssMedium.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\CssProfile.cs">
+      <Link>Css\CssProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\CssValidationException.cs">
+      <Link>Css\CssValidationException.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\CssValidationRequest.cs">
+      <Link>Css\CssValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\CssValidationResult.cs">
+      <Link>Css\CssValidationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\CssValidator.cs">
+      <Link>Css\CssValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\Error.cs">
+      <Link>Css\Error.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\ErrorsList.cs">
+      <Link>Css\ErrorsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\ICssValidationRequest.cs">
+      <Link>Css\ICssValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\ICssValidationRequestExtensions.cs">
+      <Link>Css\ICssValidationRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\ICssValidationResult.cs">
+      <Link>Css\ICssValidationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\ICssValidator.cs">
+      <Link>Css\ICssValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\ICssValidatorExtensions.cs">
+      <Link>Css\ICssValidatorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IError.cs">
+      <Link>Css\IError.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IErrorsList.cs">
+      <Link>Css\IErrorsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IIssuesList.cs">
+      <Link>Css\IIssuesList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IIssuesListExtensions.cs">
+      <Link>Css\IIssuesListExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IssuesList.cs">
+      <Link>Css\IssuesList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IValidationProviderExtensions.cs">
+      <Link>Css\IValidationProviderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IWarning.cs">
+      <Link>Css\IWarning.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\IWarningsList.cs">
+      <Link>Css\IWarningsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\Warning.cs">
+      <Link>Css\Warning.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\WarningsLevel.cs">
+      <Link>Css\WarningsLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Css\WarningsList.cs">
+      <Link>Css\WarningsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\IValidationProvider.cs">
+      <Link>IValidationProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\IValidationRequest.cs">
+      <Link>IValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\ErrorsList.cs">
+      <Link>Markup\ErrorsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IErrorsList.cs">
+      <Link>Markup\IErrorsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IIssue.cs">
+      <Link>Markup\IIssue.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IMarkupValidationRequest.cs">
+      <Link>Markup\IMarkupValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IMarkupValidationRequestExtensions.cs">
+      <Link>Markup\IMarkupValidationRequestExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IMarkupValidationResult.cs">
+      <Link>Markup\IMarkupValidationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IMarkupValidator.cs">
+      <Link>Markup\IMarkupValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IMarkupValidatorExtensions.cs">
+      <Link>Markup\IMarkupValidatorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\Issue.cs">
+      <Link>Markup\Issue.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IValidationProviderExtensions.cs">
+      <Link>Markup\IValidationProviderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\IWarningsList.cs">
+      <Link>Markup\IWarningsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\MarkupValidationException.cs">
+      <Link>Markup\MarkupValidationException.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\MarkupValidationRequest.cs">
+      <Link>Markup\MarkupValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\MarkupValidationResult.cs">
+      <Link>Markup\MarkupValidationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\MarkupValidator.cs">
+      <Link>Markup\MarkupValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Markup\WarningsList.cs">
+      <Link>Markup\WarningsList.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\ValidationException.cs">
+      <Link>ValidationException.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\ValidationRequest.cs">
+      <Link>ValidationRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\W3CValidator.4.0\Validator.cs">
+      <Link>Validator.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
