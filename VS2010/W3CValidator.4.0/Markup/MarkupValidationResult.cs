@@ -9,7 +9,7 @@ namespace W3CValidator.Markup
   /// </summary>
   [XmlType("markupvalidationresponse")]
   [XmlRoot(Namespace = "http://www.w3.org/2005/10/markup-validator")]
-  public sealed class MarkupValidationResult : IComparable<MarkupValidationResult>, IEquatable<MarkupValidationResult>, IMarkupValidationResult
+  public sealed class MarkupValidationResult : IComparable<IMarkupValidationResult>, IEquatable<IMarkupValidationResult>, IMarkupValidationResult
   {
     /// <summary>
     ///   <para>Location of the service which provided the validation result.</para>
@@ -88,23 +88,23 @@ namespace W3CValidator.Markup
     }
 
     /// <summary>
-    ///   <para>Compares the current <see cref="MarkupValidationResult"/> instance with another.</para>
+    ///   <para>Compares the current <see cref="IMarkupValidationResult"/> instance with another.</para>
     /// </summary>
     /// <returns>A value that indicates the relative order of the instances being compared.</returns>
-    /// <param name="other">The <see cref="MarkupValidationResult"/> to compare with this instance.</param>
-    public int CompareTo(MarkupValidationResult other)
+    /// <param name="other">The <see cref="IMarkupValidationResult"/> to compare with this instance.</param>
+    public int CompareTo(IMarkupValidationResult other)
     {
       return this.Date.CompareTo(other.Date);
     }
 
     /// <summary>
-    ///   <para>Determines whether two <see cref="MarkupValidationResult"/> instances are equal.</para>
+    ///   <para>Determines whether two <see cref="IMarkupValidationResult"/> instances are equal.</para>
     /// </summary>
     /// <param name="other">The instance to compare with the current one.</param>
     /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-    public bool Equals(MarkupValidationResult other)
+    public bool Equals(IMarkupValidationResult other)
     {
-      return this.Equality(other, x => x.Uri);
+      return this.Equality(other, result => result.Uri);
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ namespace W3CValidator.Markup
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as MarkupValidationResult);
+      return this.Equals(other as IMarkupValidationResult);
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ namespace W3CValidator.Markup
     /// <returns>Hash code of current instance.</returns>
     public override int GetHashCode()
     {
-      return this.GetHashCode(x => x.Uri);
+      return this.GetHashCode(result => result.Uri);
     }
 
     /// <summary>

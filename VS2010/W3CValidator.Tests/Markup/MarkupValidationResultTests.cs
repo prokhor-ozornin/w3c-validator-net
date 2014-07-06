@@ -33,7 +33,7 @@ namespace W3CValidator.Markup
       Assert.Equal("0", xml.Root.Element(ns + "warnings").Element(ns + "warningcount").Value);
       Assert.Equal(1, xml.Root.Element(ns + "warnings").Elements(ns + "warninglist").Count());
       Assert.False(xml.Root.Element(ns + "warnings").Element(ns + "warninglist").Elements("warning").Any());
-      Assert.Equal(result, result.Xml().Xml<MarkupValidationResult>());
+      Assert.True(result.Equals(result.Xml().Xml<MarkupValidationResult>()));
 
       result = new MarkupValidationResult
       {
@@ -56,7 +56,7 @@ namespace W3CValidator.Markup
       Assert.Equal("0", xml.Root.Element(ns + "warnings").Element(ns + "warningcount").Value);
       Assert.Equal(1, xml.Root.Element(ns + "warnings").Elements(ns + "warninglist").Count());
       Assert.False(xml.Root.Element(ns + "warnings").Element(ns + "warninglist").Elements("warning").Any());
-      Assert.Equal(result, result.Xml().Xml<MarkupValidationResult>());
+      Assert.True(result.Equals(result.Xml().Xml<MarkupValidationResult>()));
     }
 
     /// <summary>
@@ -163,7 +163,7 @@ namespace W3CValidator.Markup
     /// <summary>
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
-    ///     <item><description><see cref="MarkupValidationResult.Equals(MarkupValidationResult)"/></description></item>
+    ///     <item><description><see cref="MarkupValidationResult.Equals(IMarkupValidationResult)"/></description></item>
     ///     <item><description><see cref="MarkupValidationResult.Equals(object)"/></description></item>
     ///   </list>
     /// </summary>

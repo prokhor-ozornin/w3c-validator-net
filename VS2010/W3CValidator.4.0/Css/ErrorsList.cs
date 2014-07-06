@@ -10,7 +10,7 @@ namespace W3CValidator.Css
   ///   <para>Logical group of validation errors.</para>
   /// </summary>
   [XmlType("errorlist")]
-  public sealed class ErrorsList : IEquatable<ErrorsList>, IErrorsList
+  public sealed class ErrorsList : IEquatable<IErrorsList>, IErrorsList
   {
     /// <summary>
     ///   <para>Collection of validation errors.</para>
@@ -42,11 +42,11 @@ namespace W3CValidator.Css
     }
 
     /// <summary>
-    ///   <para>Determines whether two <see cref="ErrorsList"/> instances are equal.</para>
+    ///   <para>Determines whether two <see cref="IErrorsList"/> instances are equal.</para>
     /// </summary>
     /// <param name="other">The instance to compare with the current one.</param>
     /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-    public bool Equals(ErrorsList other)
+    public bool Equals(IErrorsList other)
     {
       return this.Equality(other, x => x.Uri);
     }
@@ -58,7 +58,7 @@ namespace W3CValidator.Css
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as ErrorsList);
+      return this.Equals(other as IErrorsList);
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ namespace W3CValidator.Css
   /// </summary>
   [XmlType("cssvalidationresponse")]
   [XmlRoot(Namespace = "http://www.w3.org/2005/07/css-validator")]
-  public sealed class CssValidationResult : IComparable<CssValidationResult>, IEquatable<CssValidationResult>, ICssValidationResult
+  public sealed class CssValidationResult : IComparable<ICssValidationResult>, IEquatable<ICssValidationResult>, ICssValidationResult
   {
     /// <summary>
     ///   <para>Location of the service which provided the validation result.</para>
@@ -66,23 +66,23 @@ namespace W3CValidator.Css
     }
 
     /// <summary>
-    ///   <para>Compares the current <see cref="CssValidationResult"/> instance with another.</para>
+    ///   <para>Compares the current <see cref="ICssValidationResult"/> instance with another.</para>
     /// </summary>
     /// <returns>A value that indicates the relative order of the instances being compared.</returns>
-    /// <param name="other">The <see cref="CssValidationResult"/> to compare with this instance.</param>
-    public int CompareTo(CssValidationResult other)
+    /// <param name="other">The <see cref="ICssValidationResult"/> to compare with this instance.</param>
+    public int CompareTo(ICssValidationResult other)
     {
       return this.Date.CompareTo(other.Date);
     }
 
     /// <summary>
-    ///   <para>Determines whether two <see cref="CssValidationResult"/> instances are equal.</para>
+    ///   <para>Determines whether two <see cref="ICssValidationResult"/> instances are equal.</para>
     /// </summary>
     /// <param name="other">The instance to compare with the current one.</param>
     /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-    public bool Equals(CssValidationResult other)
+    public bool Equals(ICssValidationResult other)
     {
-      return this.Equality(other, x => x.Uri);
+      return this.Equality(other, result => result.Uri);
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ namespace W3CValidator.Css
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as CssValidationResult);
+      return this.Equals(other as ICssValidationResult);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ namespace W3CValidator.Css
     /// <returns>Hash code of current instance.</returns>
     public override int GetHashCode()
     {
-      return this.GetHashCode(x => x.Uri);
+      return this.GetHashCode(result => result.Uri);
     }
 
     /// <summary>

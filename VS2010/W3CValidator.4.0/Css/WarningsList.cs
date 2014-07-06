@@ -10,7 +10,7 @@ namespace W3CValidator.Css
   ///   <para>Logical group of validation warnings.</para>
   /// </summary>
   [XmlType("warninglist")]
-  public sealed class WarningsList : IEquatable<WarningsList>, IWarningsList
+  public sealed class WarningsList : IEquatable<IWarningsList>, IWarningsList
   {
     /// <summary>
     ///   <para>Collection of validation warnings.</para>
@@ -42,11 +42,11 @@ namespace W3CValidator.Css
     }
 
     /// <summary>
-    ///   <para>Determines whether two <see cref="WarningsList"/> instances are equal.</para>
+    ///   <para>Determines whether two <see cref="IWarningsList"/> instances are equal.</para>
     /// </summary>
     /// <param name="other">The instance to compare with the current one.</param>
     /// <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
-    public bool Equals(WarningsList other)
+    public bool Equals(IWarningsList other)
     {
       return this.Equality(other, x => x.Uri);
     }
@@ -58,7 +58,7 @@ namespace W3CValidator.Css
     /// <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
     public override bool Equals(object other)
     {
-      return this.Equals(other as WarningsList);
+      return this.Equals(other as IWarningsList);
     }
 
     /// <summary>

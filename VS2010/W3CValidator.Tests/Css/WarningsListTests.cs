@@ -88,7 +88,7 @@ namespace W3CValidator.Css
     /// <summary>
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
-    ///     <item><description><see cref="WarningsList.Equals(WarningsList)"/></description></item>
+    ///     <item><description><see cref="WarningsList.Equals(IWarningsList)"/></description></item>
     ///     <item><description><see cref="WarningsList.Equals(object)"/></description></item>
     ///   </list>
     /// </summary>

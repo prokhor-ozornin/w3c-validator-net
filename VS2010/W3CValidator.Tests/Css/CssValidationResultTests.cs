@@ -30,7 +30,7 @@ namespace W3CValidator.Css
       Assert.False(issues.Element(ns + "warnings").Elements(ns + "warninglist").Any());
       Assert.Null(xml.Root.Element(ns + "uri"));
       Assert.Equal("false", xml.Root.Element(ns + "validity").Value);
-      Assert.Equal(result, result.Xml().Xml<CssValidationResult>());
+      Assert.True(result.Equals(result.Xml().Xml<CssValidationResult>()));
 
       result = new CssValidationResult
       {
@@ -50,7 +50,7 @@ namespace W3CValidator.Css
       Assert.False(issues.Element(ns + "warnings").Elements(ns + "warninglist").Any());
       Assert.Equal("uri", xml.Root.Element(ns + "uri").Value);
       Assert.Equal("true", xml.Root.Element(ns + "validity").Value);
-      Assert.Equal(result, result.Xml().Xml<CssValidationResult>());
+      Assert.True(result.Equals(result.Xml().Xml<CssValidationResult>()));
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ namespace W3CValidator.Css
     /// <summary>
     ///   <para>Performs testing of following methods :</para>
     ///   <list type="bullet">
-    ///     <item><description><see cref="CssValidationResult.Equals(CssValidationResult)"/></description></item>
+    ///     <item><description><see cref="CssValidationResult.Equals(ICssValidationResult)"/></description></item>
     ///     <item><description><see cref="CssValidationResult.Equals(object)"/></description></item>
     ///   </list>
     /// </summary>
