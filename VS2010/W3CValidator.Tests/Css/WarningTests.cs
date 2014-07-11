@@ -16,7 +16,7 @@ namespace W3CValidator.Css
     public void Xml()
     {
       var warning = new Warning();
-      var xml = XDocument.Parse(warning.Xml());
+      var xml = XDocument.Parse(warning.ToXml());
       Assert.Equal("warning", xml.Root.Name);
       Assert.Null(xml.Root.Element("context"));
       Assert.Equal("0", xml.Root.Element("level").Value);
@@ -30,7 +30,7 @@ namespace W3CValidator.Css
         Line = 2,
         MessageOriginal = "message"
       };
-      xml = XDocument.Parse(warning.Xml());
+      xml = XDocument.Parse(warning.ToXml());
       Assert.Equal("warning", xml.Root.Name);
       Assert.Equal("context", xml.Root.Element("context").Value);
       Assert.Equal("1", xml.Root.Element("level").Value);

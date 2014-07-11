@@ -18,7 +18,7 @@ namespace W3CValidator.Markup
     public void Xml()
     {
       var list = new ErrorsList();
-      var xml = XDocument.Parse(list.Xml());
+      var xml = XDocument.Parse(list.ToXml());
       Assert.Equal("errors", xml.Root.Name);
       Assert.Equal("0", xml.Root.Element("errorcount").Value);
       Assert.False(xml.Root.Element("errorlist").Elements("error").Any());
@@ -39,7 +39,7 @@ namespace W3CValidator.Markup
            }
         },
       };
-      xml = XDocument.Parse(list.Xml());
+      xml = XDocument.Parse(list.ToXml());
       Assert.Equal("errors", xml.Root.Name);
       Assert.Equal("1", xml.Root.Element("errorcount").Value);
       Assert.Equal(1, xml.Root.Element("errorlist").Elements("error").Count());

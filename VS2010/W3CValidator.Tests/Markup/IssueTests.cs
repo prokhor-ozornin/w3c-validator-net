@@ -16,7 +16,7 @@ namespace W3CValidator.Markup
     public void Xml()
     {
       var issue = new Issue();
-      var xml = XDocument.Parse(issue.Xml());
+      var xml = XDocument.Parse(issue.ToXml());
       Assert.Equal("0", xml.Root.Element("col").Value);
       Assert.Null(xml.Root.Element("explanation"));
       Assert.Equal("0", xml.Root.Element("line").Value);
@@ -33,7 +33,7 @@ namespace W3CValidator.Markup
         MessageId = "messageId",
         SourceOriginal = "source"
       };
-      xml = XDocument.Parse(issue.Xml());
+      xml = XDocument.Parse(issue.ToXml());
       Assert.Equal("1", xml.Root.Element("col").Value);
       Assert.Equal("explanation", xml.Root.Element("explanation").Value);
       Assert.Equal("2", xml.Root.Element("line").Value);

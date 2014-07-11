@@ -20,7 +20,7 @@ namespace W3CValidator.Markup
       XNamespace ns = "http://www.w3.org/2005/10/markup-validator";
 
       var result = new MarkupValidationResult();
-      var xml = XDocument.Parse(result.Xml());
+      var xml = XDocument.Parse(result.ToXml());
       Assert.Equal(ns + "markupvalidationresponse", xml.Root.Name);
       Assert.Null(xml.Root.Element(ns + "checkedby"));
       Assert.Null(xml.Root.Element(ns + "doctype"));
@@ -33,7 +33,7 @@ namespace W3CValidator.Markup
       Assert.Equal("0", xml.Root.Element(ns + "warnings").Element(ns + "warningcount").Value);
       Assert.Equal(1, xml.Root.Element(ns + "warnings").Elements(ns + "warninglist").Count());
       Assert.False(xml.Root.Element(ns + "warnings").Element(ns + "warninglist").Elements("warning").Any());
-      Assert.True(result.Equals(result.Xml().Xml<MarkupValidationResult>()));
+      Assert.True(result.Equals(result.ToXml().AsXml<MarkupValidationResult>()));
 
       result = new MarkupValidationResult
       {
@@ -43,7 +43,7 @@ namespace W3CValidator.Markup
         Uri = "uri",
         Valid = true
       };
-      xml = XDocument.Parse(result.Xml());
+      xml = XDocument.Parse(result.ToXml());
       Assert.Equal(ns + "markupvalidationresponse", xml.Root.Name);
       Assert.Equal("checkedBy", xml.Root.Element(ns + "checkedby").Value);
       Assert.Equal("doctype", xml.Root.Element(ns + "doctype").Value);
@@ -56,7 +56,7 @@ namespace W3CValidator.Markup
       Assert.Equal("0", xml.Root.Element(ns + "warnings").Element(ns + "warningcount").Value);
       Assert.Equal(1, xml.Root.Element(ns + "warnings").Elements(ns + "warninglist").Count());
       Assert.False(xml.Root.Element(ns + "warnings").Element(ns + "warninglist").Elements("warning").Any());
-      Assert.True(result.Equals(result.Xml().Xml<MarkupValidationResult>()));
+      Assert.True(result.Equals(result.ToXml().AsXml<MarkupValidationResult>()));
     }
 
     /// <summary>

@@ -16,7 +16,7 @@ namespace W3CValidator.Css
     public void Xml()
     {
       var error = new Error();
-      var xml = XDocument.Parse(error.Xml());
+      var xml = XDocument.Parse(error.ToXml());
       Assert.Equal("error", xml.Root.Name);
       Assert.Null(xml.Root.Element("context"));
       Assert.Equal("0", xml.Root.Element("line").Value);
@@ -36,7 +36,7 @@ namespace W3CValidator.Css
         SubtypeOriginal = "subtype",
         TypeOriginal = "type"
       };
-      xml = XDocument.Parse(error.Xml());
+      xml = XDocument.Parse(error.ToXml());
       Assert.Equal("error", xml.Root.Name);
       Assert.Equal("context", xml.Root.Element("context").Value);
       Assert.Equal("1", xml.Root.Element("line").Value);

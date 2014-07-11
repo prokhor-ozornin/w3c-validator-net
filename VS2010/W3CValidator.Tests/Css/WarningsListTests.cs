@@ -18,11 +18,11 @@ namespace W3CValidator.Css
     public void Xml()
     {
       var list = new WarningsList();
-      var xml = XDocument.Parse(list.Xml());
+      var xml = XDocument.Parse(list.ToXml());
       Assert.Equal("warninglist", xml.Root.Name);
       Assert.False(xml.Root.Elements("warning").Any());
       Assert.Null(xml.Root.Element("uri"));
-      Assert.Equal(list, list.Xml().Xml<WarningsList>());
+      Assert.Equal(list, list.ToXml().AsXml<WarningsList>());
 
       list = new WarningsList
       {
@@ -37,7 +37,7 @@ namespace W3CValidator.Css
         },
         Uri = "uri"
       };
-      xml = XDocument.Parse(list.Xml());
+      xml = XDocument.Parse(list.ToXml());
       Assert.Equal("warninglist", xml.Root.Name);
       Assert.Equal(1, xml.Root.Elements("warning").Count());
       var error = xml.Root.Elements("warning").Single();
@@ -45,7 +45,7 @@ namespace W3CValidator.Css
       Assert.Equal("2", error.Element("line").Value);
       Assert.Equal("warning.message", error.Element("message").Value);
       Assert.Equal("uri", xml.Root.Element("uri").Value);
-      Assert.Equal(list, list.Xml().Xml<WarningsList>());
+      Assert.Equal(list, list.ToXml().AsXml<WarningsList>());
     }
 
     /// <summary>

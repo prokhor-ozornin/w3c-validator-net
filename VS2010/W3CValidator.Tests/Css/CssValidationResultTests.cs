@@ -20,7 +20,7 @@ namespace W3CValidator.Css
       XNamespace ns = "http://www.w3.org/2005/07/css-validator";
 
       var result = new CssValidationResult();
-      var xml = XDocument.Parse(result.Xml());
+      var xml = XDocument.Parse(result.ToXml());
       Assert.Equal(ns + "cssvalidationresponse", xml.Root.Name);
       Assert.Null(xml.Root.Element(ns + "checkedby"));
       Assert.Null(xml.Root.Element(ns + "csslevel"));
@@ -30,7 +30,7 @@ namespace W3CValidator.Css
       Assert.False(issues.Element(ns + "warnings").Elements(ns + "warninglist").Any());
       Assert.Null(xml.Root.Element(ns + "uri"));
       Assert.Equal("false", xml.Root.Element(ns + "validity").Value);
-      Assert.True(result.Equals(result.Xml().Xml<CssValidationResult>()));
+      Assert.True(result.Equals(result.ToXml().AsXml<CssValidationResult>()));
 
       result = new CssValidationResult
       {
@@ -40,7 +40,7 @@ namespace W3CValidator.Css
         Uri = "uri",
         Valid = true
       };
-      xml = XDocument.Parse(result.Xml());
+      xml = XDocument.Parse(result.ToXml());
       Assert.Equal(ns + "cssvalidationresponse", xml.Root.Name);
       Assert.Equal("checkedBy", xml.Root.Element(ns + "checkedby").Value);
       Assert.Equal("cssLevel", xml.Root.Element(ns + "csslevel").Value);
@@ -50,7 +50,7 @@ namespace W3CValidator.Css
       Assert.False(issues.Element(ns + "warnings").Elements(ns + "warninglist").Any());
       Assert.Equal("uri", xml.Root.Element(ns + "uri").Value);
       Assert.Equal("true", xml.Root.Element(ns + "validity").Value);
-      Assert.True(result.Equals(result.Xml().Xml<CssValidationResult>()));
+      Assert.True(result.Equals(result.ToXml().AsXml<CssValidationResult>()));
     }
 
     /// <summary>
