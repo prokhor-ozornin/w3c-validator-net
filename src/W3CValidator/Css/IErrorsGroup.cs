@@ -8,7 +8,7 @@ public interface IErrorsGroup
   /// <summary>
   ///   <para>URI address of validated document or fragment.</para>
   /// </summary>
-  string? Uri { get; }
+  string Uri { get; }
 
   /// <summary>
   ///   <para>Collection of validation errors.</para>

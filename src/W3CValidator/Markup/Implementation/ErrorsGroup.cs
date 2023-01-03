@@ -23,7 +23,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   /// </summary>
   /// <param name="count"></param>
   /// <param name="errors"></param>
-  public ErrorsGroup(int? count = null, IEnumerable<IIssue>? errors = null)
+  public ErrorsGroup(int? count = null, IEnumerable<IIssue> errors = null)
   {
     Count = count;
     Errors = errors ?? new List<IIssue>();
@@ -43,7 +43,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public ErrorsGroup(object info) : this(new Info().Properties(info))
+  public ErrorsGroup(object info) : this(new Info().SetState(info))
   {
   }
 
@@ -63,7 +63,7 @@ public sealed class ErrorsGroup : IErrorsGroup
     ///   <para>Collection of validation errors.</para>
     /// </summary>
     [DataMember(Name = "errorlist", IsRequired = true)]
-    public ErrorsCollection? Errors { get; init; }
+    public ErrorsCollection Errors { get; init; }
 
     /// <summary>
     ///   <para></para>

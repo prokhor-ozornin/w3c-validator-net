@@ -11,7 +11,7 @@ public sealed class WarningsGroup : IWarningsGroup
   /// <summary>
   ///   <para>URI address of validated document or fragment.</para>
   /// </summary>
-  public string? Uri { get; }
+  public string Uri { get; }
 
   /// <summary>
   ///   <para>Collection of validation warnings .</para>
@@ -23,7 +23,7 @@ public sealed class WarningsGroup : IWarningsGroup
   /// </summary>
   /// <param name="uri"></param>
   /// <param name="warnings"></param>
-  public WarningsGroup(string? uri = null, IEnumerable<IWarning>? warnings = null)
+  public WarningsGroup(string uri = null, IEnumerable<IWarning> warnings = null)
   {
     Uri = uri;
     Warnings = warnings ?? new List<IWarning>();
@@ -43,7 +43,7 @@ public sealed class WarningsGroup : IWarningsGroup
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public WarningsGroup(object info) : this(new Info().Properties(info)) {}
+  public WarningsGroup(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="WarningsGroup"/> instance.</para>
@@ -61,13 +61,13 @@ public sealed class WarningsGroup : IWarningsGroup
     ///   <para>URI address of validated document or fragment.</para>
     /// </summary>
     [DataMember(Name = "uri", IsRequired = true)]
-    public string? Uri { get; init; }
+    public string Uri { get; init; }
 
     /// <summary>
     ///   <para>Collection of validation errors.</para>
     /// </summary>
     [DataMember(Name = "warning", IsRequired = true)]
-    public List<Warning>? Warnings { get; init; }
+    public List<Warning> Warnings { get; init; }
 
     /// <summary>
     ///   <para></para>

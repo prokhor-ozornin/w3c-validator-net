@@ -2,16 +2,16 @@
 
 internal sealed class MarkupValidationRequest : ValidationRequest, IMarkupValidationRequest
 {
-  public IMarkupValidationRequest Doctype(string? doctype)
+  public IMarkupValidationRequest Doctype(string doctype)
   {
-    Parameters["doctype"] = doctype;
+    WithParameter("doctype", doctype);
 
     return this;
   }
 
-  public IMarkupValidationRequest Encoding(string? encoding)
+  public IMarkupValidationRequest Encoding(string encoding)
   {
-    Parameters["charset"] = encoding;
+    WithParameter("charset", encoding);
 
     return this;
   }

@@ -2,30 +2,30 @@
 
 internal sealed class CssValidationRequest : ValidationRequest, ICssValidationRequest
 {
-  public ICssValidationRequest Language(string? language)
+  public ICssValidationRequest Language(string language)
   {
-    Parameters["lang"] = language;
+    WithParameter("lang", language);
 
     return this;
   }
 
-  public ICssValidationRequest Medium(string? medium)
+  public ICssValidationRequest Medium(string medium)
   {
-    Parameters["usermedium"] = medium;
+    WithParameter("usermedium", medium);
 
     return this;
   }
 
-  public ICssValidationRequest Profile(string? profile)
+  public ICssValidationRequest Profile(string profile)
   {
-    Parameters["profile"] = profile;
+    WithParameter("profile", profile);
 
     return this;
   }
 
   public ICssValidationRequest Warnings(int? warnings)
   {
-    Parameters["warning"] = warnings;
+    WithParameter("warning", warnings);
 
     return this;
   }

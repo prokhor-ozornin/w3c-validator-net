@@ -1,7 +1,6 @@
 ﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using W3CValidator.Markup;
 using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Markup;
@@ -12,13 +11,13 @@ namespace W3CValidator.Tests.Markup;
 public sealed class IMarkupRequestExecutorExtensionsTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="IMarkupRequestExecutorExtensions.Url(IMarkupRequestExecutor, out IMarkupValidationResult?, Uri)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IMarkupRequestExecutorExtensions.Url(IMarkupRequestExecutor, Uri)"/> method.</para>
   /// </summary>
   [Fact]
-  public void Url_Method()
+  public void TryUrl_Method()
   {
-    AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null!, out _, "https://localhost".ToUri())).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(out _, null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, "https://localhost".ToUri())).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(null)).ThrowExactly<ArgumentNullException>();
 
     var validator = Validator.For.Markup;
 
@@ -26,7 +25,8 @@ public sealed class IMarkupRequestExecutorExtensionsTest
 
     using var executor = validator.Request();
 
-    executor.Url(out var result, url).Should().BeTrue();
+    var result = executor.Url(url);
+    result.Should().NotBeNull();
     result.Valid.Should().BeTrue();
     result.Uri.Should().Be(url.ToString());
     result.CheckedBy.Should().Be("http://validator.w3.org/");

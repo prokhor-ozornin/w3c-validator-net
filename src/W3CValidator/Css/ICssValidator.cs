@@ -11,5 +11,5 @@ public interface ICssValidator
   /// </summary>
   /// <param name="request"></param>
   /// <returns></returns>
-  ICssRequestExecutor Request(ICssValidationRequest? request = null);
+  ICssRequestExecutor Request(ICssValidationRequest request = null);
 }

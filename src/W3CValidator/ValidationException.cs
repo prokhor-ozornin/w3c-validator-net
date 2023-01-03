@@ -10,5 +10,5 @@ public class ValidationException : Exception
   /// </summary>
   /// <param name="message">The message that describes the error.</param>
   /// <param name="inner">The exception that is the cause of the current exception, or a <c>null</c> reference if no inner exception is specified.</param>
-  public ValidationException(string? message = null, Exception? inner = null) : base(message, inner) {}
+  public ValidationException(string message = null, Exception inner = null) : base(message, inner) {}
 }

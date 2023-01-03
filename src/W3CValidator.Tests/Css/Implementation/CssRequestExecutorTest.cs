@@ -14,20 +14,20 @@ public sealed class CssRequestExecutorTest
   private CancellationToken Cancellation { get; } = new(true);
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="CssRequestExecutor.Document(string, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="CssRequestExecutor.DocumentAsync(string, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void Document_Method()
+  public void DocumentAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(string.Empty, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
     var validator = Validator.For.Css;
     var stylesheet = "text";
 
     using (var executor = validator.Request())
     {
-      var result = executor.Document(stylesheet).Await();
+      var result = executor.DocumentAsync(stylesheet).Await();
       result.Should().NotBeNull();
       result.Valid.Should().BeFalse();
       result.Uri.Should().Be("file://localhost/TextArea");
@@ -46,10 +46,10 @@ public sealed class CssRequestExecutorTest
       result.Issues.Warnings.Should().BeEmpty();
     }
 
-    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css")!.Text().Await();
+    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css")!.ToTextAsync().Await();
     using (var executor = validator.Request(request => request.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
     {
-      var result = executor.Document(stylesheet).Await();
+      var result = executor.DocumentAsync(stylesheet).Await();
       result.Should().NotBeNull();
       result.Uri.Should().Be("file://localhost/TextArea");
       result.CheckedBy.Should().Be("http://jigsaw.w3.org/css-validator/");
@@ -78,20 +78,20 @@ public sealed class CssRequestExecutorTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="CssRequestExecutor.Url(Uri, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="CssRequestExecutor.UrlAsync(Uri, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
-  public void Url_Method()
+  public void UrlAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Url("http://localhost".ToUri(), Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync("http://localhost".ToUri(), Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
 
     var url = "http://www.w3.org/2008/site/css/minimum".ToUri();
     var validator = Validator.For.Css;
 
     using var executor = validator.Request();
 
-    var result = executor.Url(url).Await();
+    var result = executor.UrlAsync(url).Await();
     result.Should().NotBeNull();
     result.Uri.Should().Be(url.ToString());
     result.CheckedBy.Should().Be("http://jigsaw.w3.org/css-validator/");

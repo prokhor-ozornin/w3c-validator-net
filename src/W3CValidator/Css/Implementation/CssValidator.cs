@@ -2,5 +2,5 @@
 
 internal sealed class CssValidator : ICssValidator
 {
-  public ICssRequestExecutor Request(ICssValidationRequest? request = null) => new CssRequestExecutor(request);
+  public ICssRequestExecutor Request(ICssValidationRequest request = null) => new CssRequestExecutor(request);
 }

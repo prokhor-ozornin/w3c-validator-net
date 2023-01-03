@@ -10,21 +10,21 @@ public interface ICssValidationRequest : IValidationRequest
   /// </summary>
   /// <param name="language">Text language.</param>
   /// <returns>Back reference to the current validation request.</returns>
-  ICssValidationRequest Language(string? language);
+  ICssValidationRequest Language(string language);
 
   /// <summary>
   ///   <para>Specifies CSS medium to use in validation process.</para>
   /// </summary>
   /// <param name="medium">CSS medium name.</param>
   /// <returns>Back reference to the current validation request.</returns>
-  ICssValidationRequest Medium(string? medium);
+  ICssValidationRequest Medium(string medium);
 
   /// <summary>
   ///   <para>Specifies CSS standard version (profile) to be used in validation process.</para>
   /// </summary>
   /// <param name="profile">CSS profile.</param>
   /// <returns>Back reference to the current validation request.</returns>
-  ICssValidationRequest Profile(string? profile);
+  ICssValidationRequest Profile(string profile);
 
   /// <summary>
   ///   <para>Specifies level of warnings to be included. Only the ones whose level is under or equal to the value specified in the request will be displayed.</para>

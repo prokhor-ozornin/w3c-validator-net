@@ -8,7 +8,7 @@ public interface ICssValidationResult : IComparable<ICssValidationResult>, IEqua
   /// <summary>
   ///   <para>The address of the document validated.</para>
   /// </summary>
-  string? Uri { get; }
+  string Uri { get; }
 
   /// <summary>
   ///   <para>Whether or not the document validated passed or not formal validation.</para>
@@ -23,15 +23,15 @@ public interface ICssValidationResult : IComparable<ICssValidationResult>, IEqua
   /// <summary>
   ///   <para>Location of the service which provided the validation result.</para>
   /// </summary>
-  string? CheckedBy { get; }
+  string CheckedBy { get; }
 
   /// <summary>
   ///   <para>The CSS level (or profile) in use during the validation.</para>
   /// </summary>
-  string? CssLevel { get; }
+  string CssLevel { get; }
 
   /// <summary>
   ///   <para>Collection of errors and warnings encountered through the validation process.</para>
   /// </summary>
-  IIssues? Issues { get; }
+  IIssues Issues { get; }
 }

@@ -8,5 +8,13 @@ public interface IValidationRequest
   /// <summary>
   ///   <para>Map of parameters (names/values) for the request.</para>
   /// </summary>
-  IDictionary<string, object?> Parameters { get; }
+  IReadOnlyDictionary<string, object> Parameters { get; }
+
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
+  /// <param name="name"></param>
+  /// <param name="value"></param>
+  /// <returns></returns>
+  IValidationRequest WithParameter(string name, object value);
 }

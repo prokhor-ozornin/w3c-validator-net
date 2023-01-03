@@ -11,7 +11,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   /// <summary>
   ///   <para>URI address of validated document or fragment.</para>
   /// </summary>
-  public string? Uri { get; }
+  public string Uri { get; }
 
   /// <summary>
   ///   <para>Collection of validation errors.</para>
@@ -23,7 +23,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   /// </summary>
   /// <param name="uri"></param>
   /// <param name="errors"></param>
-  public ErrorsGroup(string? uri = null, IEnumerable<IError>? errors = null)
+  public ErrorsGroup(string uri = null, IEnumerable<IError> errors = null)
   {
     Uri = uri;
     Errors = errors ?? new List<IError>();
@@ -43,7 +43,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public ErrorsGroup(object info) : this(new Info().Properties(info)) {}
+  public ErrorsGroup(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="ErrorsGroup"/> instance.</para>
@@ -61,13 +61,13 @@ public sealed class ErrorsGroup : IErrorsGroup
     ///   <para>URI address of validated document or fragment.</para>
     /// </summary>
     [DataMember(Name = "uri", IsRequired = true)]
-    public string? Uri { get; init; }
+    public string Uri { get; init; }
 
     /// <summary>
     ///   <para>Collection of validation errors.</para>
     /// </summary>
     [DataMember(Name = "error", IsRequired = true)]
-    public List<Error>? Errors { get; init; }
+    public List<Error> Errors { get; init; }
 
     /// <summary>
     ///   <para></para>

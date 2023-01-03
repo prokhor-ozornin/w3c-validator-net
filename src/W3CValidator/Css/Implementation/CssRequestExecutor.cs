@@ -7,33 +7,33 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
   private bool disposed;
 
   private Uri EndpointUrl { get; } = "http://jigsaw.w3.org/css-validator/validator".ToUri();
-  private ICssValidationRequest? Request { get; }
+  private ICssValidationRequest Request { get; }
   private HttpClient HttpClient { get; } = new();
 
-  public CssRequestExecutor(ICssValidationRequest? request) => Request = request;
+  public CssRequestExecutor(ICssValidationRequest request) => Request = request;
 
-  public async Task<ICssValidationResult> Document(string document, CancellationToken cancellation = default)
+  public async Task<ICssValidationResult> DocumentAsync(string document, CancellationToken cancellation = default)
   {
-    var parameters = new Dictionary<string, object?> {{"text", document}};
+    var parameters = new Dictionary<string, object> {{"text", document}};
 
     if (Request != null)
     {
-      parameters.AddAll(Request.Parameters);
+      parameters.AddRange(Request.Parameters);
     }
 
-    return await Call(parameters, cancellation);
+    return await Call(parameters, cancellation).ConfigureAwait(false);
   }
 
-  public async Task<ICssValidationResult> Url(Uri url, CancellationToken cancellation = default)
+  public async Task<ICssValidationResult> UrlAsync(Uri url, CancellationToken cancellation = default)
   {
-    var parameters = new Dictionary<string, object?> {{"uri", url}};
+    var parameters = new Dictionary<string, object> {{"uri", url}};
 
     if (Request != null)
     {
-      parameters.AddAll(Request.Parameters);
+      parameters.AddRange(Request.Parameters);
     }
 
-    return await Call(parameters, cancellation);
+    return await Call(parameters, cancellation).ConfigureAwait(false);
   }
 
   public void Dispose()
@@ -54,7 +54,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
     disposed = true;
   }
 
-  private async Task<ICssValidationResult> Call(IDictionary<string, object?> parameters, CancellationToken cancellation = default)
+  private async Task<ICssValidationResult> Call(IReadOnlyDictionary<string, object> parameters, CancellationToken cancellation = default)
   {
     if (!parameters.Any())
     {
@@ -65,11 +65,11 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
     {
       var uri = EndpointUrl.ToUriBuilder().WithQuery(("output", "soap12")).WithQuery(parameters).Uri;
 
-      using var reader = (await HttpClient.ToStream(uri, cancellation)).ToXmlReader();
+      using var reader = (await HttpClient.ToStreamAsync(uri, cancellation).ConfigureAwait(false)).ToXmlReader();
 
       reader.ReadToFollowing("cssvalidationresponse", "http://www.w3.org/2005/07/css-validator");
 
-      return reader.AsXml<CssValidationResult.Info>()!.Result();
+      return reader.DeserializeAsXml<CssValidationResult.Info>()!.Result();
     }
     catch (Exception exception)
     {

@@ -14,7 +14,7 @@ public interface ICssRequestExecutor : IDisposable
   /// <exception cref="ArgumentNullException"></exception>
   /// <exception cref="ArgumentException"></exception>
   /// <exception cref="CssException">If any error occurred during the validation process.</exception>
-  Task<ICssValidationResult> Document(string document, CancellationToken cancellation = default);
+  Task<ICssValidationResult> DocumentAsync(string document, CancellationToken cancellation = default);
 
   /// <summary>
   ///   <para>Validates CSS document, specified by its URL address, using W3C CSS validation web service.</para>
@@ -24,5 +24,5 @@ public interface ICssRequestExecutor : IDisposable
   /// <returns>CSS validation result instance.</returns>
   /// <exception cref="ArgumentNullException"></exception>
   /// <exception cref="CssException">If any error occurred during the validation process.</exception>
-  Task<ICssValidationResult> Url(Uri url, CancellationToken cancellation = default);
+  Task<ICssValidationResult> UrlAsync(Uri url, CancellationToken cancellation = default);
 }

@@ -8,22 +8,22 @@ public interface IError
   /// <summary>
   ///   <para>The actual error message.</para>
   /// </summary>
-  string? Message { get; }
+  string Message { get; }
 
   /// <summary>
   ///   <para>Base type of error.</para>
   /// </summary>
-  string? Type { get; }
+  string Type { get; }
 
   /// <summary>
   ///   <para>Subtype of error's type.</para>
   /// </summary>
-  string? Subtype { get; }
+  string Subtype { get; }
 
   /// <summary>
   ///   <para>Erroneous property name.</para>
   /// </summary>
-  string? Property { get; }
+  string Property { get; }
 
   /// <summary>
   ///   <para>Within the source code of the validated document, refers to the line where the error was detected.</para>
@@ -33,10 +33,10 @@ public interface IError
   /// <summary>
   ///   <para>Context of error (surrounding text).</para>
   /// </summary>
-  string? Context { get; }
+  string Context { get; }
 
   /// <summary>
   ///   <para>String that was skipped, if any.</para>
   /// </summary>
-  string? SkippedString { get; }
+  string SkippedString { get; }
 }

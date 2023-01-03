@@ -23,7 +23,7 @@ public sealed class Issues : IIssues
   /// </summary>
   /// <param name="errorsGroup"></param>
   /// <param name="warningsGroup"></param>
-  public Issues(IEnumerable<IErrorsGroup>? errorsGroup = null, IEnumerable<IWarningsGroup>? warningsGroup = null)
+  public Issues(IEnumerable<IErrorsGroup> errorsGroup = null, IEnumerable<IWarningsGroup> warningsGroup = null)
   {
     ErrorsGroups = errorsGroup ?? new List<IErrorsGroup>();
     WarningsGroups = warningsGroup ?? new List<IWarningsGroup>();
@@ -43,7 +43,7 @@ public sealed class Issues : IIssues
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public Issues(object info) : this(new Info().Properties(info)) {}
+  public Issues(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para></para>
@@ -54,12 +54,12 @@ public sealed class Issues : IIssues
     /// <summary>
     ///   <para>Collection of validation errors groups.</para>
     /// </summary>
-    public List<ErrorsGroup.Info>? Errors { get; init; }
+    public List<ErrorsGroup.Info> Errors { get; init; }
 
     /// <summary>
     ///   <para>Collection of validation errors groups.</para>
     /// </summary>
-    public List<WarningsGroup.Info>? Warnings { get; init; }
+    public List<WarningsGroup.Info> Warnings { get; init; }
 
     /// <summary>
     ///   <para></para>

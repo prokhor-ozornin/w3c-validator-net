@@ -15,7 +15,7 @@ public static class ICssValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="culture">Text culture.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
-  public static ICssValidationRequest Language(this ICssValidationRequest request, CultureInfo? culture) => request.Language(culture?.TwoLetterISOLanguageName);
+  public static ICssValidationRequest Language(this ICssValidationRequest request, CultureInfo culture) => request.Language(culture?.TwoLetterISOLanguageName);
 
   /// <summary>
   ///   <para>Specifies CSS medium to use in validation process.</para>
@@ -23,7 +23,7 @@ public static class ICssValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="medium">CSS medium.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
-  public static ICssValidationRequest Medium(this ICssValidationRequest request, CssMedium? medium) => request.Medium(medium?.ToStringInvariant());
+  public static ICssValidationRequest Medium(this ICssValidationRequest request, CssMedium? medium) => request.Medium(medium?.ToInvariantString());
 
   /// <summary>
   ///   <para>Specifies CSS standard version (profile) to be used in validation process.</para>

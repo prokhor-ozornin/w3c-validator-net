@@ -22,14 +22,14 @@ public sealed class MarkupValidatorTest
     using (var executor = validator.Request())
     {
       executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-      executor.Property("Request").Should().BeNull();
+      executor.GetPropertyValue("Request").Should().BeNull();
     }
 
     var request = new MarkupValidationRequest();
     using (var executor = validator.Request(request))
     {
       executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-      executor.Property("Request").Should().NotBeNull().And.BeSameAs(request);
+      executor.GetPropertyValue("Request").Should().NotBeNull().And.BeSameAs(request);
     }
   }
 }

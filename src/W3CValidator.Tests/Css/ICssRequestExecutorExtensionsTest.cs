@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using Catharsis.Commons;
+﻿using Catharsis.Commons;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
+using System.Reflection;
 
 namespace W3CValidator.Tests.Css;
 
@@ -11,26 +11,22 @@ namespace W3CValidator.Tests.Css;
 /// </summary>
 public sealed class ICssRequestExecutorExtensionsTest
 {
-  private CancellationToken Cancellation { get; } = new(true);
-
   /// <summary>
-  ///   <para>Performs testing of <see cref="ICssRequestExecutorExtensions.Document(ICssRequestExecutor, out ICssValidationResult?, string, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ICssRequestExecutorExtensions.Document(ICssRequestExecutor, string)"/> method.</para>
   /// </summary>
   [Fact]
   public void Document_Method()
   {
-    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Document(null!, out _, "document")).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(out _, null!)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(out _, string.Empty)).ThrowExactly<ArgumentException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(out _, "document", Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Document(null, string.Empty)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(null)).ThrowExactly<ArgumentNullException>();
 
     var validator = Validator.For.Css;
-
     var stylesheet = "text";
 
     using (var executor = validator.Request())
     {
-      executor.Document(out var result, stylesheet).Should().BeTrue();
+      var result = executor.Document(stylesheet);
+      result.Should().NotBeNull();
       result.Valid.Should().BeFalse();
       result.Uri.Should().Be("file://localhost/TextArea");
       result.CheckedBy.Should().Be("http://jigsaw.w3.org/css-validator/");
@@ -48,10 +44,11 @@ public sealed class ICssRequestExecutorExtensionsTest
       result.Issues.Warnings.Should().BeEmpty();
     }
 
-    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css").Text().Await();
-    using (var executor = validator.Request(info => info.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
+    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css")!.ToTextAsync().Await();
+    using (var executor = validator.Request(request => request.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
     {
-      executor.Document(out var result, stylesheet).Should().BeTrue();
+      var result = executor.Document(stylesheet);
+      result.Should().NotBeNull();
       result.Uri.Should().Be("file://localhost/TextArea");
       result.CheckedBy.Should().Be("http://jigsaw.w3.org/css-validator/");
       result.CssLevel.Should().Be("css2");
@@ -79,22 +76,21 @@ public sealed class ICssRequestExecutorExtensionsTest
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ICssRequestExecutorExtensions.Url(ICssRequestExecutor, out ICssValidationResult?, Uri, CancellationToken)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ICssRequestExecutorExtensions.Url(ICssRequestExecutor, Uri)"/> method.</para>
   /// </summary>
   [Fact]
   public void Url_Method()
   {
-    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null!, out _, "https://localhost".ToUri())).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Url(out _, null!)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Url(out _, "https://localhost".ToUri(), Cancellation)).ThrowExactly<TaskCanceledException>();
+    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, "https://localhost".ToUri())).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>();
 
     var url = "http://www.w3.org/2008/site/css/minimum".ToUri();
-    
     var validator = Validator.For.Css;
 
     using var executor = validator.Request();
 
-    executor.Url(out var result, url).Should().BeTrue();
+    var result = executor.Url(url);
+    result.Should().NotBeNull();
     result.Uri.Should().Be(url.ToString());
     result.CheckedBy.Should().Be("http://jigsaw.w3.org/css-validator/");
     result.CssLevel.Should().Be("css3");

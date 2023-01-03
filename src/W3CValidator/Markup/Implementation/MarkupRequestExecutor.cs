@@ -8,25 +8,25 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
   private bool disposed;
 
   private Uri EndpointUrl { get; }= "http://validator.w3.org/check".ToUri();
-  private IMarkupValidationRequest? Request { get; }
+  private IMarkupValidationRequest Request { get; }
   private HttpClient HttpClient { get; } = new();
 
-  public MarkupRequestExecutor(IMarkupValidationRequest? request)
+  public MarkupRequestExecutor(IMarkupValidationRequest request)
   {
     Request = request;
     HttpClient.DefaultRequestHeaders.Add("User-Agent", "W3CValidator.NET client library");
   }
 
-  public async Task<IMarkupValidationResult> Url(Uri url, CancellationToken cancellation = default)
+  public async Task<IMarkupValidationResult> UrlAsync(Uri url, CancellationToken cancellation = default)
   {
-    var parameters = new Dictionary<string, object?> {{"uri", url}};
+    var parameters = new Dictionary<string, object> {{"uri", url}};
 
     if (Request != null)
     {
-      parameters.AddAll(Request.Parameters);
+      parameters.AddRange(Request.Parameters);
     }
 
-    return await Call(parameters, cancellation);
+    return await Call(parameters, cancellation).ConfigureAwait(false);
   }
 
   public void Dispose()
@@ -47,7 +47,7 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
     disposed = true;
   }
 
-  private async Task<IMarkupValidationResult> Call(IDictionary<string, object?> parameters, CancellationToken cancellation = default)
+  private async Task<IMarkupValidationResult> Call(IReadOnlyDictionary<string, object> parameters, CancellationToken cancellation = default)
   {
     if (!parameters.Any())
     {
@@ -58,11 +58,11 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
     {
       var uri = EndpointUrl.ToUriBuilder().WithQuery(("output", "soap12")).WithQuery(parameters).Uri;
 
-      using var reader = (await HttpClient.ToStream(uri, cancellation)).ToXmlReader();
+      using var reader = (await HttpClient.ToStreamAsync(uri, cancellation).ConfigureAwait(false)).ToXmlReader();
 
       reader.ReadToFollowing("markupvalidationresponse", "http://www.w3.org/2005/10/markup-validator");
 
-      return reader.AsXml<MarkupValidationResult.Info>(new[] { typeof(MarkupValidationResult) })!.Result();
+      return reader.DeserializeAsXml<MarkupValidationResult.Info>(typeof(MarkupValidationResult)).Result();
     }
     catch (Exception exception)
     {

@@ -12,11 +12,11 @@ public abstract class UnitTest<T>
     var first = constructor().To<IComparable<T>>();
     var second = constructor().To<T>();
 
-    first.Property(property, lower);
-    second.Property(property, lower);
+    first.SetPropertyValue(property, lower);
+    second.SetPropertyValue(property, lower);
 
     first.CompareTo(second).Should().Be(0);
-    second.Property(property, greater);
+    second.SetPropertyValue(property, greater);
     first.CompareTo(second).Should().BeLessThan(0);
   }
 
@@ -29,8 +29,8 @@ public abstract class UnitTest<T>
     entity.Equals(entity).Should().BeTrue();
     entity.Equals(constructor()).Should().BeTrue();
 
-    constructor().Property(property, oldValue).Equals(constructor().Property(property, oldValue)).Should().BeTrue();
-    constructor().Property(property, oldValue).Equals(constructor().Property(property, newValue)).Should().BeFalse();
+    constructor().SetPropertyValue(property, oldValue).Equals(constructor().SetPropertyValue(property, oldValue)).Should().BeTrue();
+    constructor().SetPropertyValue(property, oldValue).Equals(constructor().SetPropertyValue(property, newValue)).Should().BeFalse();
   }
 
   protected void TestHashCode<TProperty>(string property, TProperty oldValue, TProperty newValue, Func<T>? constructor = null)
@@ -41,7 +41,7 @@ public abstract class UnitTest<T>
     entity.GetHashCode().Should().Be(entity.GetHashCode());
     entity.GetHashCode().Should().Be(constructor().GetHashCode());
 
-    constructor().Property(property, oldValue).GetHashCode().Should().Be(constructor().Property(property, oldValue).GetHashCode());
-    constructor().Property(property, oldValue).GetHashCode().Should().NotBe(constructor().Property(property, newValue).GetHashCode());
+    constructor().SetPropertyValue(property, oldValue).GetHashCode().Should().Be(constructor().SetPropertyValue(property, oldValue).GetHashCode());
+    constructor().SetPropertyValue(property, oldValue).GetHashCode().Should().NotBe(constructor().SetPropertyValue(property, newValue).GetHashCode());
   }
 }

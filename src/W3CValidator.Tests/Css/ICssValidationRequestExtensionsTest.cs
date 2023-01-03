@@ -18,7 +18,7 @@ public sealed class ICssValidationRequestExtensionsTest
   [Fact]
   public void Language_Method()
   {
-    void Validate(CultureInfo? culture)
+    void Validate(CultureInfo culture)
     {
       var request = new CssValidationRequest();
       
@@ -51,7 +51,7 @@ public sealed class ICssValidationRequestExtensionsTest
       request.Parameters.Should().BeEmpty();
 
       request.Medium(medium).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["usermedium"].Should().Be(medium?.ToStringInvariant());
+      request.Parameters["usermedium"].Should().Be(medium?.ToInvariantString());
     }
 
     using (new AssertionScope())
@@ -75,7 +75,7 @@ public sealed class ICssValidationRequestExtensionsTest
       request.Parameters.Should().BeEmpty();
 
       request.Profile(profile).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["profile"].Should().Be(profile?.ToStringInvariant());
+      request.Parameters["profile"].Should().Be(profile?.ToInvariantString());
     }
 
     using (new AssertionScope())

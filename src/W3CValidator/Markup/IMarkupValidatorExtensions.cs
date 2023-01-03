@@ -14,7 +14,7 @@ public static class IMarkupValidatorExtensions
   /// <param name="validator"></param>
   /// <param name="action"></param>
   /// <returns></returns>
-  public static IMarkupRequestExecutor Request(this IMarkupValidator validator, Action<IMarkupValidationRequest>? action = null)
+  public static IMarkupRequestExecutor Request(this IMarkupValidator validator, Action<IMarkupValidationRequest> action = null)
   {
     var request = new MarkupValidationRequest();
 

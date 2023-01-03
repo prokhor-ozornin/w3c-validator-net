@@ -23,7 +23,7 @@ public sealed class WarningsGroup : IWarningsGroup
   /// </summary>
   /// <param name="count"></param>
   /// <param name="warnings"></param>
-  public WarningsGroup(int? count = null, IEnumerable<IIssue>? warnings = null)
+  public WarningsGroup(int? count = null, IEnumerable<IIssue> warnings = null)
   {
     Count = count;
     Warnings = warnings ?? new List<IIssue>();
@@ -43,7 +43,7 @@ public sealed class WarningsGroup : IWarningsGroup
   ///   <para></para>
   /// </summary>
   /// <param name="info"></param>
-  public WarningsGroup(object info) : this(new Info().Properties(info)) {}
+  public WarningsGroup(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para></para>
@@ -61,7 +61,7 @@ public sealed class WarningsGroup : IWarningsGroup
     ///   <para>Collection of validation errors.</para>
     /// </summary>
     [DataMember(Name = "warninglist", IsRequired = true)]
-    public WarningsCollection? Warnings { get; init; }
+    public WarningsCollection Warnings { get; init; }
 
     /// <summary>
     ///   <para></para>

@@ -12,7 +12,7 @@ public static class ICssValidatorExtensions
   /// <param name="validator"></param>
   /// <param name="action"></param>
   /// <returns></returns>
-  public static ICssRequestExecutor Request(this ICssValidator validator, Action<ICssValidationRequest>? action = null)
+  public static ICssRequestExecutor Request(this ICssValidator validator, Action<ICssValidationRequest> action = null)
   {
     var request = new CssValidationRequest();
 

@@ -13,5 +13,5 @@ public interface IMarkupRequestExecutor : IDisposable
   /// <param name="url">URL address of document to be validated.</param>
   /// <param name="cancellation"></param>
   /// <returns>Markup validation result instance.</returns>
-  Task<IMarkupValidationResult> Url(Uri url, CancellationToken cancellation = default);
+  Task<IMarkupValidationResult> UrlAsync(Uri url, CancellationToken cancellation = default);
 }

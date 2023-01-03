@@ -8,7 +8,7 @@ public interface IWarning
   /// <summary>
   ///   <para>The actual warning message.</para>
   /// </summary>
-  string? Message { get; }
+  string Message { get; }
 
   /// <summary>
   ///   <para>The level of the warning's severity.</para>
@@ -23,5 +23,5 @@ public interface IWarning
   /// <summary>
   ///   <para>Context of warning (surrounding text).</para>
   /// </summary>
-  string? Context { get; }
+  string Context { get; }
 }

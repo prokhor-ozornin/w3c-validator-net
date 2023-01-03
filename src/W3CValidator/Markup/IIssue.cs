@@ -8,12 +8,12 @@ public interface IIssue
   /// <summary>
   ///   <para>The number/identifier of the issue, as addressed internally by the validator.</para>
   /// </summary>
-  string? MessageId { get; }
+  string MessageId { get; }
 
   /// <summary>
   ///   <para>The actual issue message.</para>
   /// </summary>
-  string? Message { get; }
+  string Message { get; }
 
   /// <summary>
   ///   <para>Within the source code of the validated document, refers to the line where the issue was detected.</para>
@@ -28,10 +28,10 @@ public interface IIssue
   /// <summary>
   ///   <para>Snippet of the source where the issue was found. Given as HTML fragment within CDATA block.</para>
   /// </summary>
-  string? Source { get; }
+  string Source { get; }
 
   /// <summary>
   ///   <para>Explanation for the issue. Given as HTML fragment within CDATA block.</para>
   /// </summary>
-  string? Explanation { get; }
+  string Explanation { get; }
 }

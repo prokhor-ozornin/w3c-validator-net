@@ -21,13 +21,13 @@ public sealed class ICssValidatorExtensionsTest
     using (var executor = ICssValidatorExtensions.Request(Validator.For.Css))
     {
       executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
-      executor.Property("Request").Should().BeNull();
+      executor.GetPropertyValue("Request").Should().BeNull();
     }
 
     using (var executor = Validator.For.Css.Request(_ => {}))
     {
       executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
-      executor.Property("Request").Should().NotBeNull();
+      executor.GetPropertyValue("Request").Should().NotBeNull();
     }
   }
 }
