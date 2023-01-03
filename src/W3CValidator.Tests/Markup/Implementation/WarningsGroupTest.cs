@@ -95,12 +95,12 @@ public sealed class WarningsGroupTest : UnitTest<WarningsGroup>
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="WarningsGroup.Info.Result()"/> method.</para>
+    ///   <para>Performs testing of <see cref="WarningsGroup.Info.ToResult()"/> method.</para>
     /// </summary>
     [Fact]
-    public void Result_Method()
+    public void ToResult_Method()
     {
-      var result = new WarningsGroup.Info().Result();
+      var result = new WarningsGroup.Info().ToResult();
       result.Should().NotBeNull().And.BeOfType<WarningsGroup>();
       result.Count.Should().BeNull();
       result.Warnings.Should().BeEmpty();

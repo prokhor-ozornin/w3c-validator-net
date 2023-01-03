@@ -101,6 +101,6 @@ public sealed class Warning : IWarning
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IWarning Result() => new Warning(this);
+    public IWarning ToResult() => new Warning(this);
   }
 }

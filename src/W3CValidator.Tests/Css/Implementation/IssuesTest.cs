@@ -109,12 +109,12 @@ public sealed class IssuesListInfoTests
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Issues.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Issues.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Issues.Info().Result();
+    var result = new Issues.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Issues>();
     result.Errors.Should().BeEmpty();
     result.Warnings.Should().BeEmpty();

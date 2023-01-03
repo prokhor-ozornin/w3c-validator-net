@@ -73,6 +73,6 @@ public sealed class WarningsGroup : IWarningsGroup
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IWarningsGroup Result() => new WarningsGroup(this);
+    public IWarningsGroup ToResult() => new WarningsGroup(this);
   }
 }

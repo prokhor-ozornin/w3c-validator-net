@@ -16,7 +16,7 @@ public sealed class MarkupRequestExecutorTest
   [Fact]
   public void UrlAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
 
     var validator = Validator.For.Markup;
 

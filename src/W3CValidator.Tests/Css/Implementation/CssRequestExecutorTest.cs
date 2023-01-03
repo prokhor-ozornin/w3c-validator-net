@@ -19,7 +19,7 @@ public sealed class CssRequestExecutorTest
   [Fact]
   public void DocumentAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
     AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
     var validator = Validator.For.Css;
@@ -46,7 +46,7 @@ public sealed class CssRequestExecutorTest
       result.Issues.Warnings.Should().BeEmpty();
     }
 
-    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css")!.ToTextAsync().Await();
+    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css").ToTextAsync().Await();
     using (var executor = validator.Request(request => request.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
     {
       var result = executor.DocumentAsync(stylesheet).Await();
@@ -83,7 +83,7 @@ public sealed class CssRequestExecutorTest
   [Fact]
   public void UrlAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null!)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
     AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync("http://localhost".ToUri(), Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
 
     var url = "http://www.w3.org/2008/site/css/minimum".ToUri();

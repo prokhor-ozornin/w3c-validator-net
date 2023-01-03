@@ -36,7 +36,7 @@ public sealed class WarningsGroup : IWarningsGroup
   public WarningsGroup(Info info)
   {
     Count = info.Count;
-    Warnings = info.Warnings?.Select(info => info.Result()) ?? Enumerable.Empty<IIssue>();
+    Warnings = info.Warnings?.Select(info => info.ToResult()) ?? Enumerable.Empty<IIssue>();
   }
 
   /// <summary>
@@ -67,6 +67,6 @@ public sealed class WarningsGroup : IWarningsGroup
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IWarningsGroup Result() => new WarningsGroup(this);
+    public IWarningsGroup ToResult() => new WarningsGroup(this);
   }
 }

@@ -161,6 +161,6 @@ public sealed class CssValidationResult : ICssValidationResult
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public ICssValidationResult Result() => new CssValidationResult(this);
+    public ICssValidationResult ToResult() => new CssValidationResult(this);
   }
 }

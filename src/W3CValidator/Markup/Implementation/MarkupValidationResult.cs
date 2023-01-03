@@ -190,6 +190,6 @@ public sealed class MarkupValidationResult : IComparable<IMarkupValidationResult
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IMarkupValidationResult Result() => new MarkupValidationResult(this);
+    public IMarkupValidationResult ToResult() => new MarkupValidationResult(this);
   }
 }

@@ -79,7 +79,7 @@ public sealed class CssValidationRequestTest
   [Fact]
   public void Warnings_Method()
   {
-    void Validate(WarningsLevel? level)
+    static void Validate(WarningsLevel? level)
     {
       var request = new CssValidationRequest();
 

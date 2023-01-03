@@ -134,6 +134,6 @@ public sealed class Error : IError
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IError Result() => new Error(this);
+    public IError ToResult() => new Error(this);
   }
 }

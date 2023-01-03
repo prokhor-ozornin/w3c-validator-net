@@ -16,7 +16,7 @@ public sealed class ICssValidatorExtensionsTest
   [Fact]
   public void Request_Method()
   {
-    AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>();
 
     using (var executor = ICssValidatorExtensions.Request(Validator.For.Css))
     {

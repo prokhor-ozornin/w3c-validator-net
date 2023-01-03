@@ -62,7 +62,7 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 
       reader.ReadToFollowing("markupvalidationresponse", "http://www.w3.org/2005/10/markup-validator");
 
-      return reader.DeserializeAsXml<MarkupValidationResult.Info>(typeof(MarkupValidationResult)).Result();
+      return reader.DeserializeAsXml<MarkupValidationResult.Info>(typeof(MarkupValidationResult)).ToResult();
     }
     catch (Exception exception)
     {

@@ -17,7 +17,7 @@ public sealed class IMarkupValidatorExtensionsTest
   [Fact]
   public void Request_Method()
   {
-    AssertionExtensions.Should(() => IMarkupValidatorExtensions.Request(null!)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IMarkupValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>();
 
     using (var executor = IMarkupValidatorExtensions.Request(Validator.For.Markup))
     {

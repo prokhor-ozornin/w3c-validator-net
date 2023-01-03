@@ -173,12 +173,12 @@ public sealed class CssValidationResultInfoTests : UnitTest<CssValidationResult.
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="CssValidationResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new CssValidationResult.Info().Result();
+    var result = new CssValidationResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<CssValidationResult>();
     result.Uri.Should().BeNull();
     result.Valid.Should().BeNull();

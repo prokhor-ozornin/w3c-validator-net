@@ -145,12 +145,12 @@ public sealed class IssueInfoTests : UnitTest<Issue.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Issue.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Issue.Info().Result();
+    var result = new Issue.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Issue>();
     result.MessageId.Should().BeNull();
     result.Message.Should().BeNull();

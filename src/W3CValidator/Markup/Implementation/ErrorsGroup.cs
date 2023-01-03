@@ -36,7 +36,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   public ErrorsGroup(Info info)
   {
     Count = info.Count;
-    Errors = info.Errors?.Select(info => info.Result()) ?? Enumerable.Empty<IIssue>();
+    Errors = info.Errors?.Select(info => info.ToResult()) ?? Enumerable.Empty<IIssue>();
   }
 
   /// <summary>
@@ -69,6 +69,6 @@ public sealed class ErrorsGroup : IErrorsGroup
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IErrorsGroup Result() => new ErrorsGroup(this);
+    public IErrorsGroup ToResult() => new ErrorsGroup(this);
   }
 }

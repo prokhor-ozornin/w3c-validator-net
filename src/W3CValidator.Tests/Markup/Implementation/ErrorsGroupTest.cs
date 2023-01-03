@@ -95,12 +95,12 @@ public sealed class ErrorsGroupTest : UnitTest<ErrorsGroup>
     }
 
     /// <summary>
-    ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Result()"/> method.</para>
+    ///   <para>Performs testing of <see cref="ErrorsGroup.Info.ToResult()"/> method.</para>
     /// </summary>
     [Fact]
-    public void Result_Method()
+    public void ToResult_Method()
     {
-      var result = new ErrorsGroup.Info().Result();
+      var result = new ErrorsGroup.Info().ToResult();
       result.Should().NotBeNull().And.BeOfType<ErrorsGroup>();
       result.Count.Should().BeNull();
       result.Errors.Should().BeEmpty();

@@ -69,7 +69,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
       reader.ReadToFollowing("cssvalidationresponse", "http://www.w3.org/2005/07/css-validator");
 
-      return reader.DeserializeAsXml<CssValidationResult.Info>()!.Result();
+      return reader.DeserializeAsXml<CssValidationResult.Info>().ToResult();
     }
     catch (Exception exception)
     {

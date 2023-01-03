@@ -128,6 +128,6 @@ public sealed class Issue : IIssue
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IIssue Result() => new Issue(this);
+    public IIssue ToResult() => new Issue(this);
   }
 }

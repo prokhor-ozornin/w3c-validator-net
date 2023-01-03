@@ -18,7 +18,7 @@ public sealed class IMarkupValidationRequestExtensionsTest
   [Fact]
   public void Encoding_Method()
   {
-    void Validate(Encoding? encoding)
+    static void Validate(Encoding? encoding)
     {
       var request = new MarkupValidationRequest();
       
@@ -30,7 +30,7 @@ public sealed class IMarkupValidationRequestExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IMarkupValidationRequestExtensions.Encoding(null!, Encoding.Default)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => IMarkupValidationRequestExtensions.Encoding(null, Encoding.Default)).ThrowExactly<ArgumentNullException>();
       AssertionExtensions.Should(() => IMarkupValidationRequestExtensions.Encoding(new MarkupValidationRequest(), null)).ThrowExactly<ArgumentNullException>();
 
       Validate(null);

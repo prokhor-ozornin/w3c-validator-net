@@ -44,7 +44,7 @@ public sealed class ICssRequestExecutorExtensionsTest
       result.Issues.Warnings.Should().BeEmpty();
     }
 
-    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css")!.ToTextAsync().Await();
+    stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css").ToTextAsync().Await();
     using (var executor = validator.Request(request => request.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
     {
       var result = executor.Document(stylesheet);

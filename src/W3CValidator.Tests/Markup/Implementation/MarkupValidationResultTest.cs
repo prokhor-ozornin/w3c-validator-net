@@ -214,12 +214,12 @@ public sealed class MarkupValidationResultInfoTests : UnitTest<MarkupValidationR
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new MarkupValidationResult.Info().Result();
+    var result = new MarkupValidationResult.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<MarkupValidationResult>();
     result.Uri.Should().BeNull();
     result.Valid.Should().BeNull();

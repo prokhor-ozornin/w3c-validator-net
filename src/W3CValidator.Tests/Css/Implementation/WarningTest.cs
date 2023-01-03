@@ -112,12 +112,12 @@ public sealed class WarningInfoTests : UnitTest<Warning.Info>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Info.Result()"/> method.</para>
+  ///   <para>Performs testing of <see cref="Warning.Info.ToResult()"/> method.</para>
   /// </summary>
   [Fact]
-  public void Result_Method()
+  public void ToResult_Method()
   {
-    var result = new Warning.Info().Result();
+    var result = new Warning.Info().ToResult();
     result.Should().NotBeNull().And.BeOfType<Warning>();
     result.Message.Should().BeNull();
     result.Level.Should().BeNull();

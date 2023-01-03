@@ -73,6 +73,6 @@ public sealed class ErrorsGroup : IErrorsGroup
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IErrorsGroup Result() => new ErrorsGroup(this);
+    public IErrorsGroup ToResult() => new ErrorsGroup(this);
   }
 }

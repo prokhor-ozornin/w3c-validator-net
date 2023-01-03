@@ -35,8 +35,8 @@ public sealed class Issues : IIssues
   /// <param name="info"></param>
   public Issues(Info info)
   {
-    ErrorsGroups = (info.Errors ?? new List<ErrorsGroup.Info>()).Select(info => info.Result());
-    WarningsGroups = (info.Warnings ?? new List<WarningsGroup.Info>()).Select(info => info.Result());
+    ErrorsGroups = (info.Errors ?? new List<ErrorsGroup.Info>()).Select(info => info.ToResult());
+    WarningsGroups = (info.Warnings ?? new List<WarningsGroup.Info>()).Select(info => info.ToResult());
   }
 
   /// <summary>
@@ -65,6 +65,6 @@ public sealed class Issues : IIssues
     ///   <para></para>
     /// </summary>
     /// <returns></returns>
-    public IIssues Result() => new Issues(this);
+    public IIssues ToResult() => new Issues(this);
   }
 }
