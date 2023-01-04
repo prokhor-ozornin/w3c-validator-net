@@ -21,7 +21,7 @@ public sealed class CssValidatorTest
     using (var executor = validator.Request())
     {
       executor.Should().NotBeNull().And.NotBeSameAs(validator.Request()).And.BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue("Request").Should().BeNull();
+      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
     }
 
     var request = new CssValidationRequest();
@@ -29,7 +29,7 @@ public sealed class CssValidatorTest
     using (var executor = validator.Request(request))
     {
       executor.Should().NotBeNull().And.NotBeSameAs(validator.Request(request)).And.BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue("Request").Should().NotBeNull().And.BeSameAs(request);
+      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
     }
   }
 }

@@ -22,13 +22,13 @@ public sealed class IMarkupValidatorExtensionsTest
     using (var executor = IMarkupValidatorExtensions.Request(Validator.For.Markup))
     {
       executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-      executor.GetPropertyValue("Request").Should().BeNull();
+      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeNull();
     }
 
     using (var executor = Validator.For.Markup.Request(_ => {}))
     {
       executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-      executor.GetPropertyValue("Request").Should().NotBeNull();
+      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().NotBeNull();
     }
   }
 }
