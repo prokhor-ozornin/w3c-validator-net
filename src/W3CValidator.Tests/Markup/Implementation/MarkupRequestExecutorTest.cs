@@ -1,14 +1,14 @@
 ﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Markup;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupRequestExecutor"/>.</para>
 /// </summary>
-public sealed class MarkupRequestExecutorTest
+public sealed class MarkupRequestExecutorTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupRequestExecutor.UrlAsync(Uri, CancellationToken)"/> method.</para>
@@ -16,7 +16,8 @@ public sealed class MarkupRequestExecutorTest
   [Fact]
   public void UrlAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
+    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(LocalHost, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
 
     var validator = Validator.For.Markup;
 
@@ -36,14 +37,5 @@ public sealed class MarkupRequestExecutorTest
     result.ErrorsGroup.Errors.Should().BeEmpty();
     result.WarningsGroup.Count.Should().Be(0);
     result.WarningsGroup.Warnings.Should().BeEmpty();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupRequestExecutor.Dispose()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void Dispose()
-  {
-    throw new NotImplementedException();
   }
 }

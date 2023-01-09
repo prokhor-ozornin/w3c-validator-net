@@ -1,14 +1,14 @@
 ﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Markup;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="IMarkupRequestExecutorExtensions"/>.</para>
 /// </summary>
-public sealed class IMarkupRequestExecutorExtensionsTest
+public sealed class IMarkupRequestExecutorExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IMarkupRequestExecutorExtensions.Url(IMarkupRequestExecutor, Uri)"/> method.</para>
@@ -16,8 +16,8 @@ public sealed class IMarkupRequestExecutorExtensionsTest
   [Fact]
   public void TryUrl_Method()
   {
-    AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, "https://localhost".ToUri())).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, LocalHost)).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+    AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
     var validator = Validator.For.Markup;
 

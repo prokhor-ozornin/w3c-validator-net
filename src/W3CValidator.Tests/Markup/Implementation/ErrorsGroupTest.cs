@@ -1,14 +1,14 @@
 ﻿using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Markup;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="ErrorsGroup"/>.</para>
 /// </summary>
-public sealed class ErrorsGroupTest : UnitTest<ErrorsGroup>
+public sealed class ErrorsGroupTest : EntityTest<ErrorsGroup>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.Count"/> property.</para>
@@ -61,7 +61,7 @@ public sealed class ErrorsGroupTest : UnitTest<ErrorsGroup>
   /// <summary>
   ///   <para>Tests set for class <see cref="ErrorsGroup.Info"/>.</para>
   /// </summary>
-  public sealed class ErrorsGroupInfoTests : UnitTest<ErrorsGroup.Info>
+  public sealed class ErrorsGroupInfoTests : EntityTest<ErrorsGroup.Info>
   {
     /// <summary>
     ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Count"/> property.</para>

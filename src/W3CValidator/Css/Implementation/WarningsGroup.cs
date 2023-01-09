@@ -1,7 +1,7 @@
 ﻿namespace W3CValidator.Css;
 
 using System.Runtime.Serialization;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 /// <summary>
 ///   <para>Logical group of validation warnings.</para>

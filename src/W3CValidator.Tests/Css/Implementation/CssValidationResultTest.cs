@@ -7,7 +7,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationResult"/>.</para>
 /// </summary>
-public sealed class CssValidationResultTest : UnitTest<CssValidationResult>
+public sealed class CssValidationResultTest : EntityTest<CssValidationResult>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="CssValidationResult.Uri"/> property.</para>
@@ -114,7 +114,7 @@ public sealed class CssValidationResultTest : UnitTest<CssValidationResult>
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationResult.Info"/>.</para>
 /// </summary>
-public sealed class CssValidationResultInfoTests : UnitTest<CssValidationResult.Info>
+public sealed class CssValidationResultInfoTests : EntityTest<CssValidationResult.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="CssValidationResult.Info.Uri"/> property.</para>

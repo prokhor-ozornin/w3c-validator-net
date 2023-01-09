@@ -8,7 +8,7 @@ namespace W3CValidator.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Validator"/>.</para>
 /// </summary>
-public sealed class ValidatorTest
+public sealed class ValidatorTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Validator.For"/> property.</para>

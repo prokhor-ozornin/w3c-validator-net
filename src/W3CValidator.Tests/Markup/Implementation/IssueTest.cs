@@ -8,7 +8,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="Issue"/>.</para>
 /// </summary>
-public sealed class IssueTest : UnitTest<Issue>
+public sealed class IssueTest : EntityTest<Issue>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
@@ -90,7 +90,7 @@ public sealed class IssueTest : UnitTest<Issue>
 /// <summary>
 ///   <para>Tests set for class <see cref="Issue.Info"/>.</para>
 /// </summary>
-public sealed class IssueInfoTests : UnitTest<Issue.Info>
+public sealed class IssueInfoTests : EntityTest<Issue.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>

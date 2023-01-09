@@ -12,7 +12,13 @@ public static class ICssRequestExecutorExtensions
   /// <param name="executor"></param>
   /// <param name="document"></param>
   /// <returns></returns>
-  public static ICssValidationResult Document(this ICssRequestExecutor executor, string document) => executor.DocumentAsync(document).Result;
+  public static ICssValidationResult Document(this ICssRequestExecutor executor, string document)
+  {
+    if (executor is null) throw new ArgumentNullException(nameof(executor));
+    if (document is null) throw new ArgumentNullException(nameof(document));
+
+    return executor.DocumentAsync(document).Result;
+  }
 
   /// <summary>
   ///   <para></para>
@@ -20,5 +26,11 @@ public static class ICssRequestExecutorExtensions
   /// <param name="executor"></param>
   /// <param name="url"></param>
   /// <returns></returns>
-  public static ICssValidationResult Url(this ICssRequestExecutor executor, Uri url) => executor.UrlAsync(url).Result;
+  public static ICssValidationResult Url(this ICssRequestExecutor executor, Uri url)
+  {
+    if (executor is null) throw new ArgumentNullException(nameof(executor));
+    if (url is null) throw new ArgumentNullException(nameof(url));
+
+    return executor.UrlAsync(url).Result;
+  }
 }

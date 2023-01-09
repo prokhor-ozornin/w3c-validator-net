@@ -7,7 +7,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="ErrorsCollection"/>.</para>
 /// </summary>
-public sealed class ErrorsCollectionTest
+public sealed class ErrorsCollectionTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>

@@ -14,5 +14,11 @@ public static class IMarkupRequestExecutorExtensions
   /// <param name="executor"></param>
   /// <param name="url"></param>
   /// <returns></returns>
-  public static IMarkupValidationResult Url(this IMarkupRequestExecutor executor, Uri url) => executor.UrlAsync(url).Result;
+  public static IMarkupValidationResult Url(this IMarkupRequestExecutor executor, Uri url)
+  {
+    if (executor is null) throw new ArgumentNullException(nameof(executor));
+    if (url is null) throw new ArgumentNullException(nameof(url));
+
+    return executor.UrlAsync(url).Result;
+  }
 }

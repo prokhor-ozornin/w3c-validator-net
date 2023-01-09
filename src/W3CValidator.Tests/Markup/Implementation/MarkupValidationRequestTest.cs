@@ -7,7 +7,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationRequest"/>.</para>
 /// </summary>
-public sealed class MarkupValidationRequestTest
+public sealed class MarkupValidationRequestTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

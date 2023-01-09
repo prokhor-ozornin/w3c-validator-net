@@ -7,7 +7,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssException"/>.</para>
 /// </summary>
-public sealed class CssValidationExceptionTest
+public sealed class CssValidationExceptionTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

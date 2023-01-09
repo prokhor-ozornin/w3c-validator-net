@@ -2,25 +2,23 @@
 using FluentAssertions;
 using Xunit;
 using System.Reflection;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Css;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="CssRequestExecutor"/>.</para>
 /// </summary>
-public sealed class CssRequestExecutorTest
+public sealed class CssRequestExecutorTest : UnitTest
 {
-  private CancellationToken Cancellation { get; } = new(true);
-
   /// <summary>
   ///   <para>Performs testing of <see cref="CssRequestExecutor.DocumentAsync(string, CancellationToken)"/> method.</para>
   /// </summary>
   [Fact]
   public void DocumentAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("document").Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var validator = Validator.For.Css;
     var stylesheet = "text";
@@ -83,8 +81,8 @@ public sealed class CssRequestExecutorTest
   [Fact]
   public void UrlAsync_Method()
   {
-    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().Await();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync("http://localhost".ToUri(), Cancellation)).ThrowExactlyAsync<ArgumentNullException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
+    AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(LocalHost, Cancellation)).ThrowExactlyAsync<OperationCanceledException>().Await();
 
     var url = "http://www.w3.org/2008/site/css/minimum".ToUri();
     var validator = Validator.For.Css;
@@ -108,14 +106,5 @@ public sealed class CssRequestExecutorTest
     warning.Level.Should().Be(0);
     warning.Line.Should().Be(38);
     warning.Message.Should().Be("Property -moz-inline-stack is an unknown vendor extension");
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssRequestExecutor.Dispose()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void Dispose()
-  {
-    throw new NotImplementedException();
   }
 }

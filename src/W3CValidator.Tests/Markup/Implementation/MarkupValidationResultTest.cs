@@ -7,7 +7,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult"/>.</para>
 /// </summary>
-public sealed class MarkupValidationResultTest : UnitTest<MarkupValidationResult>
+public sealed class MarkupValidationResultTest : EntityTest<MarkupValidationResult>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Uri"/> property.</para>
@@ -137,7 +137,7 @@ public sealed class MarkupValidationResultTest : UnitTest<MarkupValidationResult
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult.Info"/>.</para>
 /// </summary>
-public sealed class MarkupValidationResultInfoTests : UnitTest<MarkupValidationResult.Info>
+public sealed class MarkupValidationResultInfoTests : EntityTest<MarkupValidationResult.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Uri"/> property.</para>

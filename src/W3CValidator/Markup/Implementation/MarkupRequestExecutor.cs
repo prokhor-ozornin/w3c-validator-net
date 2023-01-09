@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 using W3CValidator.Markup;
 
 namespace W3CValidator.Css;

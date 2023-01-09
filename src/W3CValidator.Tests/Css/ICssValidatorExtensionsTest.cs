@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -8,15 +8,15 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ICssValidatorExtensions"/>.</para>
 /// </summary>
-public sealed class ICssValidatorExtensionsTest
+public sealed class ICssValidatorExtensionsTest : UnitTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="ICssValidatorExtensions.Request(ICssValidator, Action{ICssValidationRequest}?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="ICssValidatorExtensions.Request(ICssValidator, Action{ICssValidationRequest})"/> method.</para>
   /// </summary>
   [Fact]
   public void Request_Method()
   {
-    AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
 
     using (var executor = ICssValidatorExtensions.Request(Validator.For.Css))
     {

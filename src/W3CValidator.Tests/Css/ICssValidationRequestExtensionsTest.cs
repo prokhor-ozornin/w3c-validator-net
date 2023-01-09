@@ -2,7 +2,7 @@
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ICssValidationRequestExtensions"/>.</para>
 /// </summary>
-public sealed class ICssValidationRequestExtensionsTest
+public sealed class ICssValidationRequestExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ICssValidationRequestExtensions.Language(ICssValidationRequest, CultureInfo)"/> method.</para>
@@ -30,8 +30,7 @@ public sealed class ICssValidationRequestExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Language(null, null)).ThrowExactly<ArgumentNullException>();
-      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Language(new CssValidationRequest(), null)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Language(null, null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       Validate(null);
       CultureInfo.GetCultures(CultureTypes.AllCultures).ForEach(Validate);
@@ -56,7 +55,7 @@ public sealed class ICssValidationRequestExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Medium(null, CssMedium.All)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Medium(null, CssMedium.All)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       Validate(null);
       Enum.GetValues<CssMedium>().ForEach(medium => Validate(medium));
@@ -80,7 +79,7 @@ public sealed class ICssValidationRequestExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Profile(null, CssProfile.Css1)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Profile(null, CssProfile.Css1)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       Validate(null);
       Enum.GetValues<CssProfile>().ForEach(profile => Validate(profile));
@@ -105,7 +104,7 @@ public sealed class ICssValidationRequestExtensionsTest
 
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Warnings(null, WarningsLevel.All)).ThrowExactly<ArgumentNullException>();
+      AssertionExtensions.Should(() => ICssValidationRequestExtensions.Warnings(null, WarningsLevel.All)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       Validate(null);
       Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level));

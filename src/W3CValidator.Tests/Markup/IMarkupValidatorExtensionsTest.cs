@@ -1,7 +1,7 @@
 ﻿using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 using W3CValidator.Css;
 
 namespace W3CValidator.Tests.Markup;
@@ -9,7 +9,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="IMarkupValidatorExtensions"/>.</para>
 /// </summary>
-public sealed class IMarkupValidatorExtensionsTest
+public sealed class IMarkupValidatorExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IMarkupValidatorExtensions.Request(IMarkupValidator, Action{IMarkupValidationRequest}?)"/> method.</para>
@@ -17,7 +17,7 @@ public sealed class IMarkupValidatorExtensionsTest
   [Fact]
   public void Request_Method()
   {
-    AssertionExtensions.Should(() => IMarkupValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => IMarkupValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
 
     using (var executor = IMarkupValidatorExtensions.Request(Validator.For.Markup))
     {

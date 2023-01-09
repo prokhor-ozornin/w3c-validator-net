@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -9,7 +9,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ICssRequestExecutorExtensions"/>.</para>
 /// </summary>
-public sealed class ICssRequestExecutorExtensionsTest
+public sealed class ICssRequestExecutorExtensionsTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ICssRequestExecutorExtensions.Document(ICssRequestExecutor, string)"/> method.</para>
@@ -17,8 +17,8 @@ public sealed class ICssRequestExecutorExtensionsTest
   [Fact]
   public void Document_Method()
   {
-    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Document(null, string.Empty)).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Document(null, string.Empty)).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+    AssertionExtensions.Should(() => Validator.For.Css.Request().Document(null)).ThrowExactly<ArgumentNullException>().WithParameterName("document");
 
     var validator = Validator.For.Css;
     var stylesheet = "text";
@@ -81,8 +81,8 @@ public sealed class ICssRequestExecutorExtensionsTest
   [Fact]
   public void Url_Method()
   {
-    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, "https://localhost".ToUri())).ThrowExactly<ArgumentNullException>();
-    AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>();
+    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, LocalHost)).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+    AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
     var url = "http://www.w3.org/2008/site/css/minimum".ToUri();
     var validator = Validator.For.Css;

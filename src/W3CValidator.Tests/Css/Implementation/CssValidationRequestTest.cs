@@ -2,14 +2,14 @@
 using FluentAssertions;
 using Xunit;
 using FluentAssertions.Execution;
-using Catharsis.Commons;
+using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Css;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationRequest"/>.</para>
 /// </summary>
-public sealed class CssValidationRequestTest
+public sealed class CssValidationRequestTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

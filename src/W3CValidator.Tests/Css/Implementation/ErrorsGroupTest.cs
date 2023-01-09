@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -8,7 +8,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ErrorsGroup"/>.</para>
 /// </summary>
-public sealed class ErrorsListTests : UnitTest<ErrorsGroup>
+public sealed class ErrorsListTests : EntityTest<ErrorsGroup>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.Uri"/> property.</para>
@@ -66,7 +66,7 @@ public sealed class ErrorsListTests : UnitTest<ErrorsGroup>
 /// <summary>
 ///   <para>Tests set for class <see cref="ErrorsGroup.Info"/>.</para>
 /// </summary>
-public sealed class ErrorsGroupInfoTests : UnitTest<ErrorsGroup.Info>
+public sealed class ErrorsGroupInfoTests : EntityTest<ErrorsGroup.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Uri"/> property.</para>

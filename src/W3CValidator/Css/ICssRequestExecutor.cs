@@ -11,8 +11,6 @@ public interface ICssRequestExecutor : IDisposable
   /// <param name="document">CSS code fragment to be validated.</param>
   /// <param name="cancellation"></param>
   /// <returns>CSS validation result instance.</returns>
-  /// <exception cref="ArgumentNullException"></exception>
-  /// <exception cref="ArgumentException"></exception>
   /// <exception cref="CssException">If any error occurred during the validation process.</exception>
   Task<ICssValidationResult> DocumentAsync(string document, CancellationToken cancellation = default);
 
