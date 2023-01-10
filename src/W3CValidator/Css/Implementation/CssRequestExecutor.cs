@@ -14,6 +14,9 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
   public async Task<ICssValidationResult> DocumentAsync(string document, CancellationToken cancellation = default)
   {
+    if (document is null) throw new ArgumentNullException(nameof(document));
+    if (document.IsEmpty()) throw new ArgumentException(nameof(document));
+
     var parameters = new Dictionary<string, object> {{"text", document}};
 
     if (Request != null)
@@ -26,6 +29,8 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
   public async Task<ICssValidationResult> UrlAsync(Uri url, CancellationToken cancellation = default)
   {
+    if (url is null) throw new ArgumentNullException(nameof(url));
+
     var parameters = new Dictionary<string, object> {{"uri", url}};
 
     if (Request != null)
@@ -56,6 +61,8 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
   private async Task<ICssValidationResult> Call(IReadOnlyDictionary<string, object> parameters, CancellationToken cancellation = default)
   {
+    if (parameters is null) throw new ArgumentNullException(nameof(parameters));
+
     if (!parameters.Any())
     {
       throw new CssException("No request parameters were specified");

@@ -19,6 +19,8 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 
   public async Task<IMarkupValidationResult> UrlAsync(Uri url, CancellationToken cancellation = default)
   {
+    if (url is null) throw new ArgumentNullException(nameof(url));
+
     var parameters = new Dictionary<string, object> {{"uri", url}};
 
     if (Request != null)
@@ -49,6 +51,8 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 
   private async Task<IMarkupValidationResult> Call(IReadOnlyDictionary<string, object> parameters, CancellationToken cancellation = default)
   {
+    if (parameters is null) throw new ArgumentNullException(nameof(parameters));
+
     if (!parameters.Any())
     {
       throw new MarkupException("No request parameters were specified");

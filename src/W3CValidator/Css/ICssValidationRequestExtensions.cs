@@ -15,7 +15,7 @@ public static class ICssValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="culture">Text culture.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
-  public static ICssValidationRequest Language(this ICssValidationRequest request, CultureInfo culture) => request.Language(culture?.TwoLetterISOLanguageName);
+  public static ICssValidationRequest Language(this ICssValidationRequest request, CultureInfo culture) => request is not null ? request.Language(culture?.TwoLetterISOLanguageName) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies CSS medium to use in validation process.</para>
@@ -23,7 +23,7 @@ public static class ICssValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="medium">CSS medium.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
-  public static ICssValidationRequest Medium(this ICssValidationRequest request, CssMedium? medium) => request.Medium(medium?.ToInvariantString());
+  public static ICssValidationRequest Medium(this ICssValidationRequest request, CssMedium? medium) => request is not null ? request.Medium(medium?.ToInvariantString()) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies CSS standard version (profile) to be used in validation process.</para>
@@ -31,7 +31,7 @@ public static class ICssValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="profile">CSS profile.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
-  public static ICssValidationRequest Profile(this ICssValidationRequest request, CssProfile? profile) => request.Profile(profile?.ToString().ToLowerInvariant());
+  public static ICssValidationRequest Profile(this ICssValidationRequest request, CssProfile? profile) => request is not null ? request.Profile(profile?.ToString().ToLowerInvariant()) : throw new ArgumentNullException(nameof(request));
 
   /// <summary>
   ///   <para>Specifies level of warnings to be included. Only the ones whose level is under or equal to the value specified in the request will be displayed.</para>
@@ -39,5 +39,5 @@ public static class ICssValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="level">Level of warnings severity.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
-  public static ICssValidationRequest Warnings(this ICssValidationRequest request, WarningsLevel? level) => request.Warnings((int?) level);
+  public static ICssValidationRequest Warnings(this ICssValidationRequest request, WarningsLevel? level) => request is not null ? request.Warnings((int?) level) : throw new ArgumentNullException(nameof(request));
 }

@@ -16,6 +16,8 @@ public static class IMarkupValidatorExtensions
   /// <returns></returns>
   public static IMarkupRequestExecutor Request(this IMarkupValidator validator, Action<IMarkupValidationRequest> action = null)
   {
+    if (validator is null) throw new ArgumentNullException(nameof(validator));
+
     var request = new MarkupValidationRequest();
 
     action?.Invoke(request);

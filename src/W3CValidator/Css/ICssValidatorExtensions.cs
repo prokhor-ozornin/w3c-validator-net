@@ -14,6 +14,8 @@ public static class ICssValidatorExtensions
   /// <returns></returns>
   public static ICssRequestExecutor Request(this ICssValidator validator, Action<ICssValidationRequest> action = null)
   {
+    if (validator is null) throw new ArgumentNullException(nameof(validator));
+
     var request = new CssValidationRequest();
 
     action?.Invoke(request);

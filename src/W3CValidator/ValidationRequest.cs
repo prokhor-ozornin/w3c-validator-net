@@ -1,4 +1,6 @@
-﻿namespace W3CValidator;
+﻿using Catharsis.Extensions;
+
+namespace W3CValidator;
 
 /// <summary>
 ///   <para>Abstract base implementation of <see cref="IValidationRequest"/> contract.</para>
@@ -23,7 +25,11 @@ public abstract class ValidationRequest : IValidationRequest
   /// <returns></returns>
   public IValidationRequest WithParameter(string name, object value)
   {
+    if (name is null) throw new ArgumentNullException(nameof(name));
+    if (name.IsEmpty()) throw new ArgumentException(nameof(name));
+
     parameters[name] = value;
+
     return this;
   }
 }
