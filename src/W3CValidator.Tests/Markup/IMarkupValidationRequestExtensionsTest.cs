@@ -18,22 +18,24 @@ public sealed class IMarkupValidationRequestExtensionsTest : UnitTest
   [Fact]
   public void Encoding_Method()
   {
-    static void Validate(Encoding? encoding)
-    {
-      var request = new MarkupValidationRequest();
-      
-      request.Parameters.Should().BeEmpty();
-
-      request.Encoding(encoding).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["charset"].Should().Be(encoding?.WebName);
-    }
-
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => IMarkupValidationRequestExtensions.Encoding(null, Encoding.Default)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
       Validate(null);
       Encoding.GetEncodings().Select(info => info.GetEncoding()).ForEach(Validate);
+    }
+
+    return;
+
+    static void Validate(Encoding encoding)
+    {
+      var request = new MarkupValidationRequest();
+
+      request.Parameters.Should().BeEmpty();
+
+      request.Encoding(encoding).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["charset"].Should().Be(encoding?.WebName);
     }
   }
 }

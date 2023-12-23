@@ -79,6 +79,14 @@ public sealed class CssValidationRequestTest : UnitTest
   [Fact]
   public void Warnings_Method()
   {
+    using (new AssertionScope())
+    {
+      Validate(null);
+      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level));
+    }
+
+    return;
+
     static void Validate(WarningsLevel? level)
     {
       var request = new CssValidationRequest();
@@ -87,12 +95,6 @@ public sealed class CssValidationRequestTest : UnitTest
 
       request.Warnings(level).Should().NotBeNull().And.BeSameAs(request);
       request.Parameters["warning"].Should().Be((int?) level);
-    }
-
-    using (new AssertionScope())
-    {
-      Validate(null);
-      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level));
     }
   }
 }
