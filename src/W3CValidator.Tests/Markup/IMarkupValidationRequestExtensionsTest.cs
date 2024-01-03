@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Catharsis.Commons;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;

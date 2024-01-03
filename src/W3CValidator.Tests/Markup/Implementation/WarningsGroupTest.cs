@@ -2,13 +2,14 @@
 using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
+using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Markup;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="WarningsGroup"/>.</para>
 /// </summary>
-public sealed class WarningsGroupTest : EntityTest<WarningsGroup>
+public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.Count"/> property.</para>
@@ -61,7 +62,7 @@ public sealed class WarningsGroupTest : EntityTest<WarningsGroup>
   /// <summary>
   ///   <para>Tests set for class <see cref="WarningsGroup.Info"/>.</para>
   /// </summary>
-  public sealed class WarningsGroupInfoTests : EntityTest<WarningsGroup.Info>
+  public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
   {
     /// <summary>
     ///   <para>Performs testing of <see cref="WarningsGroup.Info.Count"/> property.</para>

@@ -1,13 +1,14 @@
 ﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
+using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Css;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="Error"/>.</para>
 /// </summary>
-public sealed class ErrorTest : EntityTest<Error>
+public sealed class ErrorTest : ClassTest<Error>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Message"/> property.</para>
@@ -98,7 +99,7 @@ public sealed class ErrorTest : EntityTest<Error>
 /// <summary>
 ///   <para>Tests set for class <see cref="Error.Info"/>.</para>
 /// </summary>
-public sealed class ErrorInfoTests : EntityTest<Error.Info>
+public sealed class ErrorInfoTests : ClassTest<Error.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Info.Message"/> property.</para>

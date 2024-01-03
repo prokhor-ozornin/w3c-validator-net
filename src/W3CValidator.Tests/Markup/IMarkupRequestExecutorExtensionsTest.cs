@@ -1,4 +1,5 @@
-﻿using W3CValidator.Css;
+﻿using Catharsis.Commons;
+using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
@@ -16,7 +17,7 @@ public sealed class IMarkupRequestExecutorExtensionsTest : UnitTest
   [Fact]
   public void TryUrl_Method()
   {
-    AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, LocalHost)).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+    AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, Attributes.LocalHost())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
     AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
     var validator = Validator.For.Markup;

@@ -1,13 +1,14 @@
 ﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
+using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Css;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="Warning"/>.</para>
 /// </summary>
-public sealed class WarningTest : EntityTest<Warning>
+public sealed class WarningTest : ClassTest<Warning>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Warning.Message"/> property.</para>
@@ -71,7 +72,7 @@ public sealed class WarningTest : EntityTest<Warning>
 /// <summary>
 ///   <para>Tests set for class <see cref="Warning.Info"/>.</para>
 /// </summary>
-public sealed class WarningInfoTests : EntityTest<Warning.Info>
+public sealed class WarningInfoTests : ClassTest<Warning.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Warning.Info.Message"/> property.</para>

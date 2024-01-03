@@ -1,4 +1,5 @@
-﻿using W3CValidator.Markup;
+﻿using Catharsis.Commons;
+using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
 using W3CValidator.Css;
@@ -8,7 +9,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="Issue"/>.</para>
 /// </summary>
-public sealed class IssueTest : EntityTest<Issue>
+public sealed class IssueTest : ClassTest<Issue>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
@@ -90,7 +91,7 @@ public sealed class IssueTest : EntityTest<Issue>
 /// <summary>
 ///   <para>Tests set for class <see cref="Issue.Info"/>.</para>
 /// </summary>
-public sealed class IssueInfoTests : EntityTest<Issue.Info>
+public sealed class IssueInfoTests : ClassTest<Issue.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>

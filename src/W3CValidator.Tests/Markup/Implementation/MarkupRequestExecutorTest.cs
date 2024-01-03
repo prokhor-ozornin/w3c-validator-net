@@ -1,4 +1,5 @@
-﻿using W3CValidator.Css;
+﻿using Catharsis.Commons;
+using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
@@ -17,7 +18,7 @@ public sealed class MarkupRequestExecutorTest : UnitTest
   public void UrlAsync_Method()
   {
     AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
-    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(LocalHost, Cancellation)).ThrowExactlyAsync<TaskCanceledException>().Await();
+    AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(Attributes.LocalHost(), Attributes.CancellationToken())).ThrowExactlyAsync<TaskCanceledException>().Await();
 
     var validator = Validator.For.Markup;
 

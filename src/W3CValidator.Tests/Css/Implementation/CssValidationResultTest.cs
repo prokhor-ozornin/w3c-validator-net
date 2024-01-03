@@ -1,13 +1,14 @@
 ﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
+using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Css;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationResult"/>.</para>
 /// </summary>
-public sealed class CssValidationResultTest : EntityTest<CssValidationResult>
+public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="CssValidationResult.Uri"/> property.</para>
@@ -114,7 +115,7 @@ public sealed class CssValidationResultTest : EntityTest<CssValidationResult>
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationResult.Info"/>.</para>
 /// </summary>
-public sealed class CssValidationResultInfoTests : EntityTest<CssValidationResult.Info>
+public sealed class CssValidationResultInfoTests : ClassTest<CssValidationResult.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="CssValidationResult.Info.Uri"/> property.</para>

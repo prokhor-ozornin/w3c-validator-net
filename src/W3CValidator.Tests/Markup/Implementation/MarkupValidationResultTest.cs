@@ -1,13 +1,14 @@
 ﻿using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
+using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Markup;
 
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult"/>.</para>
 /// </summary>
-public sealed class MarkupValidationResultTest : EntityTest<MarkupValidationResult>
+public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResult>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Uri"/> property.</para>
@@ -137,7 +138,7 @@ public sealed class MarkupValidationResultTest : EntityTest<MarkupValidationResu
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult.Info"/>.</para>
 /// </summary>
-public sealed class MarkupValidationResultInfoTests : EntityTest<MarkupValidationResult.Info>
+public sealed class MarkupValidationResultInfoTests : ClassTest<MarkupValidationResult.Info>
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Uri"/> property.</para>

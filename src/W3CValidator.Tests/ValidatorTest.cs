@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Catharsis.Commons;
+using FluentAssertions;
 using W3CValidator.Css;
 using W3CValidator.Markup;
 using Xunit;

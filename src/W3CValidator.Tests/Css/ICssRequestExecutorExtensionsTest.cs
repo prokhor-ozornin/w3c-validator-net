@@ -3,6 +3,7 @@ using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using System.Reflection;
+using Catharsis.Commons;
 
 namespace W3CValidator.Tests.Css;
 
@@ -81,7 +82,7 @@ public sealed class ICssRequestExecutorExtensionsTest : UnitTest
   [Fact]
   public void Url_Method()
   {
-    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, LocalHost)).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+    AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, Attributes.LocalHost())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
     AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
     var url = "http://www.w3.org/2008/site/css/minimum".ToUri();
