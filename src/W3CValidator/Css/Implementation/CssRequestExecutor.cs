@@ -21,7 +21,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
     if (Request != null)
     {
-      parameters.AddRange(Request.Parameters);
+      parameters.With(Request.Parameters);
     }
 
     return await Call(parameters, cancellation).ConfigureAwait(false);
@@ -35,7 +35,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
     if (Request != null)
     {
-      parameters.AddRange(Request.Parameters);
+      parameters.With(Request.Parameters);
     }
 
     return await Call(parameters, cancellation).ConfigureAwait(false);

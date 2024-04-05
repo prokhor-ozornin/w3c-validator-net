@@ -25,7 +25,7 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 
     if (Request != null)
     {
-      parameters.AddRange(Request.Parameters);
+      parameters.With(Request.Parameters);
     }
 
     return await Call(parameters, cancellation).ConfigureAwait(false);
