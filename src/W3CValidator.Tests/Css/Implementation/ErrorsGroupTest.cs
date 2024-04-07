@@ -3,6 +3,7 @@ using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
 
@@ -61,7 +62,19 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
   ///   <para>Performs testing of <see cref="ErrorsGroup.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new ErrorsGroup(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    using (new AssertionScope())
+    {
+      Validate(string.Empty, new ErrorsGroup(new { }));
+      Validate(string.Empty, new ErrorsGroup(new { Uri = string.Empty }));
+      Validate("uri", new ErrorsGroup(new { Uri = "uri" }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+  }
 }
 
 /// <summary>
@@ -103,18 +116,35 @@ public sealed class ErrorsGroupInfoTests : ClassTest<ErrorsGroup.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new ErrorsGroup.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<ErrorsGroup>();
-    result.Uri.Should().BeNull();
-    result.Errors.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new ErrorsGroup.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<ErrorsGroup>();
+      result.Uri.Should().BeNull();
+      result.Errors.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
-  /// <summary>
-  ///   <para>Performs testing of serialization/deserialization process.</para>
-  /// </summary>
-  [Fact]
+    /// <summary>
+    ///   <para>Performs testing of serialization/deserialization process.</para>
+    /// </summary>
+    [Fact]
   public void Serialization()
   {
-    new ErrorsGroup.Info().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new ErrorsGroup.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

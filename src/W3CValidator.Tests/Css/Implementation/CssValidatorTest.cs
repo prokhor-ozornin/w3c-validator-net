@@ -2,6 +2,7 @@
 using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace W3CValidator.Tests.Css;
@@ -17,20 +18,30 @@ public sealed class CssValidatorTest : UnitTest
   [Fact]
   public void Request_Method()
   {
-    var validator = Validator.For.Css;
-
-    using (var executor = validator.Request())
+    using (new AssertionScope())
     {
-      executor.Should().NotBeNull().And.NotBeSameAs(validator.Request()).And.BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
+      var validator = Validator.For.Css;
+
+      using (var executor = validator.Request())
+      {
+        executor.Should().NotBeNull().And.NotBeSameAs(validator.Request()).And.BeOfType<CssRequestExecutor>();
+        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
+      }
+
+      var request = new CssValidationRequest();
+
+      using (var executor = validator.Request(request))
+      {
+        executor.Should().NotBeNull().And.NotBeSameAs(validator.Request(request)).And.BeOfType<CssRequestExecutor>();
+        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
+      }
     }
 
-    var request = new CssValidationRequest();
+    return;
 
-    using (var executor = validator.Request(request))
+    static void Validate()
     {
-      executor.Should().NotBeNull().And.NotBeSameAs(validator.Request(request)).And.BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
+
     }
   }
 }

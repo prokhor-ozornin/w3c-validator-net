@@ -23,7 +23,7 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 
     var parameters = new Dictionary<string, object> {{"uri", url}};
 
-    if (Request != null)
+    if (Request is not null)
     {
       parameters.With(Request.Parameters);
     }

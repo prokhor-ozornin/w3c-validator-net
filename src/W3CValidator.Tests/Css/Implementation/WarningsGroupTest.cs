@@ -3,6 +3,7 @@ using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
 
@@ -68,7 +69,10 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   ///   <para>Performs testing of <see cref="WarningsGroup.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new WarningsGroup(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    new WarningsGroup(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+  }
 }
 
 /// <summary>
@@ -110,10 +114,20 @@ public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new WarningsGroup.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<WarningsGroup>();
-    result.Uri.Should().BeNull();
-    result.Warnings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new WarningsGroup.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<WarningsGroup>();
+      result.Uri.Should().BeNull();
+      result.Warnings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -122,6 +136,13 @@ public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
   [Fact]
   public void Serialization()
   {
-    new WarningsGroup.Info().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new WarningsGroup.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

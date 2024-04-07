@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Markup;
 
@@ -132,7 +133,10 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
   ///   <para>Performs testing of <see cref="MarkupValidationResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new MarkupValidationResult(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be("uri"); }
+  public void ToString_Method()
+  {
+    new MarkupValidationResult(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be("uri");
+  }
 }
 
 /// <summary>
@@ -220,25 +224,45 @@ public sealed class MarkupValidationResultInfoTests : ClassTest<MarkupValidation
   [Fact]
   public void ToResult_Method()
   {
-    var result = new MarkupValidationResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<MarkupValidationResult>();
-    result.Uri.Should().BeNull();
-    result.Valid.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.CheckedBy.Should().BeNull();
-    result.Doctype.Should().BeNull();
-    result.Encoding.Should().BeNull();
-    result.ErrorsGroup.Should().BeNull();
-    result.WarningsGroup.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new MarkupValidationResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<MarkupValidationResult>();
+      result.Uri.Should().BeNull();
+      result.Valid.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.CheckedBy.Should().BeNull();
+      result.Doctype.Should().BeNull();
+      result.Encoding.Should().BeNull();
+      result.ErrorsGroup.Should().BeNull();
+      result.WarningsGroup.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
-  /// <summary>
-  ///   <para>Performs testing of serialization/deserialization process.</para>
-  /// </summary>
-  [Fact]
+    /// <summary>
+    ///   <para>Performs testing of serialization/deserialization process.</para>
+    /// </summary>
+    [Fact]
   public void SerializationXml()
   {
-    var info = new MarkupValidationResult.Info();
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      var info = new MarkupValidationResult.Info();
+      info.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

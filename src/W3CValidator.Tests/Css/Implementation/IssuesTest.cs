@@ -2,6 +2,7 @@
 using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace W3CValidator.Tests.Css;
@@ -115,10 +116,20 @@ public sealed class IssuesListInfoTests
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Issues.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Issues>();
-    result.Errors.Should().BeEmpty();
-    result.Warnings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new Issues.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Issues>();
+      result.Errors.Should().BeEmpty();
+      result.Warnings.Should().BeEmpty();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -127,6 +138,13 @@ public sealed class IssuesListInfoTests
   [Fact]
   public void Serialization()
   {
-    new Issues.Info().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new Issues.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

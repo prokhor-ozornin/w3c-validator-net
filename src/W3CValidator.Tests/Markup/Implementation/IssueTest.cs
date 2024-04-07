@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using W3CValidator.Markup;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 using W3CValidator.Css;
 
@@ -85,7 +86,10 @@ public sealed class IssueTest : ClassTest<Issue>
   ///   <para>Performs testing of <see cref="Issue.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Issue(new {Line = 1, Column = 2, MessageOriginal = "message"}).ToString().Should().Be("1:2 message"); }
+  public void ToString_Method()
+  {
+    new Issue(new {Line = 1, Column = 2, MessageOriginal = "message"}).ToString().Should().Be("1:2 message");
+  }
 }
 
 /// <summary>
@@ -151,14 +155,24 @@ public sealed class IssueInfoTests : ClassTest<Issue.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Issue.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Issue>();
-    result.MessageId.Should().BeNull();
-    result.Message.Should().BeNull();
-    result.Line.Should().BeNull();
-    result.Column.Should().BeNull();
-    result.Source.Should().BeNull();
-    result.Explanation.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Issue.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Issue>();
+      result.MessageId.Should().BeNull();
+      result.Message.Should().BeNull();
+      result.Line.Should().BeNull();
+      result.Column.Should().BeNull();
+      result.Source.Should().BeNull();
+      result.Explanation.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -167,7 +181,13 @@ public sealed class IssueInfoTests : ClassTest<Issue.Info>
   [Fact]
   public void Serialization()
   {
-    var info = new Issues.Info();
-    info.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new Issues.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

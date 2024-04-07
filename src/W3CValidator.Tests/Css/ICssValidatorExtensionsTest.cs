@@ -2,6 +2,7 @@
 using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace W3CValidator.Tests.Css;
@@ -17,18 +18,28 @@ public sealed class ICssValidatorExtensionsTest : UnitTest
   [Fact]
   public void Request_Method()
   {
-    AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
-
-    using (var executor = ICssValidatorExtensions.Request(Validator.For.Css))
+    using (new AssertionScope())
     {
-      executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
+      AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
+
+      using (var executor = ICssValidatorExtensions.Request(Validator.For.Css))
+      {
+        executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
+        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
+      }
+
+      using (var executor = Validator.For.Css.Request(_ => {}))
+      {
+        executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
+        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull();
+      }
     }
 
-    using (var executor = Validator.For.Css.Request(_ => {}))
+    return;
+
+    static void Validate()
     {
-      executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull();
+
     }
   }
 }

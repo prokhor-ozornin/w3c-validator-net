@@ -3,6 +3,7 @@ using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions.Execution;
 using W3CValidator.Css;
 
 namespace W3CValidator.Tests.Markup;
@@ -18,19 +19,29 @@ public sealed class MarkupValidatorTest : UnitTest
   [Fact]
   public void Request_Method()
   {
-    var validator = Validator.For.Markup;
-
-    using (var executor = validator.Request())
+    using (new AssertionScope())
     {
-      executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeNull();
+      var validator = Validator.For.Markup;
+
+      using (var executor = validator.Request())
+      {
+        executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
+        executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeNull();
+      }
+
+      var request = new MarkupValidationRequest();
+      using (var executor = validator.Request(request))
+      {
+        executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
+        executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
+      }
     }
 
-    var request = new MarkupValidationRequest();
-    using (var executor = validator.Request(request))
+    return;
+
+    static void Validate()
     {
-      executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
+
     }
   }
 }

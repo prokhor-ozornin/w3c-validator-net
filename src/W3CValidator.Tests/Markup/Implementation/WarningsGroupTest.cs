@@ -3,6 +3,7 @@ using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Markup;
 
@@ -101,10 +102,20 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
     [Fact]
     public void ToResult_Method()
     {
-      var result = new WarningsGroup.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<WarningsGroup>();
-      result.Count.Should().BeNull();
-      result.Warnings.Should().BeEmpty();
+      using (new AssertionScope())
+      {
+        var result = new WarningsGroup.Info().ToResult();
+        result.Should().NotBeNull().And.BeOfType<WarningsGroup>();
+        result.Count.Should().BeNull();
+        result.Warnings.Should().BeEmpty();
+      }
+
+      return;
+
+      static void Validate()
+      {
+
+      }
     }
 
     /// <summary>
@@ -113,8 +124,14 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
     [Fact]
     public void Serialization()
     {
-      var info = new WarningsGroup.Info();
-      info.Should().BeDataContractSerializable().And.BeXmlSerializable();
+      using (new AssertionScope())
+      {
+        Validate(new WarningsGroup.Info());
+      }
+
+      return;
+
+      static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
     }
   }
 }

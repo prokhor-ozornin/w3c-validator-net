@@ -19,7 +19,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
     var parameters = new Dictionary<string, object> {{"text", document}};
 
-    if (Request != null)
+    if (Request is not null)
     {
       parameters.With(Request.Parameters);
     }
@@ -33,7 +33,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
     var parameters = new Dictionary<string, object> {{"uri", url}};
 
-    if (Request != null)
+    if (Request is not null)
     {
       parameters.With(Request.Parameters);
     }

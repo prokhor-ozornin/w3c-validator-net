@@ -1,5 +1,6 @@
 ﻿using Catharsis.Commons;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace W3CValidator.Tests;
@@ -16,13 +17,23 @@ public sealed class ValidationExceptionTest : UnitTest
   [Fact]
   public void Constructors()
   {
-    var exception = new ValidationException();
-    exception.InnerException.Should().BeNull();
-    exception.Message.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var exception = new ValidationException();
+      exception.InnerException.Should().BeNull();
+      exception.Message.Should().BeNull();
 
-    var inner = new Exception();
-    exception = new ValidationException("message", inner);
-    exception.InnerException.Should().NotBeNull().And.BeSameAs(inner);
-    exception.Message.Should().Be("message");
+      var inner = new Exception();
+      exception = new ValidationException("message", inner);
+      exception.InnerException.Should().NotBeNull().And.BeSameAs(inner);
+      exception.Message.Should().Be("message");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

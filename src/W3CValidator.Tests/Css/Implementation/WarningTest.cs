@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
 
@@ -66,7 +67,10 @@ public sealed class WarningTest : ClassTest<Warning>
   ///   <para>Performs testing of <see cref="Warning.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Warning(new {Level = 2, Line = 1, MessageOriginal = "message"}).ToString().Should().Be("1:2 message"); }
+  public void ToString_Method()
+  {
+    new Warning(new {Level = 2, Line = 1, MessageOriginal = "message"}).ToString().Should().Be("1:2 message");
+  }
 }
 
 /// <summary>
@@ -118,12 +122,22 @@ public sealed class WarningInfoTests : ClassTest<Warning.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Warning.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Warning>();
-    result.Message.Should().BeNull();
-    result.Level.Should().BeNull();
-    result.Line.Should().BeNull();
-    result.Context.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Warning.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Warning>();
+      result.Message.Should().BeNull();
+      result.Level.Should().BeNull();
+      result.Line.Should().BeNull();
+      result.Context.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -132,6 +146,13 @@ public sealed class WarningInfoTests : ClassTest<Warning.Info>
   [Fact]
   public void Serialization()
   {
-    new Warning.Info().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new Warning.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

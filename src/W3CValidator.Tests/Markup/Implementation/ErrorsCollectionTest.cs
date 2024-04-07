@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using W3CValidator.Markup;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace W3CValidator.Tests.Markup;
@@ -16,7 +17,13 @@ public sealed class ErrorsCollectionTest : UnitTest
   [Fact]
   public void Serialization()
   {
-    var collection = new ErrorsCollection() as object;
-    collection.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new ErrorsCollection());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

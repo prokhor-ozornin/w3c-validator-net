@@ -1,6 +1,7 @@
 ﻿using Catharsis.Commons;
 using W3CValidator.Markup;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 namespace W3CValidator.Tests.Markup;
@@ -17,13 +18,23 @@ public sealed class MarkupExceptionTest : UnitTest
   [Fact]
   public void Constructors()
   {
-    var exception = new MarkupException();
-    exception.InnerException.Should().BeNull();
-    exception.Message.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var exception = new MarkupException();
+      exception.InnerException.Should().BeNull();
+      exception.Message.Should().BeNull();
 
-    var inner = new Exception();
-    exception = new MarkupException("message", inner);
-    exception.InnerException.Should().NotBeNull().And.BeSameAs(inner);
-    exception.Message.Should().Be("message");
+      var inner = new Exception();
+      exception = new MarkupException("message", inner);
+      exception.InnerException.Should().NotBeNull().And.BeSameAs(inner);
+      exception.Message.Should().Be("message");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 }

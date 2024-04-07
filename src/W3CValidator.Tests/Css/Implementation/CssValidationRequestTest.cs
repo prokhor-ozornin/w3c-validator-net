@@ -29,15 +29,25 @@ public sealed class CssValidationRequestTest : UnitTest
   [Fact]
   public void Language_Method()
   {
-    var request = new CssValidationRequest();
+    using (new AssertionScope())
+    {
+      var request = new CssValidationRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Language(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["lang"].Should().BeNull();
+      request.Language(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["lang"].Should().BeNull();
 
-    request.Language("ru").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["lang"].Should().Be("ru");
+      request.Language("ru").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["lang"].Should().Be("ru");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -46,15 +56,25 @@ public sealed class CssValidationRequestTest : UnitTest
   [Fact]
   public void Medium_Method()
   {
-    var request = new CssValidationRequest();
+    using (new AssertionScope())
+    {
+      var request = new CssValidationRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Medium(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["user-medium"].Should().BeNull();
+      request.Medium(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["user-medium"].Should().BeNull();
 
-    request.Medium("screen").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["user-medium"].Should().Be("screen");
+      request.Medium("screen").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["user-medium"].Should().Be("screen");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -63,21 +83,31 @@ public sealed class CssValidationRequestTest : UnitTest
   [Fact]
   public void Profile_Method()
   {
-    var request = new CssValidationRequest();
+    using (new AssertionScope())
+    {
+      var request = new CssValidationRequest();
 
-    request.Parameters.Should().BeEmpty();
+      request.Parameters.Should().BeEmpty();
 
-    request.Profile(null).Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["profile"].Should().BeNull();
+      request.Profile(null).Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["profile"].Should().BeNull();
 
-    request.Profile("personal").Should().NotBeNull().And.BeSameAs(request);
-    request.Parameters["profile"].Should().Be("personal");
+      request.Profile("personal").Should().NotBeNull().And.BeSameAs(request);
+      request.Parameters["profile"].Should().Be("personal");
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationRequest.Warnings(int?)"/> method.</para>
-  /// </summary>
-  [Fact]
+    /// <summary>
+    ///   <para>Performs testing of <see cref="CssValidationRequest.Warnings(int?)"/> method.</para>
+    /// </summary>
+    [Fact]
   public void Warnings_Method()
   {
     using (new AssertionScope())

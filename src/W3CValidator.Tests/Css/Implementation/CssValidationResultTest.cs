@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
 
@@ -109,7 +110,19 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   ///   <para>Performs testing of <see cref="CssValidationResult.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new CssValidationResult(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString()); }
+  public void ToString_Method()
+  {
+    using (new AssertionScope())
+    {
+      Validate(string.Empty, new CssValidationResult(new { }));
+      Validate(string.Empty, new CssValidationResult(new { Uri = string.Empty }));
+      Validate("uri", new CssValidationResult(new { Uri = "uri" }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+  }
 }
 
 /// <summary>
@@ -179,14 +192,24 @@ public sealed class CssValidationResultInfoTests : ClassTest<CssValidationResult
   [Fact]
   public void ToResult_Method()
   {
-    var result = new CssValidationResult.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<CssValidationResult>();
-    result.Uri.Should().BeNull();
-    result.Valid.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.CheckedBy.Should().BeNull();
-    result.CssLevel.Should().BeNull();
-    result.Issues.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new CssValidationResult.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<CssValidationResult>();
+      result.Uri.Should().BeNull();
+      result.Valid.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.CheckedBy.Should().BeNull();
+      result.CssLevel.Should().BeNull();
+      result.Issues.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -195,6 +218,13 @@ public sealed class CssValidationResultInfoTests : ClassTest<CssValidationResult
   [Fact]
   public void Serialization()
   {
-    new CssValidationResult.Info().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new CssValidationResult.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
 
@@ -93,7 +94,21 @@ public sealed class ErrorTest : ClassTest<Error>
   ///   <para>Performs testing of <see cref="Error.ToString()"/> method.</para>
   /// </summary>
   [Fact]
-  public void ToString_Method() { new Error(new {Line = 1, Message = "message"}).ToString().Should().Be("1:message"); }
+  public void ToString_Method()
+  {
+    using (new AssertionScope())
+    {
+      Validate(string.Empty, new ErrorsGroup(new { }));
+      Validate(string.Empty, new ErrorsGroup(new { Uri = string.Empty }));
+      Validate("uri", new ErrorsGroup(new { Uri = "uri" }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+
+    new Error(new {Line = 1, Message = "message"}).ToString().Should().Be("1:message");
+  }
 }
 
 /// <summary>
@@ -166,15 +181,25 @@ public sealed class ErrorInfoTests : ClassTest<Error.Info>
   [Fact]
   public void ToResult_Method()
   {
-    var result = new Error.Info().ToResult();
-    result.Should().NotBeNull().And.BeOfType<Error>();
-    result.Message.Should().BeNull();
-    result.Type.Should().BeNull();
-    result.Subtype.Should().BeNull();
-    result.Property.Should().BeNull();
-    result.Line.Should().BeNull();
-    result.Context.Should().BeNull();
-    result.SkippedString.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new Error.Info().ToResult();
+      result.Should().NotBeNull().And.BeOfType<Error>();
+      result.Message.Should().BeNull();
+      result.Type.Should().BeNull();
+      result.Subtype.Should().BeNull();
+      result.Property.Should().BeNull();
+      result.Line.Should().BeNull();
+      result.Context.Should().BeNull();
+      result.SkippedString.Should().BeNull();
+    }
+
+    return;
+
+    static void Validate()
+    {
+
+    }
   }
 
   /// <summary>
@@ -183,6 +208,13 @@ public sealed class ErrorInfoTests : ClassTest<Error.Info>
   [Fact]
   public void Serialization()
   {
-    new Error.Info().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    using (new AssertionScope())
+    {
+      Validate(new Error.Info());
+    }
+
+    return;
+
+    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }
