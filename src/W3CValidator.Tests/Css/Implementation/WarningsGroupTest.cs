@@ -71,7 +71,16 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   [Fact]
   public void ToString_Method()
   {
-    new WarningsGroup(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be(Guid.Empty.ToString());
+    using (new AssertionScope())
+    {
+      Validate(string.Empty, new WarningsGroup(new { }));
+      Validate(string.Empty, new WarningsGroup(new { Uri = string.Empty }));
+      Validate("uri", new WarningsGroup(new { Uri = "uri" }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
   }
 }
 

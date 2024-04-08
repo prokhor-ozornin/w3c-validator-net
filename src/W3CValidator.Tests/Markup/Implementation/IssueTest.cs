@@ -88,7 +88,19 @@ public sealed class IssueTest : ClassTest<Issue>
   [Fact]
   public void ToString_Method()
   {
-    new Issue(new {Line = 1, Column = 2, MessageOriginal = "message"}).ToString().Should().Be("1:2 message");
+    using (new AssertionScope())
+    {
+      Validate("1:2 message", new Issue(new
+      {
+        Column = 2,
+        Line = 1,
+        Message = "message"
+      }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
   }
 }
 

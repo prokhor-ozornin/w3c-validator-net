@@ -98,16 +98,15 @@ public sealed class ErrorTest : ClassTest<Error>
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new ErrorsGroup(new { }));
-      Validate(string.Empty, new ErrorsGroup(new { Uri = string.Empty }));
-      Validate("uri", new ErrorsGroup(new { Uri = "uri" }));
+      Validate(string.Empty, new Error(new { }));
+      Validate(string.Empty, new Error(new { Line = 1 }));
+      Validate("message", new Error(new { Message = "message" }));
+      Validate("1:message", new Error(new { Line = 1, Message = "message" }));
     }
 
     return;
 
     static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
-
-    new Error(new {Line = 1, Message = "message"}).ToString().Should().Be("1:message");
   }
 }
 

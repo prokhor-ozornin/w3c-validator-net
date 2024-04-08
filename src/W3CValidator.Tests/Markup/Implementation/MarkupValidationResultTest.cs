@@ -135,7 +135,16 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
   [Fact]
   public void ToString_Method()
   {
-    new MarkupValidationResult(new {Uri = Guid.Empty.ToString()}).ToString().Should().Be("uri");
+    using (new AssertionScope())
+    {
+      Validate(string.Empty, new MarkupValidationResult(new { }));
+      Validate(string.Empty, new MarkupValidationResult(new { Uri = string.Empty }));
+      Validate("uri", new MarkupValidationResult(new { Uri = "uri" }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
   }
 }
 

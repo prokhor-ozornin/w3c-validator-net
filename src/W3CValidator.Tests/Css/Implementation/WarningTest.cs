@@ -69,7 +69,19 @@ public sealed class WarningTest : ClassTest<Warning>
   [Fact]
   public void ToString_Method()
   {
-    new Warning(new {Level = 2, Line = 1, MessageOriginal = "message"}).ToString().Should().Be("1:2 message");
+    using (new AssertionScope())
+    {
+      Validate("1:2 message", new Warning(new
+      {
+        Level = 2,
+        Line = 1,
+        Message = "message"
+      }));
+    }
+
+    return;
+
+    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
   }
 }
 

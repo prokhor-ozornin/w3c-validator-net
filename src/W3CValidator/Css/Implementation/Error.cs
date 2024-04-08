@@ -80,7 +80,7 @@ public sealed class Error : IError
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="Error"/> instance.</para>
   /// </summary>
   /// <returns>A string that represents the current <see cref="Error"/>.</returns>
-  public override string ToString() => $"{Line}:{Message}";
+  public override string ToString() => !Message.IsUnset() ? Line is not null? $"{Line}:{Message}" : Message : string.Empty;
 
   /// <summary>
   ///   <para></para>
