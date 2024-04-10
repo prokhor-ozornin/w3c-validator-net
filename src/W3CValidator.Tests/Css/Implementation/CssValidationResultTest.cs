@@ -3,6 +3,7 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
+using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -59,6 +60,8 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void Constructors()
   {
+    typeof(CssValidationResult).Should().BeDerivedFrom<object>().And.Implement<ICssValidationResult>();
+
     var result = new CssValidationResult();
     result.Uri.Should().BeNull();
     result.Valid.Should().BeNull();
@@ -177,6 +180,8 @@ public sealed class CssValidationResultInfoTests : ClassTest<CssValidationResult
   [Fact]
   public void Constructors()
   {
+    typeof(CssValidationResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ICssValidationResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new CssValidationResult.Info();
     info.Uri.Should().BeNull();
     info.Valid.Should().BeNull();

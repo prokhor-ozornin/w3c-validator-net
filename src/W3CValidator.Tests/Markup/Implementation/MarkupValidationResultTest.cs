@@ -3,6 +3,7 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
+using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Markup;
 
@@ -76,6 +77,8 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
   [Fact]
   public void Constructors()
   {
+    typeof(MarkupValidationResult).Should().BeDerivedFrom<object>().And.Implement<IComparable<IMarkupValidationResult>>().And.Implement<IEquatable<IMarkupValidationResult>>().And.Implement<IMarkupValidationResult>().And.BeDecoratedWith<DataContractAttribute>();
+
     var result = new MarkupValidationResult();
     result.Uri.Should().BeNull();
     result.Valid.Should().BeNull();
@@ -216,6 +219,8 @@ public sealed class MarkupValidationResultInfoTests : ClassTest<MarkupValidation
   [Fact]
   public void Constructors()
   {
+    typeof(MarkupValidationResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IMarkupValidationResult>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new MarkupValidationResult.Info();
     info.Uri.Should().BeNull();
     info.Valid.Should().BeNull();

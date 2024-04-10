@@ -4,6 +4,7 @@ using W3CValidator.Css;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
+using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -58,6 +59,8 @@ public sealed class IssuesTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(Issues).Should().BeDerivedFrom<object>().And.Implement<IIssues>();
+
     var issues = new Issues();
     issues.ErrorsGroups.Should().BeEmpty();
     issues.WarningsGroups.Should().BeEmpty();
@@ -105,6 +108,8 @@ public sealed class IssuesListInfoTests
   [Fact]
   public void Constructors()
   {
+    typeof(Issues.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IIssues>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Issues.Info();
     info.Errors.Should().BeNull();
     info.Warnings.Should().BeNull();

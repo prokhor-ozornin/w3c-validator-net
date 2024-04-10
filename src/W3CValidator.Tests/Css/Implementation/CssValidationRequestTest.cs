@@ -19,6 +19,8 @@ public sealed class CssValidationRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(CssValidationRequest).Should().BeDerivedFrom<ValidationRequest>().And.Implement<ICssValidationRequest>();
+
     var request = new CssValidationRequest();
     request.Parameters.Should().BeEmpty();
   }

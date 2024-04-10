@@ -17,6 +17,8 @@ public sealed class CssValidationExceptionTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(CssException).Should().BeDerivedFrom<ValidationException>();
+
     var exception = new CssException();
     exception.InnerException.Should().BeNull();
     exception.Message.Should().BeNull();

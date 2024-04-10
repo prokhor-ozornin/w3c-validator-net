@@ -4,6 +4,7 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
+using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -46,6 +47,8 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   [Fact]
   public void Constructors()
   {
+    typeof(WarningsGroup).Should().BeDerivedFrom<object>().And.Implement<IWarningsGroup>();
+
     var group = new WarningsGroup();
     group.Uri.Should().BeNull();
     group.Warnings.Should().BeEmpty();
@@ -112,6 +115,8 @@ public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(WarningsGroup.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IWarningsGroup>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new WarningsGroup.Info();
     info.Uri.Should().BeNull();
     info.Warnings.Should().BeNull();

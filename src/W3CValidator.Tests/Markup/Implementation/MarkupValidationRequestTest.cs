@@ -18,6 +18,8 @@ public sealed class MarkupValidationRequestTest : UnitTest
   [Fact]
   public void Constructors()
   {
+    typeof(MarkupValidationRequest).Should().BeDerivedFrom<ValidationRequest>().And.Implement<IMarkupValidationRequest>();
+
     var request = new MarkupValidationRequest();
     request.Parameters.Should().BeEmpty();
   }

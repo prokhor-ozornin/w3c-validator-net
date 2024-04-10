@@ -4,6 +4,7 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using Xunit;
 using W3CValidator.Css;
+using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Markup;
 
@@ -57,6 +58,8 @@ public sealed class IssueTest : ClassTest<Issue>
   [Fact]
   public void Constructors()
   {
+    typeof(Issue).Should().BeDerivedFrom<object>().And.Implement<IIssue>();
+
     var issue = new Issue();
     issue.MessageId.Should().BeNull();
     issue.Message.Should().BeNull();
@@ -152,6 +155,8 @@ public sealed class IssueInfoTests : ClassTest<Issue.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Issue.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IIssue>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Issue.Info();
     info.MessageId.Should().BeNull();
     info.Message.Should().BeNull();

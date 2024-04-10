@@ -3,6 +3,7 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
+using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -62,6 +63,8 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Constructors()
   {
+    typeof(Error).Should().BeDerivedFrom<object>().And.Implement<IError>();
+
     var error = new Error();
     error.Message.Should().BeNull();
     error.Type.Should().BeNull();
@@ -164,6 +167,8 @@ public sealed class ErrorInfoTests : ClassTest<Error.Info>
   [Fact]
   public void Constructors()
   {
+    typeof(Error.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IError>>().And.BeDecoratedWith<DataContractAttribute>();
+
     var info = new Error.Info();
     info.Message.Should().BeNull();
     info.Type.Should().BeNull();
