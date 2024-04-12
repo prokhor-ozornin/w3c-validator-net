@@ -26,7 +26,7 @@ public sealed class WarningsGroup : IWarningsGroup
   public WarningsGroup(int? count = null, IEnumerable<IIssue> warnings = null)
   {
     Count = count;
-    Warnings = warnings ?? new List<IIssue>();
+    Warnings = warnings ?? [];
   }
 
   /// <summary>

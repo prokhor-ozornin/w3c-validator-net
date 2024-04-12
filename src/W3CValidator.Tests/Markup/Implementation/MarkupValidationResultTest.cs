@@ -13,62 +13,6 @@ namespace W3CValidator.Tests.Markup;
 public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResult>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Uri"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Uri_Property() { new MarkupValidationResult(new {Uri = Guid.Empty.ToString()}).Uri.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Valid"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Valid_Property() { new MarkupValidationResult(new {Valid = true}).Valid.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new MarkupValidationResult(new {Date = DateTimeOffset.MaxValue}).Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.CheckedBy"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CheckedBy_Property() { new MarkupValidationResult(new {CheckedBy = Guid.Empty.ToString()}).CheckedBy.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Doctype"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Doctype_Property() { new MarkupValidationResult(new {Doctype = Guid.Empty.ToString()}).Doctype.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Encoding"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Encoding_Property() { new MarkupValidationResult(new {Encoding = Guid.Empty.ToString()}).Encoding.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.ErrorsGroup"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ErrorsGroup_Property()
-  {
-    var group = new ErrorsGroup();
-    new MarkupValidationResult(new {ErrorsGroup = group}).ErrorsGroup.Should().BeSameAs(group);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.WarningsGroup"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void WarningsGroup_Property()
-  {
-    var group = new WarningsGroup();
-    new MarkupValidationResult(new {WarningsGroup = group}).WarningsGroup.Should().BeSameAs(group);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="MarkupValidationResult(string?, bool?, DateTimeOffset?, string?, string?, string?, IErrorsGroup?, IWarningsGroup?)"/>
@@ -108,6 +52,104 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
     result.Encoding.Should().BeNull();
     result.ErrorsGroup.Should().BeNull();
     result.WarningsGroup.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Uri"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Uri_Property()
+  {
+    new MarkupValidationResult(new
+    {
+      Uri = Guid.Empty.ToString()
+    }).Uri.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Valid"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Valid_Property()
+  {
+    new MarkupValidationResult(new
+    {
+      Valid = true
+    }).Valid.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new MarkupValidationResult(new
+    {
+      Date = DateTimeOffset.MaxValue
+    }).Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.CheckedBy"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void CheckedBy_Property()
+  {
+    new MarkupValidationResult(new
+    {
+      CheckedBy = Guid.Empty.ToString()
+    }).CheckedBy.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Doctype"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Doctype_Property()
+  {
+    new MarkupValidationResult(new
+    {
+      Doctype = Guid.Empty.ToString()
+    }).Doctype.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Encoding"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Encoding_Property()
+  {
+    new MarkupValidationResult(new
+    {
+      Encoding = Guid.Empty.ToString()
+    }).Encoding.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.ErrorsGroup"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ErrorsGroup_Property()
+  {
+    var group = new ErrorsGroup();
+    new MarkupValidationResult(new
+    {
+      ErrorsGroup = group
+    }).ErrorsGroup.Should().BeSameAs(group);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.WarningsGroup"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void WarningsGroup_Property()
+  {
+    var group = new WarningsGroup();
+    new MarkupValidationResult(new
+    {
+      WarningsGroup = group
+    }).WarningsGroup.Should().BeSameAs(group);
   }
 
   /// <summary>
@@ -157,62 +199,6 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
 public sealed class MarkupValidationResultInfoTests : ClassTest<MarkupValidationResult.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Uri"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Uri_Property() { new MarkupValidationResult.Info {Uri = Guid.Empty.ToString()}.Uri.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Valid"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Valid_Property() { new MarkupValidationResult.Info {Valid = true}.Valid.Should().BeTrue(); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property() { new MarkupValidationResult.Info {Date = DateTimeOffset.MaxValue}.Date.Should().Be(DateTimeOffset.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.CheckedBy"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CheckedBy_Property() { new MarkupValidationResult.Info {CheckedBy = Guid.Empty.ToString()}.CheckedBy.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Doctype"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Doctype_Property() { new MarkupValidationResult.Info {Doctype = Guid.Empty.ToString()}.Doctype.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Encoding"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Encoding_Property() { new MarkupValidationResult.Info {Encoding = Guid.Empty.ToString()}.Encoding.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.ErrorsGroup"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void ErrorsGroup_Property()
-  {
-    var group = new ErrorsGroup();
-    new MarkupValidationResult.Info {ErrorsGroup = group}.ErrorsGroup.Should().BeSameAs(group);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.WarningsGroup"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void WarningsGroup_Property()
-  {
-    var group = new WarningsGroup();
-    new MarkupValidationResult.Info { WarningsGroup = group}.WarningsGroup.Should().BeSameAs(group);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="MarkupValidationResult.Info()"/>
@@ -230,6 +216,80 @@ public sealed class MarkupValidationResultInfoTests : ClassTest<MarkupValidation
     info.Encoding.Should().BeNull();
     info.ErrorsGroup.Should().BeNull();
     info.WarningsGroup.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Uri"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Uri_Property()
+  {
+    new MarkupValidationResult.Info { Uri = Guid.Empty.ToString() }.Uri.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Valid"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Valid_Property()
+  {
+    new MarkupValidationResult.Info { Valid = true }.Valid.Should().BeTrue();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Date"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Date_Property()
+  {
+    new MarkupValidationResult.Info { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.CheckedBy"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void CheckedBy_Property()
+  {
+    new MarkupValidationResult.Info { CheckedBy = Guid.Empty.ToString() }.CheckedBy.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Doctype"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Doctype_Property()
+  {
+    new MarkupValidationResult.Info { Doctype = Guid.Empty.ToString() }.Doctype.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.Encoding"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Encoding_Property()
+  {
+    new MarkupValidationResult.Info { Encoding = Guid.Empty.ToString() }.Encoding.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.ErrorsGroup"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ErrorsGroup_Property()
+  {
+    var group = new ErrorsGroup();
+    new MarkupValidationResult.Info { ErrorsGroup = group }.ErrorsGroup.Should().BeSameAs(group);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="MarkupValidationResult.Info.WarningsGroup"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void WarningsGroup_Property()
+  {
+    var group = new WarningsGroup();
+    new MarkupValidationResult.Info { WarningsGroup = group }.WarningsGroup.Should().BeSameAs(group);
   }
 
   /// <summary>

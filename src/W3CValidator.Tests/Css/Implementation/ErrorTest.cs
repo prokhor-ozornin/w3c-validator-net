@@ -13,48 +13,6 @@ namespace W3CValidator.Tests.Css;
 public sealed class ErrorTest : ClassTest<Error>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property() { new Error(new {Message = Guid.Empty.ToString()}).Message.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property() { new Error(new {Type = Guid.Empty.ToString()}).Type.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Subtype"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Subtype_Property() { new Error(new {Subtype = Guid.Empty.ToString()}).Subtype.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Property"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Property_Property() { new Error(new {Property = Guid.Empty.ToString()}).Property.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new Error(new {Line = int.MaxValue}).Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Context"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Context_Property() { new Error(new {Context = Guid.Empty.ToString()}).Context.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.SkippedString"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SkippedString_Property() { new Error(new {SkippedString = Guid.Empty.ToString()}).SkippedString.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Error(string?, string?, string?, string?, int?, string?, string?)"/>
@@ -94,6 +52,90 @@ public sealed class ErrorTest : ClassTest<Error>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Message"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Message_Property()
+  {
+    new Error(new
+    {
+      Message = Guid.Empty.ToString()
+    }).Message.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Type"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Type_Property()
+  {
+    new Error(new
+    {
+      Type = Guid.Empty.ToString()
+    }).Type.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Subtype"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Subtype_Property()
+  {
+    new Error(new
+    {
+      Subtype = Guid.Empty.ToString()
+    }).Subtype.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Property"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Property_Property()
+  {
+    new Error(new
+    {
+      Property = Guid.Empty.ToString()
+    }).Property.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new Error(new
+    {
+      Line = int.MaxValue
+    }).Line.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Context"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Context_Property()
+  {
+    new Error(new
+    {
+      Context = Guid.Empty.ToString()
+    }).Context.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.SkippedString"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void SkippedString_Property()
+  {
+    new Error(new
+    {
+      SkippedString = Guid.Empty.ToString()
+    }).SkippedString.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="Error.ToString()"/> method.</para>
   /// </summary>
   [Fact]
@@ -119,48 +161,6 @@ public sealed class ErrorTest : ClassTest<Error>
 public sealed class ErrorInfoTests : ClassTest<Error.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property() { new Error.Info {Message = Guid.Empty.ToString()}.Message.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property() { new Error.Info {Type = Guid.Empty.ToString()}.Type.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Subtype"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Subtype_Property() { new Error.Info {Subtype = Guid.Empty.ToString()}.Subtype.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Property"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Property_Property() { new Error.Info {Property = Guid.Empty.ToString()}.Property.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new Error.Info {Line = int.MaxValue}.Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Context"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Context_Property() { new Error.Info {Context = Guid.Empty.ToString()}.Context.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.SkippedString"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SkippedString_Property() { new Error.Info {SkippedString = Guid.Empty.ToString()}.SkippedString.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Error.Info()"/>
@@ -177,6 +177,69 @@ public sealed class ErrorInfoTests : ClassTest<Error.Info>
     info.Line.Should().BeNull();
     info.Context.Should().BeNull();
     info.SkippedString.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.Message"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Message_Property()
+  {
+    new Error.Info { Message = Guid.Empty.ToString() }.Message.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.Type"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Type_Property()
+  {
+    new Error.Info { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.Subtype"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Subtype_Property()
+  {
+    new Error.Info { Subtype = Guid.Empty.ToString() }.Subtype.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.Property"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Property_Property()
+  {
+    new Error.Info { Property = Guid.Empty.ToString() }.Property.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new Error.Info { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.Context"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Context_Property()
+  {
+    new Error.Info { Context = Guid.Empty.ToString() }.Context.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Error.Info.SkippedString"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void SkippedString_Property()
+  {
+    new Error.Info { SkippedString = Guid.Empty.ToString() }.SkippedString.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

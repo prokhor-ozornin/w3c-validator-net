@@ -25,8 +25,8 @@ public sealed class Issues : IIssues
   /// <param name="warningsGroup"></param>
   public Issues(IEnumerable<IErrorsGroup> errorsGroup = null, IEnumerable<IWarningsGroup> warningsGroup = null)
   {
-    ErrorsGroups = errorsGroup ?? new List<IErrorsGroup>();
-    WarningsGroups = warningsGroup ?? new List<IWarningsGroup>();
+    ErrorsGroups = errorsGroup ?? [];
+    WarningsGroups = warningsGroup ?? [];
   }
 
   /// <summary>
@@ -35,8 +35,8 @@ public sealed class Issues : IIssues
   /// <param name="info"></param>
   public Issues(Info info)
   {
-    ErrorsGroups = (info.Errors ?? new List<ErrorsGroup.Info>()).Select(info => info.ToResult());
-    WarningsGroups = (info.Warnings ?? new List<WarningsGroup.Info>()).Select(info => info.ToResult());
+    ErrorsGroups = (info.Errors ?? []).Select(info => info.ToResult());
+    WarningsGroups = (info.Warnings ?? []).Select(info => info.ToResult());
   }
 
   /// <summary>

@@ -26,7 +26,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   public ErrorsGroup(string uri = null, IEnumerable<IError> errors = null)
   {
     Uri = uri;
-    Errors = errors ?? new List<IError>();
+    Errors = errors ?? [];
   }
 
   /// <summary>
@@ -36,7 +36,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   public ErrorsGroup(Info info)
   {
     Uri = info.Uri;
-    Errors = info.Errors ?? new List<Error>();
+    Errors = info.Errors ?? [];
   }
 
   /// <summary>

@@ -13,30 +13,6 @@ namespace W3CValidator.Tests.Css;
 public sealed class WarningTest : ClassTest<Warning>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property() { new Warning(new {Message = Guid.Empty.ToString()}).Message.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Level"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Level_Property() { new Warning(new {Level = int.MaxValue}).Level.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new Warning(new {Line = int.MaxValue}).Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Context"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Context_Property() { new Warning(new {ContextOriginal = Guid.Empty.ToString()}).Context.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Warning(string?, int?, int?, string?)"/>
@@ -67,6 +43,54 @@ public sealed class WarningTest : ClassTest<Warning>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Message"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Message_Property()
+  {
+    new Warning(new
+    {
+      Message = Guid.Empty.ToString()
+    }).Message.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Level"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Level_Property()
+  {
+    new Warning(new
+    {
+      Level = int.MaxValue
+    }).Level.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new Warning(new
+    {
+      Line = int.MaxValue
+    }).Line.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Context"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Context_Property()
+  {
+    new Warning(new
+    {
+      ContextOriginal = Guid.Empty.ToString()
+    }).Context.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="Warning.ToString()"/> method.</para>
   /// </summary>
   [Fact]
@@ -94,30 +118,6 @@ public sealed class WarningTest : ClassTest<Warning>
 public sealed class WarningInfoTests : ClassTest<Warning.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Info.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property() { new Warning.Info {Message = Guid.Empty.ToString()}.Message.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Info.Level"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Level_Property() { new Warning.Info {Level = int.MaxValue}.Level.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Info.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new Warning.Info {Line = int.MaxValue}.Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Warning.Info.Context"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Context_Property() { new Warning.Info {Context = Guid.Empty.ToString()}.Context.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Warning.Info()"/>
@@ -131,6 +131,42 @@ public sealed class WarningInfoTests : ClassTest<Warning.Info>
     info.Level.Should().BeNull();
     info.Line.Should().BeNull();
     info.Context.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Info.Message"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Message_Property()
+  {
+    new Warning.Info { Message = Guid.Empty.ToString() }.Message.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Info.Level"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Level_Property()
+  {
+    new Warning.Info { Level = int.MaxValue }.Level.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Info.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new Warning.Info { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Warning.Info.Context"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Context_Property()
+  {
+    new Warning.Info { Context = Guid.Empty.ToString() }.Context.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

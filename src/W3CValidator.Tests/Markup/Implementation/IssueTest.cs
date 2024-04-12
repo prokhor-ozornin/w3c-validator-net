@@ -14,42 +14,6 @@ namespace W3CValidator.Tests.Markup;
 public sealed class IssueTest : ClassTest<Issue>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void MessageId_Property() { new Issue(new {MessageId = Guid.Empty.ToString()}).MessageId.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property() { new Issue(new {Message = Guid.Empty.ToString()}).Message.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new Issue(new {Line = int.MaxValue}).Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Column"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Column_Property() { new Issue(new {Column = int.MaxValue}).Column.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Source"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Source_Property() { new Issue(new {Source = Guid.Empty.ToString()}).Source.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Explanation"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Explanation_Property() { new Issue(new {Explanation = Guid.Empty.ToString()}).Explanation.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Issue(string?, string?, int?, int?, string?, string?)"/>
@@ -86,6 +50,78 @@ public sealed class IssueTest : ClassTest<Issue>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void MessageId_Property()
+  {
+    new Issue(new
+    {
+      MessageId = Guid.Empty.ToString()
+    }).MessageId.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Message"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Message_Property()
+  {
+    new Issue(new
+    {
+      Message = Guid.Empty.ToString()
+    }).Message.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new Issue(new
+    {
+      Line = int.MaxValue
+    }).Line.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Column"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Column_Property()
+  {
+    new Issue(new
+    {
+      Column = int.MaxValue
+    }).Column.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Source"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Source_Property()
+  {
+    new Issue(new
+    {
+      Source = Guid.Empty.ToString()
+    }).Source.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Explanation"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Explanation_Property()
+  {
+    new Issue(new
+    {
+      Explanation = Guid.Empty.ToString()
+    }).Explanation.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
   ///   <para>Performs testing of <see cref="Issue.ToString()"/> method.</para>
   /// </summary>
   [Fact]
@@ -113,42 +149,6 @@ public sealed class IssueTest : ClassTest<Issue>
 public sealed class IssueInfoTests : ClassTest<Issue.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void MessageId_Property() { new Issue(new {MessageId = Guid.Empty.ToString()}).MessageId.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property() { new Issue(new {Message = "message"}).Message.Should().Be("message"); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property() { new Issue(new {Line = int.MaxValue}).Line.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Column"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Column_Property() { new Issue(new {Column = int.MaxValue}).Column.Should().Be(int.MaxValue); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Source"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Source_Property() { new Issue(new {Source = Guid.Empty.ToString()}).Source.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Issue.Explanation"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Explanation_Property() { new Issue(new {Explanation = Guid.Empty.ToString()}).Explanation.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Issue.Info()"/>
@@ -164,6 +164,78 @@ public sealed class IssueInfoTests : ClassTest<Issue.Info>
     info.Column.Should().BeNull();
     info.Source.Should().BeNull();
     info.Explanation.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void MessageId_Property()
+  {
+    new Issue(new
+    {
+      MessageId = Guid.Empty.ToString()
+    }).MessageId.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Message"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Message_Property()
+  {
+    new Issue(new
+    {
+      Message = "message"
+    }).Message.Should().Be("message");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Line"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Line_Property()
+  {
+    new Issue(new
+    {
+      Line = int.MaxValue
+    }).Line.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Column"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Column_Property()
+  {
+    new Issue(new
+    {
+      Column = int.MaxValue
+    }).Column.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Source"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Source_Property()
+  {
+    new Issue(new
+    {
+      Source = Guid.Empty.ToString()
+    }).Source.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="Issue.Explanation"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Explanation_Property()
+  {
+    new Issue(new
+    {
+      Explanation = Guid.Empty.ToString()
+    }).Explanation.Should().Be(Guid.Empty.ToString());
   }
 
   /// <summary>

@@ -14,32 +14,6 @@ namespace W3CValidator.Tests.Markup;
 public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="WarningsGroup.Count"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Count_Property()
-  {
-    new WarningsGroup(new {Count = int.MaxValue}).Count.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="WarningsGroup.Warnings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Warnings_Property()
-  {
-    var group = new WarningsGroup();
-    var warning = new Issue(new {});
-
-    var errors = group.Warnings.To<List<IIssue>>();
-    errors.Add(warning);
-    group.Warnings.Should().ContainSingle().Which.Should().BeSameAs(warning);
-
-    errors.Remove(warning);
-    group.Warnings.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="WarningsGroup(int?, IEnumerable{IIssue}?)"/>
@@ -64,10 +38,55 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   }
 
   /// <summary>
+  ///   <para>Performs testing of <see cref="WarningsGroup.Count"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Count_Property()
+  {
+    new WarningsGroup(new
+    {
+      Count = int.MaxValue
+    }).Count.Should().Be(int.MaxValue);
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="WarningsGroup.Warnings"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Warnings_Property()
+  {
+    var group = new WarningsGroup();
+    var warning = new Issue(new
+    {
+    });
+
+    var errors = group.Warnings.To<List<IIssue>>();
+    errors.Add(warning);
+    group.Warnings.Should().ContainSingle().Which.Should().BeSameAs(warning);
+
+    errors.Remove(warning);
+    group.Warnings.Should().BeEmpty();
+  }
+
+  /// <summary>
   ///   <para>Tests set for class <see cref="WarningsGroup.Info"/>.</para>
   /// </summary>
   public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
   {
+    /// <summary>
+    ///   <para>Performs testing of class constructor(s).</para>
+    /// </summary>
+    /// <seealso cref="WarningsGroup.Info()"/>
+    [Fact]
+    public void Constructors()
+    {
+      typeof(WarningsGroup.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IWarningsGroup>>().And.BeDecoratedWith<DataContractAttribute>();
+
+      var info = new WarningsGroup.Info();
+      info.Count.Should().BeNull();
+      info.Warnings.Should().BeNull();
+    }
+
     /// <summary>
     ///   <para>Performs testing of <see cref="WarningsGroup.Info.Count"/> property.</para>
     /// </summary>
@@ -85,20 +104,6 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
     {
       var warnings = new WarningsCollection();
       new WarningsGroup.Info { Warnings = warnings }.Warnings.Should().BeSameAs(warnings);
-    }
-
-    /// <summary>
-    ///   <para>Performs testing of class constructor(s).</para>
-    /// </summary>
-    /// <seealso cref="WarningsGroup.Info()"/>
-    [Fact]
-    public void Constructors()
-    {
-      typeof(WarningsGroup.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IWarningsGroup>>().And.BeDecoratedWith<DataContractAttribute>();
-
-      var info = new WarningsGroup.Info();
-      info.Count.Should().BeNull();
-      info.Warnings.Should().BeNull();
     }
 
     /// <summary>

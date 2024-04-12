@@ -14,30 +14,6 @@ namespace W3CValidator.Tests.Css;
 public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Uri"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Uri_Property() { new ErrorsGroup(new {Uri = Guid.Empty.ToString()}).Uri.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Errors"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Errors_Property()
-  {
-    var group = new ErrorsGroup(new {});
-    
-    var error = new Error(new {});
-
-    var errors = group.Errors.To<List<Error>>();
-    errors.Add(error);
-    group.Errors.Should().ContainSingle().Which.Should().BeSameAs(error);
-
-    errors.Remove(error);
-    group.Errors.Should().BeEmpty();
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="ErrorsGroup(string?, IEnumerable{IError}?)"/>
@@ -58,6 +34,40 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
 
     group = new ErrorsGroup(new object());
     group.Uri.Should().BeNull();
+    group.Errors.Should().BeEmpty();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ErrorsGroup.Uri"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Uri_Property()
+  {
+    new ErrorsGroup(new
+    {
+      Uri = Guid.Empty.ToString()
+    }).Uri.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ErrorsGroup.Errors"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Errors_Property()
+  {
+    var group = new ErrorsGroup(new
+    {
+    });
+
+    var error = new Error(new
+    {
+    });
+
+    var errors = group.Errors.To<List<Error>>();
+    errors.Add(error);
+    group.Errors.Should().ContainSingle().Which.Should().BeSameAs(error);
+
+    errors.Remove(error);
     group.Errors.Should().BeEmpty();
   }
 
@@ -86,22 +96,6 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
 public sealed class ErrorsGroupInfoTests : ClassTest<ErrorsGroup.Info>
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Uri"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Uri_Property() { new ErrorsGroup.Info {Uri = Guid.Empty.ToString()}.Uri.Should().Be(Guid.Empty.ToString()); }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Errors"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Errors_Property()
-  {
-    var errors = new List<Error>();
-    new ErrorsGroup.Info {Errors = errors}.Errors.Should().BeSameAs(errors);
-  }
-
-  /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="ErrorsGroup.Info()"/>
@@ -113,6 +107,25 @@ public sealed class ErrorsGroupInfoTests : ClassTest<ErrorsGroup.Info>
     var info = new ErrorsGroup.Info();
     info.Uri.Should().BeNull();
     info.Errors.Should().BeNull();
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Uri"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Uri_Property()
+  {
+    new ErrorsGroup.Info { Uri = Guid.Empty.ToString() }.Uri.Should().Be(Guid.Empty.ToString());
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Errors"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void Errors_Property()
+  {
+    var errors = new List<Error>();
+    new ErrorsGroup.Info { Errors = errors }.Errors.Should().BeSameAs(errors);
   }
 
   /// <summary>

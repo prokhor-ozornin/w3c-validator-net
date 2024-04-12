@@ -26,7 +26,7 @@ public sealed class ErrorsGroup : IErrorsGroup
   public ErrorsGroup(int? count = null, IEnumerable<IIssue> errors = null)
   {
     Count = count;
-    Errors = errors ?? new List<IIssue>();
+    Errors = errors ?? [];
   }
 
   /// <summary>

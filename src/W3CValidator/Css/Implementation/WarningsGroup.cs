@@ -26,7 +26,7 @@ public sealed class WarningsGroup : IWarningsGroup
   public WarningsGroup(string uri = null, IEnumerable<IWarning> warnings = null)
   {
     Uri = uri;
-    Warnings = warnings ?? new List<IWarning>();
+    Warnings = warnings ?? [];
   }
 
   /// <summary>
@@ -36,7 +36,7 @@ public sealed class WarningsGroup : IWarningsGroup
   public WarningsGroup(Info info)
   {
     Uri = info.Uri;
-    Warnings = info.Warnings ?? new List<Warning>();
+    Warnings = info.Warnings ?? [];
   }
 
   /// <summary>
