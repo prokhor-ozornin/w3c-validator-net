@@ -12,6 +12,27 @@ namespace W3CValidator.Tests.Markup;
 public sealed class ErrorsCollectionTest : UnitTest
 {
   /// <summary>
+  ///   <para>Performs testing of class constructor(s).</para>
+  /// </summary>
+  /// <seealso cref="ErrorsCollection()"/>
+  /// <seealso cref="ErrorsCollection(IEnumerable{IIssue})"/>
+  [Fact]
+  public void Constructors()
+  {
+    typeof(ErrorsCollection).Should().BeDerivedFrom<List<IIssue>>();
+
+    var collection = new ErrorsCollection();
+    collection.Should().BeEmpty();
+
+    collection = new ErrorsCollection([]);
+    collection.Should().BeEmpty();
+
+    var error = new Issue();
+    collection = new ErrorsCollection([error]);
+    collection.Should().Equal(error);
+  }
+
+  /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>
   /// </summary>
   [Fact]

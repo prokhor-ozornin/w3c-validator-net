@@ -14,7 +14,7 @@ namespace W3CValidator.Tests.Markup;
 public sealed class IMarkupValidatorExtensionsTest : UnitTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="IMarkupValidatorExtensions.Request(IMarkupValidator, Action{IMarkupValidationRequest}?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IMarkupValidatorExtensions.Request(IMarkupValidator, Action{IMarkupValidationRequest})"/> method.</para>
   /// </summary>
   [Fact]
   public void Request_Method()
@@ -23,24 +23,17 @@ public sealed class IMarkupValidatorExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IMarkupValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
 
-      using (var executor = IMarkupValidatorExtensions.Request(Validator.For.Markup))
-      {
-        executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-        executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeNull();
-      }
-
-      using (var executor = Validator.For.Markup.Request(_ => {}))
-      {
-        executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-        executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().NotBeNull();
-      }
+      Validate(_ => { }, new MarkupValidator());
     }
 
     return;
 
-    static void Validate()
+    static void Validate(Action<IMarkupValidationRequest> request, IMarkupValidator validator)
     {
+      using var executor = validator.Request(request);
 
+      executor.Should().BeOfType<MarkupRequestExecutor>();
+      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().NotBeNull();
     }
   }
 }

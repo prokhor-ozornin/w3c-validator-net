@@ -11,7 +11,7 @@ internal sealed class CssValidationRequest : ValidationRequest, ICssValidationRe
 
   public ICssValidationRequest Medium(string medium)
   {
-    WithParameter("usermedium", medium);
+    WithParameter("user-medium", medium);
 
     return this;
   }

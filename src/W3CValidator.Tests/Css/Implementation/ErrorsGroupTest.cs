@@ -4,7 +4,6 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
-using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -16,9 +15,9 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="ErrorsGroup(string?, IEnumerable{IError}?)"/>
-  /// <seealso cref="ErrorsGroup(ErrorsGroup.Info)"/>
-  /// <seealso cref="ErrorsGroup(object)"/>
+  /// <seealso cref="ErrorsGroup()"/>
+  /// <seealso cref="ErrorsGroup(string, IEnumerable{IError})"/>
+  /// <seealso cref="ErrorsGroup(string, IError[])"/>
   [Fact]
   public void Constructors()
   {
@@ -28,13 +27,15 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
     group.Uri.Should().BeNull();
     group.Errors.Should().BeEmpty();
 
-    group = new ErrorsGroup(new ErrorsGroup.Info());
-    group.Uri.Should().BeNull();
-    group.Errors.Should().BeEmpty();
+    var error = new Error();
 
-    group = new ErrorsGroup(new object());
-    group.Uri.Should().BeNull();
-    group.Errors.Should().BeEmpty();
+    group = new ErrorsGroup("uri", new List<IError> { error });
+    group.Uri.Should().Be("uri");
+    group.Errors.Should().Equal(error);
+
+    group = new ErrorsGroup("uri", [error]);
+    group.Uri.Should().Be("uri");
+    group.Errors.Should().Equal(error);
   }
 
   /// <summary>
@@ -43,10 +44,17 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
   [Fact]
   public void Uri_Property()
   {
-    new ErrorsGroup(new
-    {
-      Uri = Guid.Empty.ToString()
-    }).Uri.Should().Be(Guid.Empty.ToString());
+    new ErrorsGroup { Uri = "uri" }.Uri.Should().Be("uri");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="ErrorsGroup.ErrorsList"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void ErrorsList_Property()
+  {
+    var errors = new List<IError>();
+    new ErrorsGroup { ErrorsList = errors }.Errors.Should().BeSameAs(errors);
   }
 
   /// <summary>
@@ -55,20 +63,7 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
   [Fact]
   public void Errors_Property()
   {
-    var group = new ErrorsGroup(new
-    {
-    });
-
-    var error = new Error(new
-    {
-    });
-
-    var errors = group.Errors.To<List<Error>>();
-    errors.Add(error);
-    group.Errors.Should().ContainSingle().Which.Should().BeSameAs(error);
-
-    errors.Remove(error);
-    group.Errors.Should().BeEmpty();
+    new ErrorsGroup().With(group => group.Errors.Should().BeSameAs(group.ErrorsList));
   }
 
   /// <summary>
@@ -79,86 +74,25 @@ public sealed class ErrorsListTests : ClassTest<ErrorsGroup>
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new ErrorsGroup(new { }));
-      Validate(string.Empty, new ErrorsGroup(new { Uri = string.Empty }));
-      Validate("uri", new ErrorsGroup(new { Uri = "uri" }));
+      Validate(string.Empty, new ErrorsGroup());
+      Validate(string.Empty, new ErrorsGroup { Uri = string.Empty });
+      Validate("uri", new ErrorsGroup { Uri = "uri" });
     }
 
     return;
 
     static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
   }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="ErrorsGroup.Info"/>.</para>
-/// </summary>
-public sealed class ErrorsGroupInfoTests : ClassTest<ErrorsGroup.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="ErrorsGroup.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(ErrorsGroup.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IErrorsGroup>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new ErrorsGroup.Info();
-    info.Uri.Should().BeNull();
-    info.Errors.Should().BeNull();
-  }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Uri"/> property.</para>
+  ///   <para>Performs testing of serialization/deserialization process.</para>
   /// </summary>
   [Fact]
-  public void Uri_Property()
-  {
-    new ErrorsGroup.Info { Uri = Guid.Empty.ToString() }.Uri.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.Errors"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Errors_Property()
-  {
-    var errors = new List<Error>();
-    new ErrorsGroup.Info { Errors = errors }.Errors.Should().BeSameAs(errors);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="ErrorsGroup.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new ErrorsGroup.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<ErrorsGroup>();
-      result.Uri.Should().BeNull();
-      result.Errors.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
-  }
-
-    /// <summary>
-    ///   <para>Performs testing of serialization/deserialization process.</para>
-    /// </summary>
-    [Fact]
   public void Serialization()
   {
     using (new AssertionScope())
     {
-      Validate(new ErrorsGroup.Info());
+      Validate(new ErrorsGroup());
     }
 
     return;

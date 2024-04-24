@@ -6,99 +6,55 @@ namespace W3CValidator.Markup;
 /// <summary>
 ///   <para>Representation of response from W3C Markup validation web service that contains detailed information concerning validation results.</para>
 /// </summary>
+[DataContract(Name = "markupvalidationresponse", Namespace = "http://www.w3.org/2005/10/markup-validator")]
 public sealed class MarkupValidationResult : IComparable<IMarkupValidationResult>, IEquatable<IMarkupValidationResult>, IMarkupValidationResult
 {
   /// <summary>
   ///   <para>The address of the document validated.</para>
   /// </summary>
-  public string Uri { get; }
+  [DataMember(Name = "uri", IsRequired = true)]
+  public string Uri { get; set; }
 
   /// <summary>
   ///   <para>Whether or not the document validated passed or not formal validation.</para>
   /// </summary>
-  public bool? Valid { get; }
+  [DataMember(Name = "validity", IsRequired = true)]
+  public bool? Valid { get; set; }
 
   /// <summary>
   ///   <para>The actual date of the validation.</para>
   /// </summary>
-  public DateTimeOffset? Date { get; }
+  public DateTimeOffset? Date { get; set; }
 
   /// <summary>
   ///   <para>Location of the service which provided the validation result.</para>
   /// </summary>
-  public string CheckedBy { get; }
+  [DataMember(Name = "checkedby", IsRequired = true)]
+  public string CheckedBy { get; set; }
 
   /// <summary>
   ///   <para>Detected (or forced) Document Type for the validated document.</para>
   /// </summary>
-  public string Doctype { get; }
+  [DataMember(Name = "doctype", IsRequired = true)]
+  public string Doctype { get; set; }
 
   /// <summary>
   ///   <para>Detected (or forced) Character Encoding for the validated document.</para>
   /// </summary>
-  public string Encoding { get; }
+  [DataMember(Name = "charset", IsRequired = true)]
+  public string Encoding { get; set; }
 
   /// <summary>
   ///   <para>Collection of errors encountered through the validation process.</para>
   /// </summary>
-  public IErrorsGroup ErrorsGroup { get; }
+  [DataMember(Name = "errors", IsRequired = true)]
+  public IErrorsGroup ErrorsGroup { get; set; }
 
   /// <summary>
   ///   <para>Collection of warnings encountered through the validation process.</para>
   /// </summary>
-  public IWarningsGroup WarningsGroup { get; }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="uri"></param>
-  /// <param name="valid"></param>
-  /// <param name="date"></param>
-  /// <param name="checkedBy"></param>
-  /// <param name="doctype"></param>
-  /// <param name="encoding"></param>
-  /// <param name="errorsGroup"></param>
-  /// <param name="warningsGroup"></param>
-  public MarkupValidationResult(string uri = null,
-                                bool? valid = null,
-                                DateTimeOffset? date = null,
-                                string checkedBy = null,
-                                string doctype = null,
-                                string encoding = null,
-                                IErrorsGroup errorsGroup = null,
-                                IWarningsGroup warningsGroup = null)
-  {
-    Uri = uri;
-    Valid = valid;
-    Date = date;
-    CheckedBy = checkedBy;
-    Doctype = doctype;
-    Encoding = encoding;
-    ErrorsGroup = errorsGroup;
-    WarningsGroup = warningsGroup;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public MarkupValidationResult(Info info)
-  {
-    Uri = info.Uri;
-    Valid = info.Valid;
-    Date = info.Date;
-    CheckedBy = info.CheckedBy;
-    Doctype = info.Doctype;
-    Encoding = info.Encoding;
-    ErrorsGroup = info.ErrorsGroup;
-    WarningsGroup = info.WarningsGroup;
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public MarkupValidationResult(object info) : this(new Info().SetState(info)) {}
+  [DataMember(Name = "warnings", IsRequired = true)]
+  public IWarningsGroup WarningsGroup { get; set; }
 
   /// <summary>
   ///   <para>Compares the current <see cref="IMarkupValidationResult"/> instance with another.</para>
@@ -132,64 +88,4 @@ public sealed class MarkupValidationResult : IComparable<IMarkupValidationResult
   /// </summary>
   /// <returns>A string that represents the current <see cref="MarkupValidationResult"/>.</returns>
   public override string ToString() => Uri ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "markupvalidationresponse", Namespace = "http://www.w3.org/2005/10/markup-validator")]
-  public sealed record Info : IResultable<IMarkupValidationResult>
-  {
-    /// <summary>
-    ///   <para>The address of the document validated.</para>
-    /// </summary>
-    [DataMember(Name = "uri", IsRequired = true)]
-    public string Uri { get; init; }
-
-    /// <summary>
-    ///   <para>Whether or not the document validated passed or not formal validation.</para>
-    /// </summary>
-    [DataMember(Name = "validity", IsRequired = true)]
-    public bool? Valid { get; init; }
-
-    /// <summary>
-    ///   <para>The actual date of the validation.</para>
-    /// </summary>
-    public DateTimeOffset? Date { get; init; }
-
-    /// <summary>
-    ///   <para>Location of the service which provided the validation result.</para>
-    /// </summary>
-    [DataMember(Name = "checkedby", IsRequired = true)]
-    public string CheckedBy { get; init; }
-
-    /// <summary>
-    ///   <para>Detected (or forced) Document Type for the validated document.</para>
-    /// </summary>
-    [DataMember(Name = "doctype", IsRequired = true)]
-    public string Doctype { get; init; }
-
-    /// <summary>
-    ///   <para>Detected (or forced) Character Encoding for the validated document.</para>
-    /// </summary>
-    [DataMember(Name = "charset", IsRequired = true)]
-    public string Encoding { get; init; }
-
-    /// <summary>
-    ///   <para>Collection of errors encountered through the validation process.</para>
-    /// </summary>
-    [DataMember(Name = "errors", IsRequired = true)]
-    public ErrorsGroup ErrorsGroup { get; init; }
-
-    /// <summary>
-    ///   <para>Collection of warnings encountered through the validation process.</para>
-    /// </summary>
-    [DataMember(Name = "warnings", IsRequired = true)]
-    public WarningsGroup WarningsGroup { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IMarkupValidationResult ToResult() => new MarkupValidationResult(this);
-  }
 }

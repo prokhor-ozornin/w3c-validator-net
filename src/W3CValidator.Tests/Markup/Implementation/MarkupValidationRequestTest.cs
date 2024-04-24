@@ -1,4 +1,6 @@
-﻿using Catharsis.Commons;
+﻿using System.Text;
+using Catharsis.Commons;
+using Catharsis.Extensions;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -21,7 +23,7 @@ public sealed class MarkupValidationRequestTest : UnitTest
     typeof(MarkupValidationRequest).Should().BeDerivedFrom<ValidationRequest>().And.Implement<IMarkupValidationRequest>();
 
     var request = new MarkupValidationRequest();
-    request.Parameters.Should().BeEmpty();
+    request.Parameters.Should().BeOfType<Dictionary<string, object>>().And.BeEmpty();
   }
 
   /// <summary>
@@ -32,23 +34,13 @@ public sealed class MarkupValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new MarkupValidationRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Doctype(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["doctype"].Should().BeNull();
-
-      request.Doctype("html").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["doctype"].Should().Be("html");
+      Validate(null, new MarkupValidationRequest());
+      Validate("html", new MarkupValidationRequest());
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string doctype, IMarkupValidationRequest request) => request.Doctype(doctype).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["doctype"].Should().Be(doctype);
   }
 
   /// <summary>
@@ -59,22 +51,12 @@ public sealed class MarkupValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      var request = new MarkupValidationRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Encoding(null).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["charset"].Should().BeNull();
-
-      request.Encoding("utf-8").Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["charset"].Should().Be("utf-8");
+      Validate(null, new MarkupValidationRequest());
+      Encoding.GetEncodings().ForEach(encoding => Validate(encoding.Name, new MarkupValidationRequest()));
     }
 
     return;
 
-    static void Validate()
-    {
-
-    }
+    static void Validate(string encoding, IMarkupValidationRequest request) => request.Encoding(encoding).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["charset"].Should().Be(encoding);
   }
 }

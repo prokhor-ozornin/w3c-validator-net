@@ -14,7 +14,7 @@ namespace W3CValidator.Tests.Markup;
 public sealed class MarkupValidatorTest : UnitTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="MarkupValidator.Request(IMarkupValidationRequest?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="MarkupValidator.Request(IMarkupValidationRequest)"/> method.</para>
   /// </summary>
   [Fact]
   public void Request_Method()
@@ -23,25 +23,18 @@ public sealed class MarkupValidatorTest : UnitTest
     {
       var validator = Validator.For.Markup;
 
-      using (var executor = validator.Request())
-      {
-        executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-        executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeNull();
-      }
-
-      var request = new MarkupValidationRequest();
-      using (var executor = validator.Request(request))
-      {
-        executor.Should().NotBeNull().And.BeOfType<MarkupRequestExecutor>();
-        executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
-      }
+      Validate(validator);
+      Validate(validator, new MarkupValidationRequest());
     }
 
     return;
 
-    static void Validate()
+    static void Validate(IMarkupValidator validator, IMarkupValidationRequest request = null)
     {
+      using var executor = validator.Request(request);
 
+      executor.Should().BeOfType<MarkupRequestExecutor>();
+      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeSameAs(request);
     }
   }
 }

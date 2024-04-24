@@ -3,7 +3,6 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
-using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -15,33 +14,13 @@ public sealed class ErrorTest : ClassTest<Error>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="Error(string?, string?, string?, string?, int?, string?, string?)"/>
-  /// <seealso cref="Error(Error.Info)"/>
-  /// <seealso cref="Error(object)"/>
+  /// <seealso cref="Error()"/>
   [Fact]
   public void Constructors()
   {
     typeof(Error).Should().BeDerivedFrom<object>().And.Implement<IError>();
 
     var error = new Error();
-    error.Message.Should().BeNull();
-    error.Type.Should().BeNull();
-    error.Subtype.Should().BeNull();
-    error.Property.Should().BeNull();
-    error.Line.Should().BeNull();
-    error.Context.Should().BeNull();
-    error.SkippedString.Should().BeNull();
-
-    error = new Error(new Error.Info());
-    error.Message.Should().BeNull();
-    error.Type.Should().BeNull();
-    error.Subtype.Should().BeNull();
-    error.Property.Should().BeNull();
-    error.Line.Should().BeNull();
-    error.Context.Should().BeNull();
-    error.SkippedString.Should().BeNull();
-
-    error = new Error(new {});
     error.Message.Should().BeNull();
     error.Type.Should().BeNull();
     error.Subtype.Should().BeNull();
@@ -57,10 +36,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Message_Property()
   {
-    new Error(new
-    {
-      Message = Guid.Empty.ToString()
-    }).Message.Should().Be(Guid.Empty.ToString());
+    new Error { Message = "message" }.Message.Should().Be("message");
   }
 
   /// <summary>
@@ -69,10 +45,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Type_Property()
   {
-    new Error(new
-    {
-      Type = Guid.Empty.ToString()
-    }).Type.Should().Be(Guid.Empty.ToString());
+    new Error { Type = "type" }.Type.Should().Be("type");
   }
 
   /// <summary>
@@ -81,10 +54,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Subtype_Property()
   {
-    new Error(new
-    {
-      Subtype = Guid.Empty.ToString()
-    }).Subtype.Should().Be(Guid.Empty.ToString());
+    new Error { Subtype = "subtype" }.Subtype.Should().Be("subtype");
   }
 
   /// <summary>
@@ -93,10 +63,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Property_Property()
   {
-    new Error(new
-    {
-      Property = Guid.Empty.ToString()
-    }).Property.Should().Be(Guid.Empty.ToString());
+    new Error { Property = "property" }.Property.Should().Be("property");
   }
 
   /// <summary>
@@ -105,10 +72,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Line_Property()
   {
-    new Error(new
-    {
-      Line = int.MaxValue
-    }).Line.Should().Be(int.MaxValue);
+    new Error { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
   }
 
   /// <summary>
@@ -117,10 +81,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void Context_Property()
   {
-    new Error(new
-    {
-      Context = Guid.Empty.ToString()
-    }).Context.Should().Be(Guid.Empty.ToString());
+    new Error { Context = "context" }.Context.Should().Be("context");
   }
 
   /// <summary>
@@ -129,10 +90,7 @@ public sealed class ErrorTest : ClassTest<Error>
   [Fact]
   public void SkippedString_Property()
   {
-    new Error(new
-    {
-      SkippedString = Guid.Empty.ToString()
-    }).SkippedString.Should().Be(Guid.Empty.ToString());
+    new Error { SkippedString = "skippedString" }.SkippedString.Should().Be("skippedString");
   }
 
   /// <summary>
@@ -143,130 +101,15 @@ public sealed class ErrorTest : ClassTest<Error>
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new Error(new { }));
-      Validate(string.Empty, new Error(new { Line = 1 }));
-      Validate("message", new Error(new { Message = "message" }));
-      Validate("1:message", new Error(new { Line = 1, Message = "message" }));
+      Validate(string.Empty, new Error());
+      Validate(string.Empty, new Error { Line = 1 });
+      Validate("message", new Error { Message = "message" });
+      Validate("1:message", new Error { Line = 1, Message = "message" });
     }
 
     return;
 
     static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="Error.Info"/>.</para>
-/// </summary>
-public sealed class ErrorInfoTests : ClassTest<Error.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="Error.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(Error.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IError>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new Error.Info();
-    info.Message.Should().BeNull();
-    info.Type.Should().BeNull();
-    info.Subtype.Should().BeNull();
-    info.Property.Should().BeNull();
-    info.Line.Should().BeNull();
-    info.Context.Should().BeNull();
-    info.SkippedString.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Message"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Message_Property()
-  {
-    new Error.Info { Message = Guid.Empty.ToString() }.Message.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Type"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Type_Property()
-  {
-    new Error.Info { Type = Guid.Empty.ToString() }.Type.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Subtype"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Subtype_Property()
-  {
-    new Error.Info { Subtype = Guid.Empty.ToString() }.Subtype.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Property"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Property_Property()
-  {
-    new Error.Info { Property = Guid.Empty.ToString() }.Property.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Line"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Line_Property()
-  {
-    new Error.Info { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.Context"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Context_Property()
-  {
-    new Error.Info { Context = Guid.Empty.ToString() }.Context.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.SkippedString"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void SkippedString_Property()
-  {
-    new Error.Info { SkippedString = Guid.Empty.ToString() }.SkippedString.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="Error.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new Error.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<Error>();
-      result.Message.Should().BeNull();
-      result.Type.Should().BeNull();
-      result.Subtype.Should().BeNull();
-      result.Property.Should().BeNull();
-      result.Line.Should().BeNull();
-      result.Context.Should().BeNull();
-      result.SkippedString.Should().BeNull();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
 
   /// <summary>
@@ -277,7 +120,7 @@ public sealed class ErrorInfoTests : ClassTest<Error.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new Error.Info());
+      Validate(new Error());
     }
 
     return;

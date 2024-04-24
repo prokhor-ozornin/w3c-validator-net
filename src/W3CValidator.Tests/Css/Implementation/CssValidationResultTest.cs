@@ -3,7 +3,6 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
-using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -15,8 +14,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="CssValidationResult(CssValidationResult.Info)"/>
-  /// <seealso cref="CssValidationResult(object)"/>
+  /// <seealso cref="CssValidationResult()"/>
   [Fact]
   public void Constructors()
   {
@@ -28,23 +26,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
     result.Date.Should().BeNull();
     result.CheckedBy.Should().BeNull();
     result.CssLevel.Should().BeNull();
-    result.Issues.Should().BeNull();
-
-    result = new CssValidationResult(new CssValidationResult.Info());
-    result.Uri.Should().BeNull();
-    result.Valid.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.CheckedBy.Should().BeNull();
-    result.CssLevel.Should().BeNull();
-    result.Issues.Should().BeNull();
-
-    result = new CssValidationResult(new object());
-    result.Uri.Should().BeNull();
-    result.Valid.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.CheckedBy.Should().BeNull();
-    result.CssLevel.Should().BeNull();
-    result.Issues.Should().BeNull();
+    result.Issues.Should().Be(new Issues());
   }
 
   /// <summary>
@@ -53,10 +35,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void Uri_Property()
   {
-    new CssValidationResult(new
-    {
-      Uri = Guid.Empty.ToString()
-    }).Uri.Should().Be(Guid.Empty.ToString());
+    new CssValidationResult { Uri = "uri" }.Uri.Should().Be("uri");
   }
 
   /// <summary>
@@ -65,10 +44,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void Valid_Property()
   {
-    new CssValidationResult(new
-    {
-      Valid = true
-    }).Valid.Should().BeTrue();
+    new CssValidationResult { Valid = true }.Valid.Should().BeTrue();
   }
 
   /// <summary>
@@ -77,10 +53,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void Date_Property()
   {
-    new CssValidationResult(new
-    {
-      Date = DateTimeOffset.MaxValue
-    }).Date.Should().Be(DateTimeOffset.MaxValue);
+    new CssValidationResult { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -89,10 +62,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void CheckedBy_Property()
   {
-    new CssValidationResult(new
-    {
-      CheckedBy = Guid.Empty.ToString()
-    }).CheckedBy.Should().Be(Guid.Empty.ToString());
+    new CssValidationResult { CheckedBy = "checkedBy" }.CheckedBy.Should().Be("checkedBy");
   }
 
   /// <summary>
@@ -101,10 +71,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void CssLevel_Property()
   {
-    new CssValidationResult(new
-    {
-      CssLevel = Guid.Empty.ToString()
-    }).CssLevel.Should().Be(Guid.Empty.ToString());
+    new CssValidationResult { CssLevel = "cssLevel" }.CssLevel.Should().Be("cssLevel");
   }
 
   /// <summary>
@@ -113,13 +80,8 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void Issues_Property()
   {
-    var issues = new Issues(new
-    {
-    });
-    new CssValidationResult(new
-    {
-      Issues = issues
-    }).Issues.Should().Be(issues);
+    var issues = new Issues();
+    new CssValidationResult { Issues = issues }.Issues.Should().BeSameAs(issues);
   }
 
   /// <summary>
@@ -161,121 +123,14 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new CssValidationResult(new { }));
-      Validate(string.Empty, new CssValidationResult(new { Uri = string.Empty }));
-      Validate("uri", new CssValidationResult(new { Uri = "uri" }));
+      Validate(string.Empty, new CssValidationResult());
+      Validate(string.Empty, new CssValidationResult { Uri = string.Empty });
+      Validate("uri", new CssValidationResult { Uri = "uri" });
     }
 
     return;
 
     static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="CssValidationResult.Info"/>.</para>
-/// </summary>
-public sealed class CssValidationResultInfoTests : ClassTest<CssValidationResult.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="CssValidationResult.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(CssValidationResult.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<ICssValidationResult>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new CssValidationResult.Info();
-    info.Uri.Should().BeNull();
-    info.Valid.Should().BeNull();
-    info.Date.Should().BeNull();
-    info.CheckedBy.Should().BeNull();
-    info.CssLevel.Should().BeNull();
-    info.Issues.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.Uri"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Uri_Property()
-  {
-    new CssValidationResult.Info { Uri = Guid.Empty.ToString() }.Uri.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.Valid"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Valid_Property()
-  {
-    new CssValidationResult.Info { Valid = true }.Valid.Should().BeTrue();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.Date"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Date_Property()
-  {
-    new CssValidationResult.Info { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.CheckedBy"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CheckedBy_Property()
-  {
-    new CssValidationResult.Info { CheckedBy = Guid.Empty.ToString() }.CheckedBy.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.CssLevel"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void CssLevel_Property()
-  {
-    new CssValidationResult.Info { CssLevel = Guid.Empty.ToString() }.CssLevel.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.Issues"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Issues_Property()
-  {
-    var issues = new Issues(new {
-    });
-    new CssValidationResult.Info { Issues = issues }.Issues.Should().BeSameAs(issues);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidationResult.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      Validate(new CssValidationResult.Info());
-    }
-
-    return;
-
-    static void Validate(CssValidationResult.Info info)
-    {
-      var result = info.ToResult();
-
-      result.Should().BeOfType<CssValidationResult>();
-      result.Uri.Should().BeSameAs(info.Uri);
-      result.Valid.Should().Be(info.Valid);
-      result.Date.Should().Be(info.Date);
-      result.CheckedBy.Should().BeSameAs(info.CheckedBy);
-      result.CssLevel.Should().BeSameAs(info.CssLevel);
-      result.Issues.Should().BeSameAs(info.Issues);
-    }
   }
 
   /// <summary>
@@ -286,7 +141,7 @@ public sealed class CssValidationResultInfoTests : ClassTest<CssValidationResult
   {
     using (new AssertionScope())
     {
-      Validate(new CssValidationResult.Info());
+      Validate(new CssValidationResult());
     }
 
     return;

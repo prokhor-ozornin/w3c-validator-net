@@ -1,78 +1,60 @@
 ﻿namespace W3CValidator.Css;
 
 using System.Runtime.Serialization;
-using Catharsis.Extensions;
 
 /// <summary>
 ///   <para>Logical group of validation warnings.</para>
 /// </summary>
+[CollectionDataContract(Name = "warnings", ItemName = "warninglist")]
 public sealed class WarningsGroup : IWarningsGroup
 {
   /// <summary>
   ///   <para>URI address of validated document or fragment.</para>
   /// </summary>
-  public string Uri { get; }
+  [DataMember(Name = "uri", IsRequired = true)]
+  public string Uri { get; set; }
 
   /// <summary>
   ///   <para>Collection of validation warnings .</para>
   /// </summary>
-  public IEnumerable<IWarning> Warnings { get; }
+  [DataMember(Name = "warning", IsRequired = true)]
+  public IList<IWarning> WarningsList { get; init; } = [];
+
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
+  public IEnumerable<IWarning> Warnings => WarningsList;
+
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
+  public WarningsGroup()
+  {
+  }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
   /// <param name="uri"></param>
   /// <param name="warnings"></param>
-  public WarningsGroup(string uri = null, IEnumerable<IWarning> warnings = null)
+  public WarningsGroup(string uri, IEnumerable<IWarning> warnings)
   {
     Uri = uri;
-    Warnings = warnings ?? [];
+    WarningsList = warnings?.ToList() ?? [];
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  /// <param name="info"></param>
-  public WarningsGroup(Info info)
+  /// <param name="uri"></param>
+  /// <param name="warnings"></param>
+  public WarningsGroup(string uri, params IWarning[] warnings) : this(uri, warnings as IEnumerable<IWarning>)
   {
-    Uri = info.Uri;
-    Warnings = info.Warnings ?? [];
   }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public WarningsGroup(object info) : this(new Info().SetState(info)) {}
 
   /// <summary>
   ///   <para>Returns a <see cref="string"/> that represents the current <see cref="WarningsGroup"/> instance.</para>
   /// </summary>
   /// <returns>A string that represents the current <see cref="WarningsGroup"/>.</returns>
   public override string ToString() => Uri ?? string.Empty;
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [CollectionDataContract(Name = "warnings", ItemName = "warninglist")]
-  public sealed record Info : IResultable<IWarningsGroup>
-  {
-    /// <summary>
-    ///   <para>URI address of validated document or fragment.</para>
-    /// </summary>
-    [DataMember(Name = "uri", IsRequired = true)]
-    public string Uri { get; init; }
-
-    /// <summary>
-    ///   <para>Collection of validation errors.</para>
-    /// </summary>
-    [DataMember(Name = "warning", IsRequired = true)]
-    public List<Warning> Warnings { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IWarningsGroup ToResult() => new WarningsGroup(this);
-  }
 }

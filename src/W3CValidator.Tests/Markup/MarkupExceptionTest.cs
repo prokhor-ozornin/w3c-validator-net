@@ -12,7 +12,7 @@ public sealed class MarkupExceptionTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
-  ///   <seealso cref="MarkupException(string?, Exception?)"/>
+  ///   <seealso cref="MarkupException(string, Exception)"/>
   /// </summary>
   [Fact]
   public void Constructors()
@@ -21,11 +21,11 @@ public sealed class MarkupExceptionTest : UnitTest
 
     var exception = new MarkupException();
     exception.InnerException.Should().BeNull();
-    exception.Message.Should().BeNull();
+    exception.Message.Should().NotBeEmpty();
 
     var inner = new Exception();
     exception = new MarkupException("message", inner);
-    exception.InnerException.Should().NotBeNull().And.BeSameAs(inner);
+    exception.InnerException.Should().BeSameAs(inner);
     exception.Message.Should().Be("message");
   }
 }

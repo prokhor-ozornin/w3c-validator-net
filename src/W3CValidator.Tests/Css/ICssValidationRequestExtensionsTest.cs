@@ -23,21 +23,13 @@ public sealed class ICssValidationRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ICssValidationRequestExtensions.Language(null, null)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null);
-      CultureInfo.GetCultures(CultureTypes.AllCultures).ForEach(Validate);
+      Validate(null, new CssValidationRequest());
+      CultureInfo.GetCultures(CultureTypes.AllCultures).ForEach(culture => Validate(culture, new CssValidationRequest()));
     }
 
     return;
 
-    static void Validate(CultureInfo culture)
-    {
-      var request = new CssValidationRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Language(culture).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["lang"].Should().Be(culture?.TwoLetterISOLanguageName);
-    }
+    static void Validate(CultureInfo culture, ICssValidationRequest request) => request.Language(culture).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["lang"].Should().Be(culture?.TwoLetterISOLanguageName);
   }
 
   /// <summary>
@@ -50,21 +42,13 @@ public sealed class ICssValidationRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ICssValidationRequestExtensions.Medium(null, CssMedium.All)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null);
-      Enum.GetValues<CssMedium>().ForEach(medium => Validate(medium));
+      Validate(null, new CssValidationRequest());
+      Enum.GetValues<CssMedium>().ForEach(medium => Validate(medium, new CssValidationRequest()));
     }
 
     return;
-
-    static void Validate(CssMedium? medium)
-    {
-      var request = new CssValidationRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Medium(medium).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["usermedium"].Should().Be(medium?.ToInvariantString());
-    }
+    
+    static void Validate(CssMedium? medium, ICssValidationRequest request) => request.Medium(medium).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["usermedium"].Should().Be(medium?.ToInvariantString());
   }
 
   /// <summary>
@@ -77,20 +61,13 @@ public sealed class ICssValidationRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ICssValidationRequestExtensions.Profile(null, CssProfile.Css1)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null);
-      Enum.GetValues<CssProfile>().ForEach(profile => Validate(profile));
+      Validate(null, new CssValidationRequest());
+      Enum.GetValues<CssProfile>().ForEach(profile => Validate(profile, new CssValidationRequest()));
     }
 
     return;
 
-    static void Validate(CssProfile? profile)
-    {
-      var request = new CssValidationRequest();
-      request.Parameters.Should().BeEmpty();
-
-      request.Profile(profile).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["profile"].Should().Be(profile?.ToInvariantString());
-    }
+    static void Validate(CssProfile? profile, ICssValidationRequest request) => request.Profile(profile).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["profile"].Should().Be(profile?.ToString().ToLowerInvariant());
   }
 
   /// <summary>
@@ -103,20 +80,12 @@ public sealed class ICssValidationRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ICssValidationRequestExtensions.Warnings(null, WarningsLevel.All)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null);
-      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level));
+      Validate(null, new CssValidationRequest());
+      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level, new CssValidationRequest()));
     }
 
     return;
 
-    static void Validate(WarningsLevel? level)
-    {
-      var request = new CssValidationRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Warnings(level).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["warning"].Should().Be((int?) level);
-    }
+    static void Validate(WarningsLevel? level, ICssValidationRequest request) => request.Warnings(level).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["warning"].Should().Be((int?) level);
   }
 }

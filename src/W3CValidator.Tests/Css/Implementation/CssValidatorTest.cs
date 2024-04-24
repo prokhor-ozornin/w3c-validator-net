@@ -13,7 +13,7 @@ namespace W3CValidator.Tests.Css;
 public sealed class CssValidatorTest : UnitTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="CssValidator.Request(ICssValidationRequest?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="CssValidator.Request(ICssValidationRequest)"/> method.</para>
   /// </summary>
   [Fact]
   public void Request_Method()
@@ -22,26 +22,18 @@ public sealed class CssValidatorTest : UnitTest
     {
       var validator = Validator.For.Css;
 
-      using (var executor = validator.Request())
-      {
-        executor.Should().NotBeNull().And.NotBeSameAs(validator.Request()).And.BeOfType<CssRequestExecutor>();
-        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
-      }
-
-      var request = new CssValidationRequest();
-
-      using (var executor = validator.Request(request))
-      {
-        executor.Should().NotBeNull().And.NotBeSameAs(validator.Request(request)).And.BeOfType<CssRequestExecutor>();
-        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull().And.BeSameAs(request);
-      }
+      Validate(validator);
+      Validate(validator, new CssValidationRequest());
     }
 
     return;
 
-    static void Validate()
+    static void Validate(ICssValidator validator, ICssValidationRequest request = null)
     {
+      using var executor = validator.Request(request);
 
+      executor.Should().BeOfType<CssRequestExecutor>();
+      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeSameAs(request);
     }
   }
 }

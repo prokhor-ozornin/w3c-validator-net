@@ -13,7 +13,7 @@ public sealed class CssValidationExceptionTest : UnitTest
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="CssException(string?, Exception?)"/>
+  /// <seealso cref="CssException(string, Exception)"/>
   [Fact]
   public void Constructors()
   {
@@ -21,11 +21,11 @@ public sealed class CssValidationExceptionTest : UnitTest
 
     var exception = new CssException();
     exception.InnerException.Should().BeNull();
-    exception.Message.Should().BeNull();
+    exception.Message.Should().NotBeEmpty();
 
     var inner = new Exception();
     exception = new CssException("message", inner);
-    exception.InnerException.Should().NotBeNull().And.BeSameAs(inner);
+    exception.InnerException.Should().BeSameAs(inner);
     exception.Message.Should().Be("message");
   }
 }

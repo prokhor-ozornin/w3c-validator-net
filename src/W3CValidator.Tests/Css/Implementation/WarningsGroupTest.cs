@@ -4,7 +4,6 @@ using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
-using System.Runtime.Serialization;
 
 namespace W3CValidator.Tests.Css;
 
@@ -16,9 +15,9 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
-  /// <seealso cref="WarningsGroup(string?, IEnumerable{IWarning}?)"/>
-  /// <seealso cref="WarningsGroup(WarningsGroup.Info)"/>
-  /// <seealso cref="WarningsGroup(object)"/>
+  /// <seealso cref="WarningsGroup()"/>
+  /// <seealso cref="WarningsGroup(string, IEnumerable{IWarning})"/>
+  /// <seealso cref="WarningsGroup(string, IWarning[])"/>
   [Fact]
   public void Constructors()
   {
@@ -28,13 +27,15 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
     group.Uri.Should().BeNull();
     group.Warnings.Should().BeEmpty();
 
-    group = new WarningsGroup(new WarningsGroup.Info());
-    group.Uri.Should().BeNull();
-    group.Warnings.Should().BeEmpty();
+    var warning = new Warning();
 
-    group = new WarningsGroup(new {});
-    group.Uri.Should().BeNull();
-    group.Warnings.Should().BeEmpty();
+    group = new WarningsGroup("uri", new List<IWarning> { warning });
+    group.Uri.Should().Be("uri");
+    group.Warnings.Should().Equal(warning);
+
+    group = new WarningsGroup("uri", [warning]);
+    group.Uri.Should().Be("uri");
+    group.Warnings.Should().Equal(warning);
   }
 
   /// <summary>
@@ -43,10 +44,17 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   [Fact]
   public void Uri_Property()
   {
-    new WarningsGroup(new
-    {
-      Uri = Guid.Empty.ToString()
-    }).Uri.Should().Be(Guid.Empty.ToString());
+    new WarningsGroup { Uri = "uri" }.Uri.Should().Be("uri");
+  }
+
+  /// <summary>
+  ///   <para>Performs testing of <see cref="WarningsGroup.WarningsList"/> property.</para>
+  /// </summary>
+  [Fact]
+  public void WarningsList_Property()
+  {
+    var warnings = new List<IWarning>();
+    new WarningsGroup { WarningsList = warnings }.Warnings.Should().BeSameAs(warnings);
   }
 
   /// <summary>
@@ -55,21 +63,7 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   [Fact]
   public void Warnings_Property()
   {
-    var list = new WarningsGroup(new
-    {
-    });
-
-    var warning = new Warning(new
-    {
-    });
-
-    var warnings = list.Warnings.To<List<Warning>>();
-
-    warnings.Add(warning);
-    list.Warnings.Should().ContainSingle().Which.Should().BeSameAs(warning);
-
-    warnings.Remove(warning);
-    list.Warnings.Should().BeEmpty();
+    new WarningsGroup().With(group => group.Warnings.Should().BeSameAs(group.WarningsList));
   }
 
   /// <summary>
@@ -86,75 +80,14 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new WarningsGroup(new { }));
-      Validate(string.Empty, new WarningsGroup(new { Uri = string.Empty }));
-      Validate("uri", new WarningsGroup(new { Uri = "uri" }));
+      Validate(string.Empty, new WarningsGroup());
+      Validate(string.Empty, new WarningsGroup { Uri = string.Empty });
+      Validate("uri", new WarningsGroup { Uri = "uri" });
     }
 
     return;
 
     static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
-  }
-}
-
-/// <summary>
-///   <para>Tests set for class <see cref="WarningsGroup.Info"/>.</para>
-/// </summary>
-public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
-{
-  /// <summary>
-  ///   <para>Performs testing of class constructor(s).</para>
-  /// </summary>
-  /// <seealso cref="WarningsGroup.Info()"/>
-  [Fact]
-  public void Constructors()
-  {
-    typeof(WarningsGroup.Info).Should().BeDerivedFrom<object>().And.Implement<IResultable<IWarningsGroup>>().And.BeDecoratedWith<DataContractAttribute>();
-
-    var info = new WarningsGroup.Info();
-    info.Uri.Should().BeNull();
-    info.Warnings.Should().BeNull();
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="WarningsGroup.Info.Uri"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Uri_Property()
-  {
-    new WarningsGroup.Info { Uri = Guid.Empty.ToString() }.Uri.Should().Be(Guid.Empty.ToString());
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="WarningsGroup.Warnings"/> property.</para>
-  /// </summary>
-  [Fact]
-  public void Warnings_Property()
-  {
-    var warnings = new List<Warning>();
-    new WarningsGroup.Info { Warnings = warnings }.Warnings.Should().BeSameAs(warnings);
-  }
-
-  /// <summary>
-  ///   <para>Performs testing of <see cref="WarningsGroup.Info.ToResult()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void ToResult_Method()
-  {
-    using (new AssertionScope())
-    {
-      var result = new WarningsGroup.Info().ToResult();
-      result.Should().NotBeNull().And.BeOfType<WarningsGroup>();
-      result.Uri.Should().BeNull();
-      result.Warnings.Should().BeEmpty();
-    }
-
-    return;
-
-    static void Validate()
-    {
-
-    }
   }
 
   /// <summary>
@@ -165,7 +98,7 @@ public sealed class WarningsGroupInfoTests : ClassTest<WarningsGroup.Info>
   {
     using (new AssertionScope())
     {
-      Validate(new WarningsGroup.Info());
+      Validate(new WarningsGroup());
     }
 
     return;

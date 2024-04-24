@@ -22,24 +22,17 @@ public sealed class ICssValidatorExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
 
-      using (var executor = ICssValidatorExtensions.Request(Validator.For.Css))
-      {
-        executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
-        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeNull();
-      }
-
-      using (var executor = Validator.For.Css.Request(_ => {}))
-      {
-        executor.Should().NotBeNull().And.BeOfType<CssRequestExecutor>();
-        executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull();
-      }
+      Validate(_ => {}, new CssValidator());
     }
 
     return;
 
-    static void Validate()
+    static void Validate(Action<ICssValidationRequest> request, ICssValidator validator)
     {
+      using var executor = validator.Request(request);
 
+      executor.Should().BeOfType<CssRequestExecutor>();
+      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull();
     }
   }
 }

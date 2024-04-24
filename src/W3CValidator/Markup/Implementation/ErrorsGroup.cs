@@ -1,74 +1,54 @@
 ﻿using System.Runtime.Serialization;
-using Catharsis.Extensions;
 
 namespace W3CValidator.Markup;
 
 /// <summary>
 ///   <para>Logical group of validation errors.</para>
 /// </summary>
+[DataContract(Name = "errors")]
 public sealed class ErrorsGroup : IErrorsGroup
 {
   /// <summary>
   ///   <para>URI address of validated document or fragment.</para>
   /// </summary>
-  public int? Count { get; }
+  [DataMember(Name = "errorcount", IsRequired = true)]
+  public int? Count { get; set; }
 
   /// <summary>
   ///   <para>Collection of validation errors.</para>
   /// </summary>
-  public IEnumerable<IIssue> Errors { get; }
+  [DataMember(Name = "errorlist", IsRequired = true)]
+  public ErrorsCollection ErrorsCollection { get; init; } = [];
+
+  /// <summary>
+  ///   <para>Collection of validation errors.</para>
+  /// </summary>
+  public IEnumerable<IIssue> Errors => ErrorsCollection;
+
+  /// <summary>
+  ///   <para></para>
+  /// </summary>
+  public ErrorsGroup()
+  {
+  }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
   /// <param name="count"></param>
   /// <param name="errors"></param>
-  public ErrorsGroup(int? count = null, IEnumerable<IIssue> errors = null)
+  public ErrorsGroup(int? count, IEnumerable<IIssue> errors)
   {
     Count = count;
-    Errors = errors ?? [];
+    ErrorsCollection = new ErrorsCollection(errors);
   }
 
   /// <summary>
   ///   <para></para>
   /// </summary>
-  /// <param name="info"></param>
-  public ErrorsGroup(Info info)
+  /// <param name="count"></param>
+  /// <param name="errors"></param>
+  public ErrorsGroup(int? count, params IIssue[] errors) : this(count, errors as IEnumerable<IIssue>)
   {
-    Count = info.Count;
-    Errors = info.Errors?.Select(info => info.ToResult()) ?? Enumerable.Empty<IIssue>();
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  /// <param name="info"></param>
-  public ErrorsGroup(object info) : this(new Info().SetState(info))
-  {
-  }
-
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
-  [DataContract(Name = "errors")]
-  public sealed record Info : IResultable<IErrorsGroup>
-  {
-    /// <summary>
-    ///   <para>URI address of validated document or fragment.</para>
-    /// </summary>
-    [DataMember(Name = "errorcount", IsRequired = true)]
-    public int? Count { get; init; }
-
-    /// <summary>
-    ///   <para>Collection of validation errors.</para>
-    /// </summary>
-    [DataMember(Name = "errorlist", IsRequired = true)]
-    public ErrorsCollection Errors { get; init; }
-
-    /// <summary>
-    ///   <para></para>
-    /// </summary>
-    /// <returns></returns>
-    public IErrorsGroup ToResult() => new ErrorsGroup(this);
   }
 }

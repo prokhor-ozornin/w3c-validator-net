@@ -14,7 +14,7 @@ namespace W3CValidator.Tests.Markup;
 public sealed class IMarkupValidationRequestExtensionsTest : UnitTest
 {
   /// <summary>
-  ///   <para>Performs testing of <see cref="IMarkupValidationRequestExtensions.Encoding(IMarkupValidationRequest, Encoding?)"/> method.</para>
+  ///   <para>Performs testing of <see cref="IMarkupValidationRequestExtensions.Encoding(IMarkupValidationRequest, Encoding)"/> method.</para>
   /// </summary>
   [Fact]
   public void Encoding_Method()
@@ -23,20 +23,12 @@ public sealed class IMarkupValidationRequestExtensionsTest : UnitTest
     {
       AssertionExtensions.Should(() => IMarkupValidationRequestExtensions.Encoding(null, Encoding.Default)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null);
-      Encoding.GetEncodings().Select(info => info.GetEncoding()).ForEach(Validate);
+      Validate(null, new MarkupValidationRequest());
+      Encoding.GetEncodings().ForEach(encoding => Validate(encoding.GetEncoding(), new MarkupValidationRequest()));
     }
 
     return;
 
-    static void Validate(Encoding encoding)
-    {
-      var request = new MarkupValidationRequest();
-
-      request.Parameters.Should().BeEmpty();
-
-      request.Encoding(encoding).Should().NotBeNull().And.BeSameAs(request);
-      request.Parameters["charset"].Should().Be(encoding?.WebName);
-    }
+    static void Validate(Encoding encoding, IMarkupValidationRequest request) => request.Encoding(encoding).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["charset"].Should().Be(encoding?.WebName);
   }
 }
