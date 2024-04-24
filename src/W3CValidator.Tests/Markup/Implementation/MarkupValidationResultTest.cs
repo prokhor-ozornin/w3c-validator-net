@@ -150,7 +150,7 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
   ///   <para>Performs testing of serialization/deserialization process.</para>
   /// </summary>
   [Fact]
-  public void SerializationXml()
+  public void Serialization()
   {
     using (new AssertionScope())
     {

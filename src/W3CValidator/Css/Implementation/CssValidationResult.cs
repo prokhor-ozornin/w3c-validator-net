@@ -7,6 +7,7 @@ namespace W3CValidator.Css;
 ///   <para>Representation of response from W3C CSS validation web service that contains detailed information concerning validation results.</para>
 /// </summary>
 [DataContract(Name = "cssvalidationresponse", Namespace = "http://www.w3.org/2005/07/css-validator")]
+[KnownType(typeof(Issues))]
 public sealed class CssValidationResult : ICssValidationResult
 {
   /// <summary>

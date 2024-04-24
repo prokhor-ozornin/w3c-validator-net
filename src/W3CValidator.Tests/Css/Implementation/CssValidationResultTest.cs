@@ -26,7 +26,10 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
     result.Date.Should().BeNull();
     result.CheckedBy.Should().BeNull();
     result.CssLevel.Should().BeNull();
-    result.Issues.Should().Be(new Issues());
+    result.Issues.Errors.Should().BeEmpty();
+    result.Issues.ErrorsGroups.Should().BeEmpty();
+    result.Issues.Warnings.Should().BeEmpty();
+    result.Issues.WarningsGroups.Should().BeEmpty();
   }
 
   /// <summary>

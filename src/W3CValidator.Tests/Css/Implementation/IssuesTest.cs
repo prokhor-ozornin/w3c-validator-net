@@ -16,7 +16,6 @@ public sealed class IssuesTest : UnitTest
   ///   <para>Performs testing of class constructor(s).</para>
   /// </summary>
   /// <seealso cref="Issues()"/>
-  /// <seealso cref="Issues(IEnumerable{IErrorsGroup}, IEnumerable{IWarningsGroup})"/>
   [Fact]
   public void Constructors()
   {

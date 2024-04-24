@@ -48,7 +48,7 @@ public sealed class ICssValidationRequestExtensionsTest : UnitTest
 
     return;
     
-    static void Validate(CssMedium? medium, ICssValidationRequest request) => request.Medium(medium).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["usermedium"].Should().Be(medium?.ToInvariantString());
+    static void Validate(CssMedium? medium, ICssValidationRequest request) => request.Medium(medium).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["user-medium"].Should().Be(medium?.ToInvariantString());
   }
 
   /// <summary>

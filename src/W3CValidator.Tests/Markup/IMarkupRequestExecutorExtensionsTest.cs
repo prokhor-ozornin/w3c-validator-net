@@ -42,18 +42,22 @@ public sealed class IMarkupRequestExecutorExtensionsTest : UnitTest
 
     static void Validate(IMarkupValidationResult result, Uri url, IMarkupRequestExecutor executor)
     {
-      var validation = executor.Url(url);
-      validation.Should().BeOfType<MarkupValidationResult>();
-      validation.Valid.Should().Be(result.Valid);
-      validation.Uri.Should().Be(result.Uri);
-      validation.CheckedBy.Should().Be(result.CheckedBy);
-      validation.Date.Should().BeAfter(DateTimeOffset.MinValue);
-      validation.Doctype.Should().Be(result.Doctype);
-      validation.Encoding.Should().Be(result.Encoding);
-      validation.ErrorsGroup.Count.Should().Be(result.ErrorsGroup.Count);
-      validation.ErrorsGroup.Errors.Should().Equal(result.ErrorsGroup.Errors);
-      validation.WarningsGroup.Count.Should().Be(result.WarningsGroup.Count);
-      validation.WarningsGroup.Warnings.Should().Equal(result.WarningsGroup.Warnings);
+      using (executor)
+      {
+        var validation = executor.Url(url);
+
+        validation.Should().BeOfType<MarkupValidationResult>();
+        validation.Valid.Should().Be(result.Valid);
+        validation.Uri.Should().Be(result.Uri);
+        validation.CheckedBy.Should().Be(result.CheckedBy);
+        validation.Date.Should().BeAfter(DateTimeOffset.MinValue);
+        validation.Doctype.Should().Be(result.Doctype);
+        validation.Encoding.Should().Be(result.Encoding);
+        validation.ErrorsGroup.Count.Should().Be(result.ErrorsGroup.Count);
+        validation.ErrorsGroup.Errors.Should().Equal(result.ErrorsGroup.Errors);
+        validation.WarningsGroup.Count.Should().Be(result.WarningsGroup.Count);
+        validation.WarningsGroup.Warnings.Should().Equal(result.WarningsGroup.Warnings);
+      }
     }
   }
 }

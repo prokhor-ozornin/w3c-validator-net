@@ -67,12 +67,6 @@ public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
   }
 
   /// <summary>
-  ///   <para>Performs testing of <see cref="WarningsGroup.GetHashCode()"/> method.</para>
-  /// </summary>
-  [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(WarningsGroup.Uri), "first", "second"); }
-
-  /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.ToString()"/> method.</para>
   /// </summary>
   [Fact]
