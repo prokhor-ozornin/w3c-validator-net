@@ -1,7 +1,7 @@
 ﻿namespace W3CValidator.Css;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="ICssValidator"/>.</para>
+///   <para>A set of extension methods for the <see cref="ICssValidator"/> interface.</para>
 /// </summary>
 /// <seealso cref="ICssValidator"/>
 public static class ICssValidatorExtensions

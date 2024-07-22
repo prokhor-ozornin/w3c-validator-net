@@ -3,7 +3,7 @@
 namespace W3CValidator.Css;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IMarkupRequestExecutor"/>.</para>
+///   <para>A set of extension methods for the <see cref="IMarkupRequestExecutor"/> interface.</para>
 /// </summary>
 /// <seealso cref="IMarkupRequestExecutor"/>
 public static class IMarkupRequestExecutorExtensions

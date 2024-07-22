@@ -1,7 +1,7 @@
 ﻿namespace W3CValidator.Css;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="ICssRequestExecutor"/>.</para>
+///   <para>A set of extension methods for the <see cref="ICssRequestExecutor"/> interface.</para>
 /// </summary>
 /// <seealso cref="ICssRequestExecutor"/>
 public static class ICssRequestExecutorExtensions

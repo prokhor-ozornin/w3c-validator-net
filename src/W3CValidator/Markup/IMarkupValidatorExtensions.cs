@@ -3,7 +3,7 @@
 namespace W3CValidator.Markup;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="IMarkupValidator"/>.</para>
+///   <para>A set of extension methods for the <see cref="IMarkupValidator"/> interface.</para>
 /// </summary>
 /// <seealso cref="IMarkupValidator"/>
 public static class IMarkupValidatorExtensions

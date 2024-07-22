@@ -4,7 +4,7 @@ using Catharsis.Extensions;
 namespace W3CValidator.Css;
 
 /// <summary>
-///   <para>Set of extension methods for interface <see cref="ICssValidationRequest"/>.</para>
+///   <para>A set of extension methods for the <see cref="ICssValidationRequest"/> interface.</para>
 /// </summary>
 /// <seealso cref="ICssValidationRequest"/>
 public static class ICssValidationRequestExtensions
