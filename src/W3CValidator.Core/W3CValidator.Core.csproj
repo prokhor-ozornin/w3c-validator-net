@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Css\.gitignore" />
+    <None Remove="Css\Implementation\.gitignore" />
+    <None Remove="Markup\.gitignore" />
+    <None Remove="Markup\Implementation\.gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\W3CValidator\Css\CssException.cs" Link="Css\CssException.cs" />
     <Compile Include="..\W3CValidator\Css\CssMedium.cs" Link="Css\CssMedium.cs" />
     <Compile Include="..\W3CValidator\Css\CssProfile.cs" Link="Css\CssProfile.cs" />
@@ -65,6 +72,8 @@
 
   <ItemGroup>
     <Folder Include="Css\Implementation\" />
+    <Folder Include="Css\Implementation\" />
+    <Folder Include="Markup\Implementation\" />
     <Folder Include="Markup\Implementation\" />
   </ItemGroup>
 
