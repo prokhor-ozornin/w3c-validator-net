@@ -1189,7 +1189,7 @@
               <para>Abstract base implementation of <see cref="T:W3CValidator.IValidationRequest"/> contract.</para>
             </summary>
         </member>
-        <member name="F:W3CValidator.ValidationRequest.parameters">
+        <member name="F:W3CValidator.ValidationRequest._parameters">
             <summary>
               <para></para>
             </summary>

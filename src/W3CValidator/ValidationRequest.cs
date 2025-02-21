@@ -10,12 +10,12 @@ public abstract class ValidationRequest : IValidationRequest
   /// <summary>
   ///   <para></para>
   /// </summary>
-  private readonly Dictionary<string, object> parameters = new();
+  private readonly Dictionary<string, object> _parameters = new();
 
   /// <summary>
   ///   <para>Map of parameters (names/values) for the request.</para>
   /// </summary>
-  public IReadOnlyDictionary<string, object> Parameters => parameters;
+  public IReadOnlyDictionary<string, object> Parameters => _parameters;
 
   /// <summary>
   ///   <para></para>
@@ -28,7 +28,7 @@ public abstract class ValidationRequest : IValidationRequest
     if (name is null) throw new ArgumentNullException(nameof(name));
     if (name.IsEmpty()) throw new ArgumentException(nameof(name));
 
-    parameters[name] = value;
+    _parameters[name] = value;
 
     return this;
   }
