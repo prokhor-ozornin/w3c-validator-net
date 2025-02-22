@@ -7,9 +7,6 @@ namespace W3CValidator;
 /// </summary>
 public abstract class ValidationRequest : IValidationRequest
 {
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
   private readonly Dictionary<string, object> _parameters = new();
 
   /// <summary>

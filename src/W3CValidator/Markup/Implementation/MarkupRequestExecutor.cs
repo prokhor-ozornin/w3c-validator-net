@@ -5,11 +5,10 @@ namespace W3CValidator.Css;
 
 internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 {
-  private bool _disposed;
-
-  private Uri EndpointUrl { get; }= "http://validator.w3.org/check".ToUri();
+  private Uri EndpointUrl { get; } = "http://validator.w3.org/check".ToUri();
   private IMarkupValidationRequest Request { get; }
   private HttpClient HttpClient { get; } = new();
+  private bool Disposed { get; set; }
 
   public MarkupRequestExecutor(IMarkupValidationRequest request)
   {
@@ -39,14 +38,14 @@ internal sealed class MarkupRequestExecutor : IMarkupRequestExecutor
 
   private void Dispose(bool disposing)
   {
-    if (!disposing || _disposed)
+    if (!disposing || Disposed)
     {
       return;
     }
 
     HttpClient.Dispose();
 
-    _disposed = true;
+    Disposed = true;
   }
 
   private async Task<IMarkupValidationResult> Call(IReadOnlyDictionary<string, object> parameters, CancellationToken cancellation = default)

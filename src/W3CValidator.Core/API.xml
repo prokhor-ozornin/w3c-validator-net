@@ -1189,11 +1189,6 @@
               <para>Abstract base implementation of <see cref="T:W3CValidator.IValidationRequest"/> contract.</para>
             </summary>
         </member>
-        <member name="F:W3CValidator.ValidationRequest._parameters">
-            <summary>
-              <para></para>
-            </summary>
-        </member>
         <member name="P:W3CValidator.ValidationRequest.Parameters">
             <summary>
               <para>Map of parameters (names/values) for the request.</para>

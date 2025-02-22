@@ -4,11 +4,10 @@ namespace W3CValidator.Css;
 
 internal sealed class CssRequestExecutor : ICssRequestExecutor
 {
-  private bool _disposed;
-
   private Uri EndpointUrl { get; } = "http://jigsaw.w3.org/css-validator/validator".ToUri();
   private ICssValidationRequest Request { get; }
   private HttpClient HttpClient { get; } = new();
+  private bool Disposed { get; set; }
 
   public CssRequestExecutor(ICssValidationRequest request) => Request = request;
 
@@ -49,14 +48,14 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
 
   private void Dispose(bool disposing)
   {
-    if (!disposing || _disposed)
+    if (!disposing || Disposed)
     {
       return;
     }
 
     HttpClient.Dispose();
 
-    _disposed = true;
+    Disposed = true;
   }
 
   private async Task<ICssValidationResult> Call(IReadOnlyDictionary<string, object> parameters, CancellationToken cancellation = default)
