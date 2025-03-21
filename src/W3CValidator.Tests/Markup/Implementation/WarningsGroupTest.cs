@@ -9,7 +9,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="WarningsGroup"/>.</para>
 /// </summary>
-public sealed class WarningsGroupTest : ClassTest<WarningsGroup>
+public sealed class WarningsGroupTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

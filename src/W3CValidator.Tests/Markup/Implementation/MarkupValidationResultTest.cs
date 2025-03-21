@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult"/>.</para>
 /// </summary>
-public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResult>
+public sealed class MarkupValidationResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -110,7 +110,10 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
   ///   <para>Performs testing of <see cref="MarkupValidationResult.CompareTo(IMarkupValidationResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method() { TestCompareTo(nameof(MarkupValidationResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); }
+  public void CompareTo_Method()
+  {
+    TestCompareTo<MarkupValidationResult, DateTimeOffset>(nameof(MarkupValidationResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -120,13 +123,19 @@ public sealed class MarkupValidationResultTest : ClassTest<MarkupValidationResul
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() { TestEquality(nameof(MarkupValidationResult.Uri), "first", "second"); }
+  public void Equals_Methods() 
+  {
+    TestEquality<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() { TestHashCode(nameof(MarkupValidationResult.Uri), "first", "second"); }
+  public void GetHashCode_Method() 
+  {
+    TestHashCode<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "first", "second"); 
+  }
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.ToString()"/> method.</para>

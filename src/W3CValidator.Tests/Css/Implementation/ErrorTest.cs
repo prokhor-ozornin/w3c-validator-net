@@ -9,7 +9,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="Error"/>.</para>
 /// </summary>
-public sealed class ErrorTest : ClassTest<Error>
+public sealed class ErrorTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>

@@ -9,7 +9,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationResult"/>.</para>
 /// </summary>
-public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
+public sealed class CssValidationResultTest : UnitTest
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -93,7 +93,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void CompareTo_Method()
   {
-    TestCompareTo(nameof(CssValidationResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+    TestCompareTo<CssValidationResult, DateTimeOffset>(nameof(CssValidationResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
   }
 
   /// <summary>
@@ -106,7 +106,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality(nameof(CssValidationResult.Uri), "first", "second");
+    TestEquality<CssValidationResult, string>(nameof(CssValidationResult.Uri), "first", "second");
   }
 
   /// <summary>
@@ -115,7 +115,7 @@ public sealed class CssValidationResultTest : ClassTest<CssValidationResult>
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode(nameof(CssValidationResult.Uri), "first", "second");
+    TestHashCode<CssValidationResult, string>(nameof(CssValidationResult.Uri), "first", "second");
   }
 
   /// <summary>
