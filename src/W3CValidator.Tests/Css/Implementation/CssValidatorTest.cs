@@ -32,8 +32,7 @@ public sealed class CssValidatorTest : UnitTest
     {
       using var executor = validator.Request(request);
 
-      executor.Should().BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().BeSameAs(request);
+      executor.Should().BeOfType<CssRequestExecutor>().And.Subject.GetPropertyValue<ICssValidationRequest>("Request").Should().BeSameAs(request);
     }
   }
 }

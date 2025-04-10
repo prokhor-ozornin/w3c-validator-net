@@ -31,8 +31,7 @@ public sealed class ICssValidatorExtensionsTest : UnitTest
     {
       using var executor = validator.Request(request);
 
-      executor.Should().BeOfType<CssRequestExecutor>();
-      executor.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull();
+      executor.Should().BeOfType<CssRequestExecutor>().And.Subject.GetPropertyValue<ICssValidationRequest>("Request").Should().NotBeNull();
     }
   }
 }

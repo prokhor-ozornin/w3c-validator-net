@@ -33,8 +33,7 @@ public sealed class MarkupValidatorTest : UnitTest
     {
       using var executor = validator.Request(request);
 
-      executor.Should().BeOfType<MarkupRequestExecutor>();
-      executor.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeSameAs(request);
+      executor.Should().BeOfType<MarkupRequestExecutor>().And.GetPropertyValue<IMarkupValidationRequest>("Request").Should().BeSameAs(request);
     }
   }
 }
