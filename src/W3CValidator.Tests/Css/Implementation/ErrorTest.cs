@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -125,6 +126,6 @@ public sealed class ErrorTest : UnitTest
 
     return;
 
-    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Validate(IError instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

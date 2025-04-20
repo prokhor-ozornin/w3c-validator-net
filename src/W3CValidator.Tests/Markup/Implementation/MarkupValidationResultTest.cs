@@ -4,6 +4,7 @@ using Xunit;
 using Catharsis.Commons;
 using FluentAssertions.Execution;
 using System.Runtime.Serialization;
+using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Markup;
 
@@ -168,6 +169,6 @@ public sealed class MarkupValidationResultTest : UnitTest
 
     return;
 
-    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Validate(IMarkupValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

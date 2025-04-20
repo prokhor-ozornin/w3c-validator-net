@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Xunit;
 using Catharsis.Commons;
+using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Markup;
@@ -71,6 +72,6 @@ public sealed class WarningsGroupTest : UnitTest
 
     return;
 
-    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Validate(IWarningsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

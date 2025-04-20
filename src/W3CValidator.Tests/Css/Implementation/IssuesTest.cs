@@ -77,6 +77,6 @@ public sealed class IssuesTest : UnitTest
 
     return;
 
-    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Validate(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

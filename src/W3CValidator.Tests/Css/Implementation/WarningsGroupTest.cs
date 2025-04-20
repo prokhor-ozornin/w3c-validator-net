@@ -97,6 +97,6 @@ public sealed class WarningsGroupTest : UnitTest
 
     return;
 
-    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Validate(IWarningsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

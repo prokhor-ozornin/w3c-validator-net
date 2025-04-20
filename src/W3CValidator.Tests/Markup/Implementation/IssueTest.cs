@@ -1,4 +1,5 @@
 ﻿using Catharsis.Commons;
+using Catharsis.Extensions;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -112,6 +113,6 @@ public sealed class IssueTest : UnitTest
 
     return;
 
-    static void Validate(object instance) => instance.Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Validate(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 } 
