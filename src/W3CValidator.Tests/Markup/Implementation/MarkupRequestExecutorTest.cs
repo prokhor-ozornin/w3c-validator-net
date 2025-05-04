@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -13,7 +13,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupRequestExecutor"/>.</para>
 /// </summary>
-public sealed class MarkupRequestExecutorTest : UnitTest
+public sealed class MarkupRequestExecutorTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupRequestExecutor.UrlAsync(Uri, CancellationToken)"/> method.</para>
@@ -24,7 +24,7 @@ public sealed class MarkupRequestExecutorTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
-      AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(Attributes.LocalHost(), Attributes.CancellationToken())).ThrowExactlyAsync<TaskCanceledException>().Await();
+      AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(Fixture.Create<Uri>(), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<TaskCanceledException>().Await();
 
       Validate(new MarkupValidationResult
       {

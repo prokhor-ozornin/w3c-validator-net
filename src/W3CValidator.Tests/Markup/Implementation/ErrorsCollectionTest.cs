@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using Catharsis.Extensions;
 using W3CValidator.Markup;
 using FluentAssertions;
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="ErrorsCollection"/>.</para>
 /// </summary>
-public sealed class ErrorsCollectionTest : UnitTest
+public sealed class ErrorsCollectionTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -22,15 +22,21 @@ public sealed class ErrorsCollectionTest : UnitTest
   {
     typeof(ErrorsCollection).Should().BeDerivedFrom<List<IIssue>>();
 
-    var collection = new ErrorsCollection();
-    collection.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var collection = new ErrorsCollection();
+      collection.Should().BeEmpty();
+    }
 
-    collection = new ErrorsCollection([]);
-    collection.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var collection = new ErrorsCollection([]);
+      collection.Should().BeEmpty();
 
-    var error = new Issue();
-    collection = new ErrorsCollection([error]);
-    collection.Should().Equal(error);
+      var error = new Issue();
+      collection = new ErrorsCollection([error]);
+      collection.Should().Equal(error);
+    }
   }
 
   /// <summary>
@@ -42,6 +48,7 @@ public sealed class ErrorsCollectionTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new ErrorsCollection());
+      Validate(Fixture.Create<ErrorsCollection>());
     }
 
     return;

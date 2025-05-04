@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Catharsis.Commons;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -11,7 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="IMarkupValidationRequestExtensions"/>.</para>
 /// </summary>
-public sealed class IMarkupValidationRequestExtensionsTest : UnitTest
+public sealed class IMarkupValidationRequestExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IMarkupValidationRequestExtensions.Encoding(IMarkupValidationRequest, Encoding)"/> method.</para>

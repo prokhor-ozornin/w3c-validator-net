@@ -1,7 +1,7 @@
-﻿using W3CValidator.Markup;
+﻿using AutoFixture;
+using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="WarningsCollection"/>.</para>
 /// </summary>
-public sealed class WarningsCollectionTest : UnitTest
+public sealed class WarningsCollectionTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -22,15 +22,21 @@ public sealed class WarningsCollectionTest : UnitTest
   {
     typeof(WarningsCollection).Should().BeDerivedFrom<List<IIssue>>();
 
-    var collection = new WarningsCollection();
-    collection.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var collection = new WarningsCollection();
+      collection.Should().BeEmpty();
+    }
 
-    collection = new WarningsCollection([]);
-    collection.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var collection = new WarningsCollection([]);
+      collection.Should().BeEmpty();
 
-    var warning = new Issue();
-    collection = new WarningsCollection([warning]);
-    collection.Should().Equal(warning);
+      var warning = new Issue();
+      collection = new WarningsCollection([warning]);
+      collection.Should().Equal(warning);
+    }
   }
 
   /// <summary>
@@ -42,6 +48,7 @@ public sealed class WarningsCollectionTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new WarningsCollection());
+      Validate(Fixture.Create< WarningsCollection>());
     }
 
     return;

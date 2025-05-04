@@ -1,7 +1,7 @@
-﻿using W3CValidator.Markup;
+﻿using AutoFixture;
+using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using FluentAssertions.Execution;
 using System.Runtime.Serialization;
 using Catharsis.Extensions;
@@ -11,7 +11,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult"/>.</para>
 /// </summary>
-public sealed class MarkupValidationResultTest : UnitTest
+public sealed class MarkupValidationResultTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -22,15 +22,19 @@ public sealed class MarkupValidationResultTest : UnitTest
   {
     typeof(MarkupValidationResult).Should().BeDerivedFrom<object>().And.Implement<IComparable<IMarkupValidationResult>>().And.Implement<IEquatable<IMarkupValidationResult>>().And.Implement<IMarkupValidationResult>().And.BeDecoratedWith<DataContractAttribute>();
 
-    var result = new MarkupValidationResult();
-    result.Uri.Should().BeNull();
-    result.Valid.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.CheckedBy.Should().BeNull();
-    result.Doctype.Should().BeNull();
-    result.Encoding.Should().BeNull();
-    result.ErrorsGroup.Should().BeNull();
-    result.WarningsGroup.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var result = new MarkupValidationResult();
+
+      result.Uri.Should().BeNull();
+      result.Valid.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.CheckedBy.Should().BeNull();
+      result.Doctype.Should().BeNull();
+      result.Encoding.Should().BeNull();
+      result.ErrorsGroup.Should().BeNull();
+      result.WarningsGroup.Should().BeNull();
+    }
   }
 
   /// <summary>
@@ -126,7 +130,7 @@ public sealed class MarkupValidationResultTest : UnitTest
   [Fact]
   public void Equals_Methods() 
   {
-    TestEquality<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "first", "second"); 
+    TestEquality<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "<", ">"); 
   }
 
   /// <summary>
@@ -135,7 +139,7 @@ public sealed class MarkupValidationResultTest : UnitTest
   [Fact]
   public void GetHashCode_Method() 
   {
-    TestHashCode<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "first", "second"); 
+    TestHashCode<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "<", ">"); 
   }
 
   /// <summary>
@@ -165,6 +169,7 @@ public sealed class MarkupValidationResultTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new MarkupValidationResult());
+      Validate(Fixture.Create<IMarkupValidationResult>());
     }
 
     return;

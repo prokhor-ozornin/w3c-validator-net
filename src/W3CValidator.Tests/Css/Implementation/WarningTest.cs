@@ -1,7 +1,7 @@
-﻿using W3CValidator.Css;
+﻿using AutoFixture;
+using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="Warning"/>.</para>
 /// </summary>
-public sealed class WarningTest : UnitTest
+public sealed class WarningTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,11 +21,14 @@ public sealed class WarningTest : UnitTest
   {
     typeof(Warning).Should().BeDerivedFrom<object>().And.Implement<IWarning>();
 
-    var warning = new Warning();
-    warning.Message.Should().BeNull();
-    warning.Level.Should().BeNull();
-    warning.Line.Should().BeNull();
-    warning.Context.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var warning = new Warning();
+      warning.Message.Should().BeNull();
+      warning.Level.Should().BeNull();
+      warning.Line.Should().BeNull();
+      warning.Context.Should().BeNull();
+    }
   }
 
   /// <summary>
@@ -89,6 +92,7 @@ public sealed class WarningTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new Warning());
+      Validate(Fixture.Create<IWarning>());
     }
 
     return;

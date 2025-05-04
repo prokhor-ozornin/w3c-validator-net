@@ -1,7 +1,7 @@
-﻿using W3CValidator.Css;
+﻿using AutoFixture;
+using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationResult"/>.</para>
 /// </summary>
-public sealed class CssValidationResultTest : UnitTest
+public sealed class CssValidationResultTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,16 +21,20 @@ public sealed class CssValidationResultTest : UnitTest
   {
     typeof(CssValidationResult).Should().BeDerivedFrom<object>().And.Implement<ICssValidationResult>();
 
-    var result = new CssValidationResult();
-    result.Uri.Should().BeNull();
-    result.Valid.Should().BeNull();
-    result.Date.Should().BeNull();
-    result.CheckedBy.Should().BeNull();
-    result.CssLevel.Should().BeNull();
-    result.Issues.Errors.Should().BeEmpty();
-    result.Issues.ErrorsGroups.Should().BeEmpty();
-    result.Issues.Warnings.Should().BeEmpty();
-    result.Issues.WarningsGroups.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var result = new CssValidationResult();
+
+      result.Uri.Should().BeNull();
+      result.Valid.Should().BeNull();
+      result.Date.Should().BeNull();
+      result.CheckedBy.Should().BeNull();
+      result.CssLevel.Should().BeNull();
+      result.Issues.Errors.Should().BeEmpty();
+      result.Issues.ErrorsGroups.Should().BeEmpty();
+      result.Issues.Warnings.Should().BeEmpty();
+      result.Issues.WarningsGroups.Should().BeEmpty();
+    }
   }
 
   /// <summary>
@@ -107,7 +111,7 @@ public sealed class CssValidationResultTest : UnitTest
   [Fact]
   public void Equals_Methods()
   {
-    TestEquality<CssValidationResult, string>(nameof(CssValidationResult.Uri), "first", "second");
+    TestEquality<CssValidationResult, string>(nameof(CssValidationResult.Uri), "<", ">");
   }
 
   /// <summary>
@@ -116,7 +120,7 @@ public sealed class CssValidationResultTest : UnitTest
   [Fact]
   public void GetHashCode_Method()
   {
-    TestHashCode<CssValidationResult, string>(nameof(CssValidationResult.Uri), "first", "second");
+    TestHashCode<CssValidationResult, string>(nameof(CssValidationResult.Uri), "<", ">");
   }
 
   /// <summary>
@@ -146,6 +150,7 @@ public sealed class CssValidationResultTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new CssValidationResult());
+      Validate(Fixture.Create<ICssValidationResult>());
     }
 
     return;

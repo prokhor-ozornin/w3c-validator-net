@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="Issues"/>.</para>
 /// </summary>
-public sealed class IssuesTest : UnitTest
+public sealed class IssuesTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,9 +21,13 @@ public sealed class IssuesTest : UnitTest
   {
     typeof(Issues).Should().BeDerivedFrom<object>().And.Implement<IIssues>();
 
-    var issues = new Issues();
-    issues.ErrorsGroups.Should().BeEmpty();
-    issues.WarningsGroups.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var issues = new Issues();
+
+      issues.ErrorsGroups.Should().BeEmpty();
+      issues.WarningsGroups.Should().BeEmpty();
+    }
   }
 
   /// <summary>
@@ -73,6 +77,7 @@ public sealed class IssuesTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new Issues());
+      Validate(Fixture.Create<IIssues>());
     }
 
     return;

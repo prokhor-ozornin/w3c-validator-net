@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Catharsis.Commons;
+﻿using AutoFixture;
+using System.Text;
 using Catharsis.Extensions;
 using W3CValidator.Markup;
 using FluentAssertions;
@@ -11,7 +11,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationRequest"/>.</para>
 /// </summary>
-public sealed class MarkupValidationRequestTest : UnitTest
+public sealed class MarkupValidationRequestTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -22,8 +22,12 @@ public sealed class MarkupValidationRequestTest : UnitTest
   {
     typeof(MarkupValidationRequest).Should().BeDerivedFrom<ValidationRequest>().And.Implement<IMarkupValidationRequest>();
 
-    var request = new MarkupValidationRequest();
-    request.Parameters.Should().BeOfType<Dictionary<string, object>>().And.BeEmpty();
+    using (new AssertionScope())
+    {
+      var request = new MarkupValidationRequest();
+
+      request.Parameters.Should().BeOfType<Dictionary<string, object>>().And.BeEmpty();
+    }
   }
 
   /// <summary>
@@ -34,8 +38,8 @@ public sealed class MarkupValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null, new MarkupValidationRequest());
-      Validate("html", new MarkupValidationRequest());
+      Validate(null, Fixture.Create<IMarkupValidationRequest>());
+      Validate("html", Fixture.Create<IMarkupValidationRequest>());
     }
 
     return;
@@ -51,8 +55,8 @@ public sealed class MarkupValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null, new MarkupValidationRequest());
-      Encoding.GetEncodings().ForEach(encoding => Validate(encoding.Name, new MarkupValidationRequest()));
+      Validate(null, Fixture.Create<IMarkupValidationRequest>());
+      Encoding.GetEncodings().ForEach(encoding => Validate(encoding.Name, Fixture.Create<IMarkupValidationRequest>()));
     }
 
     return;

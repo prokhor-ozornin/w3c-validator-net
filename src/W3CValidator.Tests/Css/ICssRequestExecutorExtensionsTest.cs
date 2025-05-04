@@ -1,9 +1,9 @@
-﻿using Catharsis.Extensions;
+﻿using AutoFixture;
+using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using System.Reflection;
-using Catharsis.Commons;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -11,7 +11,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ICssRequestExecutorExtensions"/>.</para>
 /// </summary>
-public sealed class ICssRequestExecutorExtensionsTest : UnitTest
+public sealed class ICssRequestExecutorExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ICssRequestExecutorExtensions.Document(ICssRequestExecutor, string)"/> method.</para>
@@ -95,7 +95,7 @@ public sealed class ICssRequestExecutorExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, Attributes.LocalHost())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+      AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, Fixture.Create<Uri>())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
       AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
       Validate(new CssValidationResult

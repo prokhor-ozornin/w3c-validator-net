@@ -1,8 +1,8 @@
-﻿using Catharsis.Extensions;
+﻿using AutoFixture;
+using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ErrorsGroup"/>.</para>
 /// </summary>
-public sealed class ErrorsGroupTest : UnitTest
+public sealed class ErrorsGroupTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -23,19 +23,30 @@ public sealed class ErrorsGroupTest : UnitTest
   {
     typeof(ErrorsGroup).Should().BeDerivedFrom<object>().And.Implement<IErrorsGroup>();
 
-    var group = new ErrorsGroup();
-    group.Uri.Should().BeNull();
-    group.Errors.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var group = new ErrorsGroup();
+      group.Uri.Should().BeNull();
+      group.Errors.Should().BeEmpty();
+    }
 
-    var error = new Error();
+    using (new AssertionScope())
+    {
+      var error = new Error();
 
-    group = new ErrorsGroup("uri", new List<IError> { error });
-    group.Uri.Should().Be("uri");
-    group.Errors.Should().Equal(error);
+      var group = new ErrorsGroup("uri", new List<IError> { error });
+      group.Uri.Should().Be("uri");
+      group.Errors.Should().Equal(error);
+    }
 
-    group = new ErrorsGroup("uri", [error]);
-    group.Uri.Should().Be("uri");
-    group.Errors.Should().Equal(error);
+    using (new AssertionScope())
+    {
+      var error = new Error();
+
+      var group = new ErrorsGroup("uri", error);
+      group.Uri.Should().Be("uri");
+      group.Errors.Should().Equal(error);
+    }
   }
 
   /// <summary>
@@ -93,6 +104,7 @@ public sealed class ErrorsGroupTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new ErrorsGroup());
+      Validate(Fixture.Create<IErrorsGroup>());
     }
 
     return;

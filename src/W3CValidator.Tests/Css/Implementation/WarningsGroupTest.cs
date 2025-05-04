@@ -1,8 +1,8 @@
-﻿using Catharsis.Extensions;
+﻿using AutoFixture;
+using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="WarningsGroup"/>.</para>
 /// </summary>
-public sealed class WarningsGroupTest : UnitTest
+public sealed class WarningsGroupTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -23,19 +23,30 @@ public sealed class WarningsGroupTest : UnitTest
   {
     typeof(WarningsGroup).Should().BeDerivedFrom<object>().And.Implement<IWarningsGroup>();
 
-    var group = new WarningsGroup();
-    group.Uri.Should().BeNull();
-    group.Warnings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var group = new WarningsGroup();
+      group.Uri.Should().BeNull();
+      group.Warnings.Should().BeEmpty();
+    }
 
-    var warning = new Warning();
+    using (new AssertionScope())
+    {
+      var warning = new Warning();
 
-    group = new WarningsGroup("uri", new List<IWarning> { warning });
-    group.Uri.Should().Be("uri");
-    group.Warnings.Should().Equal(warning);
+      var group = new WarningsGroup("uri", new List<IWarning> { warning });
+      group.Uri.Should().Be("uri");
+      group.Warnings.Should().Equal(warning);
+    }
 
-    group = new WarningsGroup("uri", [warning]);
-    group.Uri.Should().Be("uri");
-    group.Warnings.Should().Equal(warning);
+    using (new AssertionScope())
+    {
+      var warning = new Warning();
+
+      var group = new WarningsGroup("uri", [warning]);
+      group.Uri.Should().Be("uri");
+      group.Warnings.Should().Equal(warning);
+    }
   }
 
   /// <summary>
@@ -93,6 +104,7 @@ public sealed class WarningsGroupTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new WarningsGroup());
+      Validate(Fixture.Create<IWarningsGroup>());
     }
 
     return;

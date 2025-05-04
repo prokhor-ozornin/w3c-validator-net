@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Catharsis.Commons;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -11,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ICssValidationRequestExtensions"/>.</para>
 /// </summary>
-public sealed class ICssValidationRequestExtensionsTest : UnitTest
+public sealed class ICssValidationRequestExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="ICssValidationRequestExtensions.Language(ICssValidationRequest, CultureInfo)"/> method.</para>

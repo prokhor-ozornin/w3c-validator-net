@@ -1,8 +1,8 @@
-﻿using W3CValidator.Css;
+﻿using AutoFixture;
+using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using System.Reflection;
-using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
@@ -11,7 +11,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssRequestExecutor"/>.</para>
 /// </summary>
-public sealed class CssRequestExecutorTest : UnitTest
+public sealed class CssRequestExecutorTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="CssRequestExecutor.DocumentAsync(string, CancellationToken)"/> method.</para>
@@ -21,11 +21,8 @@ public sealed class CssRequestExecutorTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null))
-        .ThrowExactlyAsync<ArgumentNullException>().WithParameterName("document").Await();
-      AssertionExtensions
-        .Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Attributes.CancellationToken()))
-        .ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("document").Await();
+      AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var validator = Validator.For.Css;
       var stylesheet = "text";
@@ -51,10 +48,8 @@ public sealed class CssRequestExecutorTest : UnitTest
         result.Issues.Warnings.Should().BeEmpty();
       }
 
-      stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css")
-        .ToTextAsync().Await();
-      using (var executor = validator.Request(request =>
-               request.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
+      stylesheet = Assembly.GetExecutingAssembly().GetManifestResourceStream("W3CValidator.Css.Stylesheet.css").ToTextAsync().Await();
+      using (var executor = validator.Request(request => request.Profile(CssProfile.Css2).Language("ru").Warnings(WarningsLevel.Important)))
       {
         var result = executor.DocumentAsync(stylesheet).Await();
         result.Should().NotBeNull();
@@ -101,7 +96,7 @@ public sealed class CssRequestExecutorTest : UnitTest
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
-      AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(Attributes.LocalHost(), Attributes.CancellationToken())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(Fixture.Create<Uri>(), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       Validate(new CssValidationResult
       {

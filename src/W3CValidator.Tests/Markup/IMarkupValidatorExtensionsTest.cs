@@ -1,5 +1,4 @@
-﻿using Catharsis.Commons;
-using W3CValidator.Markup;
+﻿using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
@@ -11,7 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="IMarkupValidatorExtensions"/>.</para>
 /// </summary>
-public sealed class IMarkupValidatorExtensionsTest : UnitTest
+public sealed class IMarkupValidatorExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IMarkupValidatorExtensions.Request(IMarkupValidator, Action{IMarkupValidationRequest})"/> method.</para>

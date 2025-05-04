@@ -1,7 +1,7 @@
-﻿using W3CValidator.Markup;
+﻿using AutoFixture;
+using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="WarningsGroup"/>.</para>
 /// </summary>
-public sealed class WarningsGroupTest : UnitTest
+public sealed class WarningsGroupTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -23,19 +23,30 @@ public sealed class WarningsGroupTest : UnitTest
   {
     typeof(WarningsGroup).Should().BeDerivedFrom<object>().And.Implement<IWarningsGroup>();
 
-    var group = new WarningsGroup();
-    group.Count.Should().BeNull();
-    group.Warnings.Should().BeEmpty();
+    using (new AssertionScope())
+    {
+      var group = new WarningsGroup();
+      group.Count.Should().BeNull();
+      group.Warnings.Should().BeEmpty();
+    }
 
-    var warning = new Issue();
+    using (new AssertionScope())
+    {
+      var warning = new Issue();
 
-    group = new WarningsGroup(int.MaxValue, new List<IIssue> { warning });
-    group.Count.Should().Be(int.MaxValue);
-    group.Warnings.Should().Equal(warning);
+      var group = new WarningsGroup(int.MaxValue, new List<IIssue> { warning });
+      group.Count.Should().Be(int.MaxValue);
+      group.Warnings.Should().Equal(warning);
+    }
 
-    group = new WarningsGroup(int.MaxValue, [warning]);
-    group.Count.Should().Be(int.MaxValue);
-    group.Warnings.Should().Equal(warning);
+    using (new AssertionScope())
+    {
+      var warning = new Issue();
+
+      var group = new WarningsGroup(int.MaxValue, warning);
+      group.Count.Should().Be(int.MaxValue);
+      group.Warnings.Should().Equal(warning);
+    }
   }
 
   /// <summary>
@@ -68,6 +79,7 @@ public sealed class WarningsGroupTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new WarningsGroup());
+      Validate(Fixture.Create<IWarningsGroup>());
     }
 
     return;

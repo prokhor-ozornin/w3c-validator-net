@@ -1,7 +1,7 @@
-﻿using W3CValidator.Css;
+﻿using AutoFixture;
+using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
-using Catharsis.Commons;
 using Catharsis.Extensions;
 using FluentAssertions.Execution;
 
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="Error"/>.</para>
 /// </summary>
-public sealed class ErrorTest : UnitTest
+public sealed class ErrorTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,14 +21,18 @@ public sealed class ErrorTest : UnitTest
   {
     typeof(Error).Should().BeDerivedFrom<object>().And.Implement<IError>();
 
-    var error = new Error();
-    error.Message.Should().BeNull();
-    error.Type.Should().BeNull();
-    error.Subtype.Should().BeNull();
-    error.Property.Should().BeNull();
-    error.Line.Should().BeNull();
-    error.Context.Should().BeNull();
-    error.SkippedString.Should().BeNull();
+    using (new AssertionScope())
+    {
+      var error = new Error();
+
+      error.Message.Should().BeNull();
+      error.Type.Should().BeNull();
+      error.Subtype.Should().BeNull();
+      error.Property.Should().BeNull();
+      error.Line.Should().BeNull();
+      error.Context.Should().BeNull();
+      error.SkippedString.Should().BeNull();
+    }
   }
 
   /// <summary>
@@ -122,6 +126,7 @@ public sealed class ErrorTest : UnitTest
     using (new AssertionScope())
     {
       Validate(new Error());
+      Validate(Fixture.Create<IError>());
     }
 
     return;

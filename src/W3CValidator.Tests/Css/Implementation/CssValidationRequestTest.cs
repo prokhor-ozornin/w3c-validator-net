@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -10,7 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidationRequest"/>.</para>
 /// </summary>
-public sealed class CssValidationRequestTest : UnitTest
+public sealed class CssValidationRequestTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of class constructor(s).</para>
@@ -21,8 +21,12 @@ public sealed class CssValidationRequestTest : UnitTest
   {
     typeof(CssValidationRequest).Should().BeDerivedFrom<ValidationRequest>().And.Implement<ICssValidationRequest>();
 
-    var request = new CssValidationRequest();
-    request.Parameters.Should().BeOfType<Dictionary<string, object>>().And.BeEmpty();
+    using (new AssertionScope())
+    {
+      var request = new CssValidationRequest();
+
+      request.Parameters.Should().BeOfType<Dictionary<string, object>>().And.BeEmpty();
+    }
   }
 
   /// <summary>
@@ -33,8 +37,8 @@ public sealed class CssValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null, new CssValidationRequest());
-      Validate("en", new CssValidationRequest());
+      Validate(null, Fixture.Create<ICssValidationRequest>());
+      Validate("en", Fixture.Create<ICssValidationRequest>());
     }
 
     return;
@@ -50,8 +54,8 @@ public sealed class CssValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null, new CssValidationRequest());
-      Validate("screen", new CssValidationRequest());
+      Validate(null, Fixture.Create<ICssValidationRequest>());
+      Validate("screen", Fixture.Create<ICssValidationRequest>());
     }
 
     return;
@@ -67,8 +71,8 @@ public sealed class CssValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null, new CssValidationRequest());
-      Validate("personal", new CssValidationRequest());
+      Validate(null, Fixture.Create<ICssValidationRequest>());
+      Validate("personal", Fixture.Create<ICssValidationRequest>());
     }
 
     return;
@@ -84,8 +88,8 @@ public sealed class CssValidationRequestTest : UnitTest
   {
     using (new AssertionScope())
     {
-      Validate(null, new CssValidationRequest());
-      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level, new CssValidationRequest()));
+      Validate(null, Fixture.Create<ICssValidationRequest>());
+      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level, Fixture.Create<ICssValidationRequest>()));
     }
 
     return;

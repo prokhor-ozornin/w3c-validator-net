@@ -1,4 +1,4 @@
-﻿using Catharsis.Commons;
+﻿using AutoFixture;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -13,7 +13,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="IMarkupRequestExecutorExtensions"/>.</para>
 /// </summary>
-public sealed class IMarkupRequestExecutorExtensionsTest : UnitTest
+public sealed class IMarkupRequestExecutorExtensionsTest : Test
 {
   /// <summary>
   ///   <para>Performs testing of <see cref="IMarkupRequestExecutorExtensions.Url(IMarkupRequestExecutor, Uri)"/> method.</para>
@@ -23,7 +23,7 @@ public sealed class IMarkupRequestExecutorExtensionsTest : UnitTest
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, Attributes.LocalHost())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+      AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, Fixture.Create<Uri>())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
       AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
       Validate(new MarkupValidationResult
