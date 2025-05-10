@@ -22,13 +22,13 @@ public sealed class MarkupValidatorTest : Test
     {
       var validator = Validator.For.Markup;
 
-      Validate(validator);
-      Validate(validator, new MarkupValidationRequest());
+      Test(validator);
+      Test(validator, new MarkupValidationRequest());
     }
 
     return;
 
-    static void Validate(IMarkupValidator validator, IMarkupValidationRequest request = null)
+    static void Test(IMarkupValidator validator, IMarkupValidationRequest request = null)
     {
       using var executor = validator.Request(request);
 

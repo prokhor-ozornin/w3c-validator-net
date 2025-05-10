@@ -150,14 +150,14 @@ public sealed class MarkupValidationResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new MarkupValidationResult());
-      Validate(string.Empty, new MarkupValidationResult { Uri = string.Empty });
-      Validate("uri", new MarkupValidationResult { Uri = "uri" });
+      Test(string.Empty, new MarkupValidationResult());
+      Test(string.Empty, new MarkupValidationResult { Uri = string.Empty });
+      Test("uri", new MarkupValidationResult { Uri = "uri" });
     }
 
     return;
 
-    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -168,12 +168,12 @@ public sealed class MarkupValidationResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new MarkupValidationResult());
-      Validate(Fixture.Create<IMarkupValidationResult>());
+      Test(new MarkupValidationResult());
+      Test(Fixture.Create<IMarkupValidationResult>());
     }
 
     return;
 
-    static void Validate(IMarkupValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IMarkupValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

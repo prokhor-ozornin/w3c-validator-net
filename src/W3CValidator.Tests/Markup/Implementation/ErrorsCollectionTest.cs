@@ -47,12 +47,12 @@ public sealed class ErrorsCollectionTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new ErrorsCollection());
-      Validate(Fixture.Create<ErrorsCollection>());
+      Test(new ErrorsCollection());
+      Test(Fixture.Create<ErrorsCollection>());
     }
 
     return;
 
-    static void Validate(IList<IIssue> instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IList<IIssue> instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

@@ -26,7 +26,7 @@ public sealed class MarkupRequestExecutorTest : Test
       AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
       AssertionExtensions.Should(() => Validator.For.Markup.Request().UrlAsync(Fixture.Create<Uri>(), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<TaskCanceledException>().Await();
 
-      Validate(new MarkupValidationResult
+      Test(new MarkupValidationResult
       {
         Valid = true,
         Uri = "http://www.w3.org/",
@@ -40,7 +40,7 @@ public sealed class MarkupRequestExecutorTest : Test
 
     return;
 
-    static void Validate(IMarkupValidationResult result, Uri url, IMarkupRequestExecutor executor)
+    static void Test(IMarkupValidationResult result, Uri url, IMarkupRequestExecutor executor)
     {
       using (executor)
       {

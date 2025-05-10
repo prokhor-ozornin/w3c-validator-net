@@ -78,12 +78,12 @@ public sealed class WarningsGroupTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new WarningsGroup());
-      Validate(Fixture.Create<IWarningsGroup>());
+      Test(new WarningsGroup());
+      Test(Fixture.Create<IWarningsGroup>());
     }
 
     return;
 
-    static void Validate(IWarningsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IWarningsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

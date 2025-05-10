@@ -21,13 +21,13 @@ public sealed class CssValidatorTest : Test
     {
       var validator = Validator.For.Css;
 
-      Validate(validator);
-      Validate(validator, new CssValidationRequest());
+      Test(validator);
+      Test(validator, new CssValidationRequest());
     }
 
     return;
 
-    static void Validate(ICssValidator validator, ICssValidationRequest request = null)
+    static void Test(ICssValidator validator, ICssValidationRequest request = null)
     {
       using var executor = validator.Request(request);
 

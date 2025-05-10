@@ -76,12 +76,12 @@ public sealed class IssuesTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Issues());
-      Validate(Fixture.Create<IIssues>());
+      Test(new Issues());
+      Test(Fixture.Create<IIssues>());
     }
 
     return;
 
-    static void Validate(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

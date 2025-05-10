@@ -22,12 +22,12 @@ public sealed class IMarkupValidatorExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IMarkupValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
 
-      Validate(_ => { }, new MarkupValidator());
+      Test(_ => { }, new MarkupValidator());
     }
 
     return;
 
-    static void Validate(Action<IMarkupValidationRequest> request, IMarkupValidator validator)
+    static void Test(Action<IMarkupValidationRequest> request, IMarkupValidator validator)
     {
       using var executor = validator.Request(request);
 

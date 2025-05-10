@@ -96,12 +96,12 @@ public sealed class IssueTest : Test
   {
     using (new AssertionScope())
     {
-      Validate("1:2 message", new Issue { Column = 2, Line = 1, Message = "message" });
+      Test("1:2 message", new Issue { Column = 2, Line = 1, Message = "message" });
     }
 
     return;
 
-    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -112,12 +112,12 @@ public sealed class IssueTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Issues());
-      Validate(Fixture.Create<IIssues>());
+      Test(new Issues());
+      Test(Fixture.Create<IIssues>());
     }
 
     return;
 
-    static void Validate(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 } 

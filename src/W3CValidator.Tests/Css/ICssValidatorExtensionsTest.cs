@@ -21,12 +21,12 @@ public sealed class ICssValidatorExtensionsTest : Test
     {
       AssertionExtensions.Should(() => ICssValidatorExtensions.Request(null)).ThrowExactly<ArgumentNullException>().WithParameterName("validator");
 
-      Validate(_ => {}, new CssValidator());
+      Test(_ => {}, new CssValidator());
     }
 
     return;
 
-    static void Validate(Action<ICssValidationRequest> request, ICssValidator validator)
+    static void Test(Action<ICssValidationRequest> request, ICssValidator validator)
     {
       using var executor = validator.Request(request);
 

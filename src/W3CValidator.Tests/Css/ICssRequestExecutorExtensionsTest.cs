@@ -80,7 +80,7 @@ public sealed class ICssRequestExecutorExtensionsTest : Test
 
       return;
 
-      static void Validate()
+      static void Test()
       {
 
       }
@@ -98,7 +98,7 @@ public sealed class ICssRequestExecutorExtensionsTest : Test
       AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, Fixture.Create<Uri>())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
       AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
-      Validate(new CssValidationResult
+      Test(new CssValidationResult
       {
         CheckedBy = "http://jigsaw.w3.org/css-validator/",
         CssLevel = "css3",
@@ -109,7 +109,7 @@ public sealed class ICssRequestExecutorExtensionsTest : Test
 
     return;
 
-    static void Validate(ICssValidationResult result, Uri url, ICssRequestExecutor executor)
+    static void Test(ICssValidationResult result, Uri url, ICssRequestExecutor executor)
     {
       using (executor)
       {

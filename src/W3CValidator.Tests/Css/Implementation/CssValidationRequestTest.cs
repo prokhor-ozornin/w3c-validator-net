@@ -37,13 +37,13 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, Fixture.Create<ICssValidationRequest>());
-      Validate("en", Fixture.Create<ICssValidationRequest>());
+      Test(null, Fixture.Create<ICssValidationRequest>());
+      Test("en", Fixture.Create<ICssValidationRequest>());
     }
 
     return;
 
-    static void Validate(string language, ICssValidationRequest request) => request.Language(language).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["lang"].Should().Be(language);
+    static void Test(string language, ICssValidationRequest request) => request.Language(language).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["lang"].Should().Be(language);
   }
 
   /// <summary>
@@ -54,13 +54,13 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, Fixture.Create<ICssValidationRequest>());
-      Validate("screen", Fixture.Create<ICssValidationRequest>());
+      Test(null, Fixture.Create<ICssValidationRequest>());
+      Test("screen", Fixture.Create<ICssValidationRequest>());
     }
 
     return;
 
-    static void Validate(string medium, ICssValidationRequest request) => request.Medium(medium).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["user-medium"].Should().Be(medium);
+    static void Test(string medium, ICssValidationRequest request) => request.Medium(medium).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["user-medium"].Should().Be(medium);
   }
 
   /// <summary>
@@ -71,13 +71,13 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, Fixture.Create<ICssValidationRequest>());
-      Validate("personal", Fixture.Create<ICssValidationRequest>());
+      Test(null, Fixture.Create<ICssValidationRequest>());
+      Test("personal", Fixture.Create<ICssValidationRequest>());
     }
 
     return;
 
-    static void Validate(string profile, ICssValidationRequest request) => request.Profile(profile).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["profile"].Should().Be(profile);
+    static void Test(string profile, ICssValidationRequest request) => request.Profile(profile).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["profile"].Should().Be(profile);
   }
 
   /// <summary>
@@ -88,12 +88,12 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, Fixture.Create<ICssValidationRequest>());
-      Enum.GetValues<WarningsLevel>().ForEach(level => Validate(level, Fixture.Create<ICssValidationRequest>()));
+      Test(null, Fixture.Create<ICssValidationRequest>());
+      Enum.GetValues<WarningsLevel>().ForEach(level => Test(level, Fixture.Create<ICssValidationRequest>()));
     }
 
     return;
 
-    static void Validate(WarningsLevel? level, ICssValidationRequest request) => request.Warnings(level).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["warning"].Should().Be((int?) level);
+    static void Test(WarningsLevel? level, ICssValidationRequest request) => request.Warnings(level).Should().BeSameAs(request).And.BeOfType<CssValidationRequest>().Which.Parameters["warning"].Should().Be((int?) level);
   }
 }

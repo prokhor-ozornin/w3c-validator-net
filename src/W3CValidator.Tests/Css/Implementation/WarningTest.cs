@@ -75,12 +75,12 @@ public sealed class WarningTest : Test
   {
     using (new AssertionScope())
     {
-      Validate("1:2 message", new Warning { Level = 2, Line = 1, Message = "message" });
+      Test("1:2 message", new Warning { Level = 2, Line = 1, Message = "message" });
     }
 
     return;
 
-    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -91,12 +91,12 @@ public sealed class WarningTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new Warning());
-      Validate(Fixture.Create<IWarning>());
+      Test(new Warning());
+      Test(Fixture.Create<IWarning>());
     }
 
     return;
 
-    static void Validate(IWarning instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IWarning instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

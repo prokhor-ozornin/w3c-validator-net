@@ -131,14 +131,14 @@ public sealed class CssValidationResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new CssValidationResult());
-      Validate(string.Empty, new CssValidationResult { Uri = string.Empty });
-      Validate("uri", new CssValidationResult { Uri = "uri" });
+      Test(string.Empty, new CssValidationResult());
+      Test(string.Empty, new CssValidationResult { Uri = string.Empty });
+      Test("uri", new CssValidationResult { Uri = "uri" });
     }
 
     return;
 
-    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -149,12 +149,12 @@ public sealed class CssValidationResultTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new CssValidationResult());
-      Validate(Fixture.Create<ICssValidationResult>());
+      Test(new CssValidationResult());
+      Test(Fixture.Create<ICssValidationResult>());
     }
 
     return;
 
-    static void Validate(ICssValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(ICssValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

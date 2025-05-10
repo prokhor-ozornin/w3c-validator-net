@@ -78,12 +78,12 @@ public sealed class ErrorsGroupTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new ErrorsGroup());
-      Validate(Fixture.Create<IErrorsGroup>());
+      Test(new ErrorsGroup());
+      Test(Fixture.Create<IErrorsGroup>());
     }
 
     return;
 
-    static void Validate(IErrorsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IErrorsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

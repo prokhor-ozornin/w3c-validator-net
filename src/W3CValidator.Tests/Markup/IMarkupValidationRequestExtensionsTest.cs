@@ -22,12 +22,12 @@ public sealed class IMarkupValidationRequestExtensionsTest : Test
     {
       AssertionExtensions.Should(() => IMarkupValidationRequestExtensions.Encoding(null, Encoding.Default)).ThrowExactly<ArgumentNullException>().WithParameterName("request");
 
-      Validate(null, new MarkupValidationRequest());
-      Encoding.GetEncodings().ForEach(encoding => Validate(encoding.GetEncoding(), new MarkupValidationRequest()));
+      Test(null, new MarkupValidationRequest());
+      Encoding.GetEncodings().ForEach(encoding => Test(encoding.GetEncoding(), new MarkupValidationRequest()));
     }
 
     return;
 
-    static void Validate(Encoding encoding, IMarkupValidationRequest request) => request.Encoding(encoding).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["charset"].Should().Be(encoding?.WebName);
+    static void Test(Encoding encoding, IMarkupValidationRequest request) => request.Encoding(encoding).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["charset"].Should().Be(encoding?.WebName);
   }
 }

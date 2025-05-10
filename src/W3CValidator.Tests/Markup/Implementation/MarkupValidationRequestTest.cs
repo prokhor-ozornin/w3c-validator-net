@@ -38,13 +38,13 @@ public sealed class MarkupValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, Fixture.Create<IMarkupValidationRequest>());
-      Validate("html", Fixture.Create<IMarkupValidationRequest>());
+      Test(null, Fixture.Create<IMarkupValidationRequest>());
+      Test("html", Fixture.Create<IMarkupValidationRequest>());
     }
 
     return;
 
-    static void Validate(string doctype, IMarkupValidationRequest request) => request.Doctype(doctype).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["doctype"].Should().Be(doctype);
+    static void Test(string doctype, IMarkupValidationRequest request) => request.Doctype(doctype).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["doctype"].Should().Be(doctype);
   }
 
   /// <summary>
@@ -55,12 +55,12 @@ public sealed class MarkupValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(null, Fixture.Create<IMarkupValidationRequest>());
-      Encoding.GetEncodings().ForEach(encoding => Validate(encoding.Name, Fixture.Create<IMarkupValidationRequest>()));
+      Test(null, Fixture.Create<IMarkupValidationRequest>());
+      Encoding.GetEncodings().ForEach(encoding => Test(encoding.Name, Fixture.Create<IMarkupValidationRequest>()));
     }
 
     return;
 
-    static void Validate(string encoding, IMarkupValidationRequest request) => request.Encoding(encoding).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["charset"].Should().Be(encoding);
+    static void Test(string encoding, IMarkupValidationRequest request) => request.Encoding(encoding).Should().BeSameAs(request).And.BeOfType<MarkupValidationRequest>().Which.Parameters["charset"].Should().Be(encoding);
   }
 }

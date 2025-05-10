@@ -85,14 +85,14 @@ public sealed class ErrorsGroupTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(string.Empty, new ErrorsGroup());
-      Validate(string.Empty, new ErrorsGroup { Uri = string.Empty });
-      Validate("uri", new ErrorsGroup { Uri = "uri" });
+      Test(string.Empty, new ErrorsGroup());
+      Test(string.Empty, new ErrorsGroup { Uri = string.Empty });
+      Test("uri", new ErrorsGroup { Uri = "uri" });
     }
 
     return;
 
-    static void Validate(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -103,12 +103,12 @@ public sealed class ErrorsGroupTest : Test
   {
     using (new AssertionScope())
     {
-      Validate(new ErrorsGroup());
-      Validate(Fixture.Create<IErrorsGroup>());
+      Test(new ErrorsGroup());
+      Test(Fixture.Create<IErrorsGroup>());
     }
 
     return;
 
-    static void Validate(IErrorsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IErrorsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }
