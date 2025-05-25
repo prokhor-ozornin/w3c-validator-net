@@ -16,19 +16,19 @@ public class Test : IDisposable
     Fixture.Customize<CancellationToken>(x => x.FromFactory<CancellationToken>(_ => new CancellationToken(true)));
     
     Fixture
-      .TypeRelay<IError, Error>()
-      .TypeRelay<W3CValidator.Css.IErrorsGroup, W3CValidator.Css.ErrorsGroup>()
-      .TypeRelay<IWarning, Warning>()
-      .TypeRelay<W3CValidator.Css.IWarningsGroup, W3CValidator.Css.WarningsGroup>()
-      .TypeRelay<IIssues, Issues>()
-      .TypeRelay<ICssValidationRequest, CssValidationRequest>()
-      .TypeRelay<ICssValidationResult, CssValidationResult>()
+      .Map<IError, Error>()
+      .Map<W3CValidator.Css.IErrorsGroup, W3CValidator.Css.ErrorsGroup>()
+      .Map<IWarning, Warning>()
+      .Map<W3CValidator.Css.IWarningsGroup, W3CValidator.Css.WarningsGroup>()
+      .Map<IIssues, Issues>()
+      .Map<ICssValidationRequest, CssValidationRequest>()
+      .Map<ICssValidationResult, CssValidationResult>()
 
-      .TypeRelay<W3CValidator.Markup.IErrorsGroup, W3CValidator.Markup.ErrorsGroup>()
-      .TypeRelay<W3CValidator.Markup.IWarningsGroup, W3CValidator.Markup.WarningsGroup>()
-      .TypeRelay<IIssue, Issue>()
-      .TypeRelay<IMarkupValidationRequest, MarkupValidationRequest>()
-      .TypeRelay<IMarkupValidationResult, MarkupValidationResult>();
+      .Map<W3CValidator.Markup.IErrorsGroup, W3CValidator.Markup.ErrorsGroup>()
+      .Map<W3CValidator.Markup.IWarningsGroup, W3CValidator.Markup.WarningsGroup>()
+      .Map<IIssue, Issue>()
+      .Map<IMarkupValidationRequest, MarkupValidationRequest>()
+      .Map<IMarkupValidationResult, MarkupValidationResult>();
 
       JsonConvert.DefaultSettings = () => new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
   }
