@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions;
 using Newtonsoft.Json;
 using W3CValidator.Css;
@@ -9,13 +9,11 @@ namespace W3CValidator.Tests;
 
 public class Test : IDisposable
 {
-  protected IFixture Fixture { get; } = new Fixture();
-
   protected Test()
   {
-    Fixture.Customize<CancellationToken>(x => x.FromFactory<CancellationToken>(_ => new CancellationToken(true)));
+    Fixture.Current.Configuration.Constructor<CancellationToken>(() => new CancellationToken(true));
     
-    Fixture
+    Fixture.Current.Configuration
       .Map<IError, Error>()
       .Map<W3CValidator.Css.IErrorsGroup, W3CValidator.Css.ErrorsGroup>()
       .Map<IWarning, Warning>()

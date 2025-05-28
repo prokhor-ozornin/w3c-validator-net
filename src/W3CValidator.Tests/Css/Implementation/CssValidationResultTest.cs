@@ -1,8 +1,8 @@
-﻿using AutoFixture;
-using W3CValidator.Css;
+﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -150,7 +150,7 @@ public sealed class CssValidationResultTest : Test
     using (new AssertionScope())
     {
       Test(new CssValidationResult());
-      Test(Fixture.Create<ICssValidationResult>());
+      Test(Fixture<ICssValidationResult>.Create());
     }
 
     return;

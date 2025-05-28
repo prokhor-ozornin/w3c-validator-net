@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -113,7 +113,7 @@ public sealed class IssueTest : Test
     using (new AssertionScope())
     {
       Test(new Issues());
-      Test(Fixture.Create<IIssues>());
+      Test(Fixture<IIssues>.Create());
     }
 
     return;

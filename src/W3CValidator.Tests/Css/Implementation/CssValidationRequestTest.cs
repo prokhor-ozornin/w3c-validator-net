@@ -1,9 +1,9 @@
-﻿using AutoFixture;
-using W3CValidator.Css;
+﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using FluentAssertions.Execution;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 
 namespace W3CValidator.Tests.Css;
 
@@ -37,8 +37,8 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Test(null, Fixture.Create<ICssValidationRequest>());
-      Test("en", Fixture.Create<ICssValidationRequest>());
+      Test(null, Fixture<ICssValidationRequest>.Create());
+      Test("en", Fixture<ICssValidationRequest>.Create());
     }
 
     return;
@@ -54,8 +54,8 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Test(null, Fixture.Create<ICssValidationRequest>());
-      Test("screen", Fixture.Create<ICssValidationRequest>());
+      Test(null, Fixture<ICssValidationRequest>.Create());
+      Test("screen", Fixture<ICssValidationRequest>.Create());
     }
 
     return;
@@ -71,8 +71,8 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Test(null, Fixture.Create<ICssValidationRequest>());
-      Test("personal", Fixture.Create<ICssValidationRequest>());
+      Test(null, Fixture<ICssValidationRequest>.Create());
+      Test("personal", Fixture<ICssValidationRequest>.Create());
     }
 
     return;
@@ -88,8 +88,8 @@ public sealed class CssValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Test(null, Fixture.Create<ICssValidationRequest>());
-      Enum.GetValues<WarningsLevel>().ForEach(level => Test(level, Fixture.Create<ICssValidationRequest>()));
+      Test(null, Fixture<ICssValidationRequest>.Create());
+      Enum.GetValues<WarningsLevel>().ForEach(level => Test(level, Fixture<ICssValidationRequest>.Create()));
     }
 
     return;

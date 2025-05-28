@@ -1,9 +1,9 @@
-﻿using AutoFixture;
-using W3CValidator.Css;
+﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using System.Reflection;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -22,7 +22,7 @@ public sealed class CssRequestExecutorTest : Test
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("document").Await();
-      AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Validator.For.Css.Request().DocumentAsync(string.Empty, Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       var validator = Validator.For.Css;
       var stylesheet = "text";
@@ -96,7 +96,7 @@ public sealed class CssRequestExecutorTest : Test
     using (new AssertionScope())
     {
       AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(null)).ThrowExactlyAsync<ArgumentNullException>().WithParameterName("url").Await();
-      AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(Fixture.Create<Uri>(), Fixture.Create<CancellationToken>())).ThrowExactlyAsync<OperationCanceledException>().Await();
+      AssertionExtensions.Should(() => Validator.For.Css.Request().UrlAsync(Fixture<Uri>.Create(), Fixture<CancellationToken>.Create())).ThrowExactlyAsync<OperationCanceledException>().Await();
 
       Test(new CssValidationResult
       {

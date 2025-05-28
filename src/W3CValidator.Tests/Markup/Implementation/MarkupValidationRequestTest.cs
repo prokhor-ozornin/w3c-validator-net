@@ -1,6 +1,6 @@
-﻿using AutoFixture;
-using System.Text;
+﻿using System.Text;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -38,8 +38,8 @@ public sealed class MarkupValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Test(null, Fixture.Create<IMarkupValidationRequest>());
-      Test("html", Fixture.Create<IMarkupValidationRequest>());
+      Test(null, Fixture<IMarkupValidationRequest>.Create());
+      Test("html", Fixture<IMarkupValidationRequest>.Create());
     }
 
     return;
@@ -55,8 +55,8 @@ public sealed class MarkupValidationRequestTest : Test
   {
     using (new AssertionScope())
     {
-      Test(null, Fixture.Create<IMarkupValidationRequest>());
-      Encoding.GetEncodings().ForEach(encoding => Test(encoding.Name, Fixture.Create<IMarkupValidationRequest>()));
+      Test(null, Fixture<IMarkupValidationRequest>.Create());
+      Encoding.GetEncodings().ForEach(encoding => Test(encoding.Name, Fixture<IMarkupValidationRequest>.Create()));
     }
 
     return;

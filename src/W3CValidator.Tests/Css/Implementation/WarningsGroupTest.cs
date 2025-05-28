@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
@@ -104,7 +104,7 @@ public sealed class WarningsGroupTest : Test
     using (new AssertionScope())
     {
       Test(new WarningsGroup());
-      Test(Fixture.Create<IWarningsGroup>());
+      Test(Fixture<IWarningsGroup>.Create());
     }
 
     return;

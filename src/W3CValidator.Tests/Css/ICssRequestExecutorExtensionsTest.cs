@@ -1,9 +1,9 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using System.Reflection;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -95,7 +95,7 @@ public sealed class ICssRequestExecutorExtensionsTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, Fixture.Create<Uri>())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+      AssertionExtensions.Should(() => ICssRequestExecutorExtensions.Url(null, Fixture<Uri>.Create())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
       AssertionExtensions.Should(() => Validator.For.Css.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
       Test(new CssValidationResult

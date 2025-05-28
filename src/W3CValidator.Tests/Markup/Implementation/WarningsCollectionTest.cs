@@ -1,8 +1,8 @@
-﻿using AutoFixture;
-using W3CValidator.Markup;
+﻿using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Markup;
@@ -48,7 +48,7 @@ public sealed class WarningsCollectionTest : Test
     using (new AssertionScope())
     {
       Test(new WarningsCollection());
-      Test(Fixture.Create< WarningsCollection>());
+      Test(Fixture<WarningsCollection>.Create());
     }
 
     return;

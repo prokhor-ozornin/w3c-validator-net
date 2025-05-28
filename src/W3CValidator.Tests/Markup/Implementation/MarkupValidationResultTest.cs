@@ -1,10 +1,10 @@
-﻿using AutoFixture;
-using W3CValidator.Markup;
+﻿using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
 using FluentAssertions.Execution;
 using System.Runtime.Serialization;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 
 namespace W3CValidator.Tests.Markup;
 
@@ -169,7 +169,7 @@ public sealed class MarkupValidationResultTest : Test
     using (new AssertionScope())
     {
       Test(new MarkupValidationResult());
-      Test(Fixture.Create<IMarkupValidationResult>());
+      Test(Fixture<IMarkupValidationResult>.Create());
     }
 
     return;

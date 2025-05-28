@@ -1,8 +1,8 @@
-﻿using AutoFixture;
-using W3CValidator.Css;
+﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 
 namespace W3CValidator.Tests.Css;
@@ -92,7 +92,7 @@ public sealed class WarningTest : Test
     using (new AssertionScope())
     {
       Test(new Warning());
-      Test(Fixture.Create<IWarning>());
+      Test(Fixture<IWarning>.Create());
     }
 
     return;

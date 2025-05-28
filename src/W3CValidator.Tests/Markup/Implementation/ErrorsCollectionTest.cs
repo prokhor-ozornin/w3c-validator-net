@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
@@ -48,7 +48,7 @@ public sealed class ErrorsCollectionTest : Test
     using (new AssertionScope())
     {
       Test(new ErrorsCollection());
-      Test(Fixture.Create<ErrorsCollection>());
+      Test(Fixture<ErrorsCollection>.Create());
     }
 
     return;

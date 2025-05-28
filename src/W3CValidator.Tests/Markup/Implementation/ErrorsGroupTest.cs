@@ -1,5 +1,5 @@
-﻿using AutoFixture;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
+using Catharsis.Fixture;
 using W3CValidator.Markup;
 using FluentAssertions;
 using Xunit;
@@ -79,7 +79,7 @@ public sealed class ErrorsGroupTest : Test
     using (new AssertionScope())
     {
       Test(new ErrorsGroup());
-      Test(Fixture.Create<IErrorsGroup>());
+      Test(Fixture<IErrorsGroup>.Create());
     }
 
     return;

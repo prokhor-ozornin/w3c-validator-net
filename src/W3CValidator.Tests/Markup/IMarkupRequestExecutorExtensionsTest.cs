@@ -1,8 +1,8 @@
-﻿using AutoFixture;
-using W3CValidator.Css;
+﻿using W3CValidator.Css;
 using FluentAssertions;
 using Xunit;
 using Catharsis.Extensions;
+using Catharsis.Fixture;
 using FluentAssertions.Execution;
 using W3CValidator.Markup;
 using ErrorsGroup = W3CValidator.Markup.ErrorsGroup;
@@ -23,7 +23,7 @@ public sealed class IMarkupRequestExecutorExtensionsTest : Test
   {
     using (new AssertionScope())
     {
-      AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, Fixture.Create<Uri>())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
+      AssertionExtensions.Should(() => IMarkupRequestExecutorExtensions.Url(null, Fixture<Uri>.Create())).ThrowExactly<ArgumentNullException>().WithParameterName("executor");
       AssertionExtensions.Should(() => Validator.For.Markup.Request().Url(null)).ThrowExactly<ArgumentNullException>().WithParameterName("url");
 
       Test(new MarkupValidationResult
