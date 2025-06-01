@@ -11,7 +11,9 @@ public class Test : IDisposable
 {
   protected Test()
   {
-    Fixture.Current.Configuration.Constructor<CancellationToken>(() => new CancellationToken(true));
+    JsonConvert.DefaultSettings = () => new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
+
+    Fixture.Current.Configuration.Type<CancellationToken>(x => x.Constructor(() => new CancellationToken(true)));
     
     Fixture.Current.Configuration
       .Map<IError, Error>()
@@ -27,8 +29,6 @@ public class Test : IDisposable
       .Map<IIssue, Issue>()
       .Map<IMarkupValidationRequest, MarkupValidationRequest>()
       .Map<IMarkupValidationResult, MarkupValidationResult>();
-
-      JsonConvert.DefaultSettings = () => new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
   }
 
   public virtual void Dispose()
