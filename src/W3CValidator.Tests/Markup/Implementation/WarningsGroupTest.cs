@@ -53,10 +53,7 @@ public sealed class WarningsGroupTest : Test
   ///   <para>Performs testing of <see cref="WarningsGroup.Count"/> property.</para>
   /// </summary>
   [Fact]
-  public void Count_Property()
-  {
-    new WarningsGroup { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
-  }
+  public void Count_Property() => new WarningsGroup { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.WarningsCollection"/> property.</para>

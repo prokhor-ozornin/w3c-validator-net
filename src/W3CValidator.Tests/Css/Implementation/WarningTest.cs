@@ -35,37 +35,25 @@ public sealed class WarningTest : Test
   ///   <para>Performs testing of <see cref="Warning.Message"/> property.</para>
   /// </summary>
   [Fact]
-  public void Message_Property()
-  {
-    new Warning { Message = "message" }.Message.Should().Be("message");
-  }
+  public void Message_Property() => new Warning { Message = "message" }.Message.Should().Be("message");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Warning.Level"/> property.</para>
   /// </summary>
   [Fact]
-  public void Level_Property()
-  {
-    new Warning { Level = int.MaxValue }.Level.Should().Be(int.MaxValue);
-  }
+  public void Level_Property() => new Warning { Level = int.MaxValue }.Level.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Warning.Line"/> property.</para>
   /// </summary>
   [Fact]
-  public void Line_Property()
-  {
-    new Warning { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
-  }
+  public void Line_Property() => new Warning { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Warning.Context"/> property.</para>
   /// </summary>
   [Fact]
-  public void Context_Property()
-  {
-    new Warning { Context = "context" }.Context.Should().Be("context");
-  }
+  public void Context_Property() => new Warning { Context = "context" }.Context.Should().Be("context");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Warning.ToString()"/> method.</para>

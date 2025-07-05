@@ -41,84 +41,55 @@ public sealed class MarkupValidationResultTest : Test
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Uri"/> property.</para>
   /// </summary>
   [Fact]
-  public void Uri_Property()
-  {
-    new MarkupValidationResult { Uri = "uri" }.Uri.Should().Be("uri");
-  }
-
+  public void Uri_Property() => new MarkupValidationResult { Uri = "uri" }.Uri.Should().Be("uri");
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Valid"/> property.</para>
   /// </summary>
   [Fact]
-  public void Valid_Property()
-  {
-    new MarkupValidationResult { Valid = true }.Valid.Should().BeTrue();
-  }
+  public void Valid_Property() => new MarkupValidationResult { Valid = true }.Valid.Should().BeTrue();
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Date"/> property.</para>
   /// </summary>
   [Fact]
-  public void Date_Property()
-  {
-    new MarkupValidationResult { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
-  }
+  public void Date_Property() => new MarkupValidationResult { Date = DateTimeOffset.MaxValue }.Date.Should().Be(DateTimeOffset.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.CheckedBy"/> property.</para>
   /// </summary>
   [Fact]
-  public void CheckedBy_Property()
-  {
-    new MarkupValidationResult { CheckedBy = "checkedBy" }.CheckedBy.Should().Be("checkedBy");
-  }
+  public void CheckedBy_Property() => new MarkupValidationResult { CheckedBy = "checkedBy" }.CheckedBy.Should().Be("checkedBy");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Doctype"/> property.</para>
   /// </summary>
   [Fact]
-  public void Doctype_Property()
-  {
-    new MarkupValidationResult { Doctype = "doctype" }.Doctype.Should().Be("doctype");
-  }
-
+  public void Doctype_Property() => new MarkupValidationResult { Doctype = "doctype" }.Doctype.Should().Be("doctype");
+  
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.Encoding"/> property.</para>
   /// </summary>
   [Fact]
-  public void Encoding_Property()
-  {
-    new MarkupValidationResult { Encoding = "encoding" }.Encoding.Should().Be("encoding");
-  }
+  public void Encoding_Property() => new MarkupValidationResult { Encoding = "encoding" }.Encoding.Should().Be("encoding");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.ErrorsGroup"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsGroup_Property()
-  {
-    var group = new ErrorsGroup();
-    new MarkupValidationResult { ErrorsGroup = group }.ErrorsGroup.Should().BeSameAs(group);
-  }
+  public void ErrorsGroup_Property() => new ErrorsGroup().With(group => new MarkupValidationResult { ErrorsGroup = group }.ErrorsGroup.Should().BeSameAs(group));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.WarningsGroup"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsGroup_Property()
-  {
-    var group = new WarningsGroup();
-    new MarkupValidationResult { WarningsGroup = group }.WarningsGroup.Should().BeSameAs(group);
-  }
+  public void WarningsGroup_Property() => new WarningsGroup().With(group => new MarkupValidationResult { WarningsGroup = group }.WarningsGroup.Should().BeSameAs(group));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.CompareTo(IMarkupValidationResult)"/> method.</para>
   /// </summary>
   [Fact]
-  public void CompareTo_Method()
-  {
-    TestCompareTo<MarkupValidationResult, DateTimeOffset>(nameof(MarkupValidationResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
-  }
+  public void CompareTo_Method() => TestCompareTo<MarkupValidationResult, DateTimeOffset>(nameof(MarkupValidationResult.Date), DateTimeOffset.MinValue, DateTimeOffset.MaxValue); 
 
   /// <summary>
   ///   <para>Performs testing of following methods :</para>
@@ -128,19 +99,13 @@ public sealed class MarkupValidationResultTest : Test
   ///   </list>
   /// </summary>
   [Fact]
-  public void Equals_Methods() 
-  {
-    TestEquality<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "<", ">"); 
-  }
+  public void Equals_Methods() => TestEquality<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "<", ">"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.GetHashCode()"/> method.</para>
   /// </summary>
   [Fact]
-  public void GetHashCode_Method() 
-  {
-    TestHashCode<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "<", ">"); 
-  }
+  public void GetHashCode_Method() => TestHashCode<MarkupValidationResult, string>(nameof(MarkupValidationResult.Uri), "<", ">"); 
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.ToString()"/> method.</para>

@@ -53,10 +53,7 @@ public sealed class ErrorsGroupTest : Test
   ///   <para>Performs testing of <see cref="ErrorsGroup.Count"/> property.</para>
   /// </summary>
   [Fact]
-  public void Count_Property()
-  {
-    new ErrorsGroup { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
-  }
+  public void Count_Property() => new ErrorsGroup { Count = int.MaxValue }.Count.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.ErrorsCollection"/> property.</para>

@@ -34,39 +34,25 @@ public sealed class IssuesTest : Test
   ///   <para>Performs testing of <see cref="Issues.ErrorsGroupsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsGroupsList_Property()
-  {
-    var errors = new List<IErrorsGroup>();
-    new Issues { ErrorsGroupsList = errors }.ErrorsGroupsList.Should().BeSameAs(errors);
-  }
+  public void ErrorsGroupsList_Property() => new List<IErrorsGroup>().With(errors => new Issues { ErrorsGroupsList = errors }.ErrorsGroupsList.Should().BeSameAs(errors));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issues.WarningsGroupsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsGroupsList_Property()
-  {
-    var warnings = new List<IWarningsGroup>();
-    new Issues { WarningsGroupsList = warnings }.WarningsGroupsList.Should().BeSameAs(warnings);
-  }
+  public void WarningsGroupsList_Property() => new List<IWarningsGroup>().With(warnings => new Issues { WarningsGroupsList = warnings }.WarningsGroupsList.Should().BeSameAs(warnings));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issues.ErrorsGroups"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsGroups_Property()
-  {
-    new Issues().With(issues => issues.ErrorsGroups.Should().BeSameAs(issues.ErrorsGroupsList));
-  }
+  public void ErrorsGroups_Property() => new Issues().With(issues => issues.ErrorsGroups.Should().BeSameAs(issues.ErrorsGroupsList));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issues.WarningsGroups"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsGroups_Property()
-  {
-    new Issues().With(issues => issues.WarningsGroups.Should().BeSameAs(issues.WarningsGroupsList));
-  }
+  public void WarningsGroups_Property() => new Issues().With(issues => issues.WarningsGroups.Should().BeSameAs(issues.WarningsGroupsList));
 
   /// <summary>
   ///   <para>Performs testing of serialization/deserialization process.</para>

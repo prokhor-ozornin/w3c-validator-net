@@ -39,54 +39,37 @@ public sealed class IssueTest : Test
   ///   <para>Performs testing of <see cref="Issue.MessageId"/> property.</para>
   /// </summary>
   [Fact]
-  public void MessageId_Property()
-  {
-    new Issue { MessageId = "messageId" }.MessageId.Should().Be("messageId");  }
+  public void MessageId_Property() => new Issue { MessageId = "messageId" }.MessageId.Should().Be("messageId");  
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.Message"/> property.</para>
   /// </summary>
   [Fact]
-  public void Message_Property()
-  {
-    new Issue { Message = "message" }.Message.Should().Be("message");
-  }
+  public void Message_Property() => new Issue { Message = "message" }.Message.Should().Be("message");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.Line"/> property.</para>
   /// </summary>
   [Fact]
-  public void Line_Property()
-  {
-    new Issue { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
-  }
+  public void Line_Property() => new Issue { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.Column"/> property.</para>
   /// </summary>
   [Fact]
-  public void Column_Property()
-  {
-    new Issue { Column = int.MaxValue }.Column.Should().Be(int.MaxValue);
-  }
+  public void Column_Property() => new Issue { Column = int.MaxValue }.Column.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.Source"/> property.</para>
   /// </summary>
   [Fact]
-  public void Source_Property()
-  {
-    new Issue { Source = "source" }.Source.Should().Be("source");
-  }
+  public void Source_Property() => new Issue { Source = "source" }.Source.Should().Be("source");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.Explanation"/> property.</para>
   /// </summary>
   [Fact]
-  public void Explanation_Property()
-  {
-    new Issue { Explanation = "explanation" }.Explanation.Should().Be("explanation");
-  }
+  public void Explanation_Property() => new Issue { Explanation = "explanation" }.Explanation.Should().Be("explanation");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issue.ToString()"/> method.</para>

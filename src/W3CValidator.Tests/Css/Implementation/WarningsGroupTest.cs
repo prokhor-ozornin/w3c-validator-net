@@ -53,29 +53,19 @@ public sealed class WarningsGroupTest : Test
   ///   <para>Performs testing of <see cref="WarningsGroup.Uri"/> property.</para>
   /// </summary>
   [Fact]
-  public void Uri_Property()
-  {
-    new WarningsGroup { Uri = "uri" }.Uri.Should().Be("uri");
-  }
+  public void Uri_Property() => new WarningsGroup { Uri = "uri" }.Uri.Should().Be("uri");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.WarningsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsList_Property()
-  {
-    var warnings = new List<IWarning>();
-    new WarningsGroup { WarningsList = warnings }.Warnings.Should().BeSameAs(warnings);
-  }
+  public void WarningsList_Property() => new List<IWarning>().With(warnings => new WarningsGroup { WarningsList = warnings }.Warnings.Should().BeSameAs(warnings));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.Warnings"/> property.</para>
   /// </summary>
   [Fact]
-  public void Warnings_Property()
-  {
-    new WarningsGroup().With(group => group.Warnings.Should().BeSameAs(group.WarningsList));
-  }
+  public void Warnings_Property() => new WarningsGroup().With(group => group.Warnings.Should().BeSameAs(group.WarningsList));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.ToString()"/> method.</para>

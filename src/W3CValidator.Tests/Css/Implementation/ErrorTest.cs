@@ -39,64 +39,43 @@ public sealed class ErrorTest : Test
   ///   <para>Performs testing of <see cref="Error.Message"/> property.</para>
   /// </summary>
   [Fact]
-  public void Message_Property()
-  {
-    new Error { Message = "message" }.Message.Should().Be("message");
-  }
+  public void Message_Property() => new Error { Message = "message" }.Message.Should().Be("message");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Type"/> property.</para>
   /// </summary>
   [Fact]
-  public void Type_Property()
-  {
-    new Error { Type = "type" }.Type.Should().Be("type");
-  }
+  public void Type_Property() => new Error { Type = "type" }.Type.Should().Be("type");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Subtype"/> property.</para>
   /// </summary>
   [Fact]
-  public void Subtype_Property()
-  {
-    new Error { Subtype = "subtype" }.Subtype.Should().Be("subtype");
-  }
+  public void Subtype_Property() => new Error { Subtype = "subtype" }.Subtype.Should().Be("subtype");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Property"/> property.</para>
   /// </summary>
   [Fact]
-  public void Property_Property()
-  {
-    new Error { Property = "property" }.Property.Should().Be("property");
-  }
+  public void Property_Property() => new Error { Property = "property" }.Property.Should().Be("property");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Line"/> property.</para>
   /// </summary>
   [Fact]
-  public void Line_Property()
-  {
-    new Error { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
-  }
+  public void Line_Property() => new Error { Line = int.MaxValue }.Line.Should().Be(int.MaxValue);
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.Context"/> property.</para>
   /// </summary>
   [Fact]
-  public void Context_Property()
-  {
-    new Error { Context = "context" }.Context.Should().Be("context");
-  }
+  public void Context_Property() => new Error { Context = "context" }.Context.Should().Be("context");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.SkippedString"/> property.</para>
   /// </summary>
   [Fact]
-  public void SkippedString_Property()
-  {
-    new Error { SkippedString = "skippedString" }.SkippedString.Should().Be("skippedString");
-  }
+  public void SkippedString_Property() => new Error { SkippedString = "skippedString" }.SkippedString.Should().Be("skippedString");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Error.ToString()"/> method.</para>

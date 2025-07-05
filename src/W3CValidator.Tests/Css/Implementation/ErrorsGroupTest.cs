@@ -53,29 +53,19 @@ public sealed class ErrorsGroupTest : Test
   ///   <para>Performs testing of <see cref="ErrorsGroup.Uri"/> property.</para>
   /// </summary>
   [Fact]
-  public void Uri_Property()
-  {
-    new ErrorsGroup { Uri = "uri" }.Uri.Should().Be("uri");
-  }
+  public void Uri_Property() => new ErrorsGroup { Uri = "uri" }.Uri.Should().Be("uri");
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.ErrorsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsList_Property()
-  {
-    var errors = new List<IError>();
-    new ErrorsGroup { ErrorsList = errors }.Errors.Should().BeSameAs(errors);
-  }
+  public void ErrorsList_Property() => new List<IError>().With(errors => new ErrorsGroup { ErrorsList = errors }.Errors.Should().BeSameAs(errors));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.Errors"/> property.</para>
   /// </summary>
   [Fact]
-  public void Errors_Property()
-  {
-    new ErrorsGroup().With(group => group.Errors.Should().BeSameAs(group.ErrorsList));
-  }
+  public void Errors_Property() => new ErrorsGroup().With(group => group.Errors.Should().BeSameAs(group.ErrorsList));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.ToString()"/> method.</para>
