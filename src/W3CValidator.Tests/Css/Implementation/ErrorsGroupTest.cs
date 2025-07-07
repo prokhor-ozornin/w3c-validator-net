@@ -59,7 +59,7 @@ public sealed class ErrorsGroupTest : Test
   ///   <para>Performs testing of <see cref="ErrorsGroup.ErrorsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsList_Property() => new List<IError>().With(errors => new ErrorsGroup { ErrorsList = errors }.Errors.Should().BeSameAs(errors));
+  public void ErrorsList_Property() => Array.Empty<IError>().With(errors => new ErrorsGroup { ErrorsList = errors }.Errors.Should().BeSameAs(errors));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="ErrorsGroup.Errors"/> property.</para>

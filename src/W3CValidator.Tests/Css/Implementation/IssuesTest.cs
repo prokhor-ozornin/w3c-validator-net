@@ -34,13 +34,13 @@ public sealed class IssuesTest : Test
   ///   <para>Performs testing of <see cref="Issues.ErrorsGroupsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsGroupsList_Property() => new List<IErrorsGroup>().With(errors => new Issues { ErrorsGroupsList = errors }.ErrorsGroupsList.Should().BeSameAs(errors));
+  public void ErrorsGroupsList_Property() => Array.Empty<IErrorsGroup>().With(errors => new Issues { ErrorsGroupsList = errors }.ErrorsGroupsList.Should().BeSameAs(errors));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issues.WarningsGroupsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsGroupsList_Property() => new List<IWarningsGroup>().With(warnings => new Issues { WarningsGroupsList = warnings }.WarningsGroupsList.Should().BeSameAs(warnings));
+  public void WarningsGroupsList_Property() => Array.Empty<IWarningsGroup>().With(warnings => new Issues { WarningsGroupsList = warnings }.WarningsGroupsList.Should().BeSameAs(warnings));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="Issues.ErrorsGroups"/> property.</para>

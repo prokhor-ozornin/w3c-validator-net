@@ -59,7 +59,7 @@ public sealed class WarningsGroupTest : Test
   ///   <para>Performs testing of <see cref="WarningsGroup.WarningsList"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsList_Property() => new List<IWarning>().With(warnings => new WarningsGroup { WarningsList = warnings }.Warnings.Should().BeSameAs(warnings));
+  public void WarningsList_Property() => Array.Empty<IWarning>().With(warnings => new WarningsGroup { WarningsList = warnings }.Warnings.Should().BeSameAs(warnings));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="WarningsGroup.Warnings"/> property.</para>
