@@ -71,7 +71,7 @@ public sealed class CssValidationResultTest : Test
   ///   <para>Performs testing of <see cref="CssValidationResult.Issues"/> property.</para>
   /// </summary>
   [Fact]
-  public void Issues_Property() => new Issues().With(issues => new CssValidationResult { Issues = issues }.Issues.Should().BeSameAs(issues));
+  public void Issues_Property() => Fixture<IIssues>.Create().With(issues => new CssValidationResult { Issues = issues }.Issues.Should().BeSameAs(issues));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="CssValidationResult.GetHashCode()"/> method.</para>

@@ -77,13 +77,13 @@ public sealed class MarkupValidationResultTest : Test
   ///   <para>Performs testing of <see cref="MarkupValidationResult.ErrorsGroup"/> property.</para>
   /// </summary>
   [Fact]
-  public void ErrorsGroup_Property() => new ErrorsGroup().With(group => new MarkupValidationResult { ErrorsGroup = group }.ErrorsGroup.Should().BeSameAs(group));
+  public void ErrorsGroup_Property() => Fixture<IErrorsGroup>.Create().With(group => new MarkupValidationResult { ErrorsGroup = group }.ErrorsGroup.Should().BeSameAs(group));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.WarningsGroup"/> property.</para>
   /// </summary>
   [Fact]
-  public void WarningsGroup_Property() => new WarningsGroup().With(group => new MarkupValidationResult { WarningsGroup = group }.WarningsGroup.Should().BeSameAs(group));
+  public void WarningsGroup_Property() => Fixture<IWarningsGroup>.Create().With(group => new MarkupValidationResult { WarningsGroup = group }.WarningsGroup.Should().BeSameAs(group));
 
   /// <summary>
   ///   <para>Performs testing of <see cref="MarkupValidationResult.CompareTo(IMarkupValidationResult)"/> method.</para>
