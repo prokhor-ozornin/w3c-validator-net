@@ -40,7 +40,7 @@ public sealed class WarningsGroup : IWarningsGroup
   public WarningsGroup(int? count, IEnumerable<IIssue> warnings)
   {
     Count = count;
-    WarningsCollection = new WarningsCollection(warnings);
+    WarningsCollection = [.. warnings];
   }
 
   /// <summary>
