@@ -14,6 +14,7 @@ public static class IMarkupValidatorExtensions
   /// <param name="validator"></param>
   /// <param name="action"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
   public static IMarkupRequestExecutor Request(this IMarkupValidator validator, Action<IMarkupValidationRequest> action = null)
   {
     if (validator is null) throw new ArgumentNullException(nameof(validator));

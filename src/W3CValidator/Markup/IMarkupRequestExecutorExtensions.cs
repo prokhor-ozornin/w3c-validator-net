@@ -14,6 +14,7 @@ public static class IMarkupRequestExecutorExtensions
   /// <param name="executor"></param>
   /// <param name="url"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If either <paramref name="executor"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
   public static IMarkupValidationResult Url(this IMarkupRequestExecutor executor, Uri url)
   {
     if (executor is null) throw new ArgumentNullException(nameof(executor));

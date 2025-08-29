@@ -113,6 +113,8 @@
             <param name="document">CSS code fragment to be validated.</param>
             <param name="cancellation"></param>
             <returns>CSS validation result instance.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="document"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">If <paramref name="document"/> is invalid string.</exception>
             <exception cref="T:W3CValidator.Css.CssException">If any error occurred during the validation process.</exception>
         </member>
         <member name="M:W3CValidator.Css.ICssRequestExecutor.UrlAsync(System.Uri,System.Threading.CancellationToken)">
@@ -122,7 +124,7 @@
             <param name="url">URL address of document to be validated.</param>
             <param name="cancellation"></param>
             <returns>CSS validation result instance.</returns>
-            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="url"/> is <see langword="null"/>.</exception>
             <exception cref="T:W3CValidator.Css.CssException">If any error occurred during the validation process.</exception>
         </member>
         <member name="T:W3CValidator.Css.ICssRequestExecutorExtensions">
@@ -138,6 +140,7 @@
             <param name="executor"></param>
             <param name="document"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="executor"/> or <paramref name="document"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:W3CValidator.Css.ICssRequestExecutorExtensions.Url(W3CValidator.Css.ICssRequestExecutor,System.Uri)">
             <summary>
@@ -146,6 +149,7 @@
             <param name="executor"></param>
             <param name="url"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="executor"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:W3CValidator.Css.ICssValidationRequest">
             <summary>
@@ -193,6 +197,7 @@
             <param name="request">Validation request instance.</param>
             <param name="culture">Text culture.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Medium(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.CssMedium})">
             <summary>
@@ -201,6 +206,7 @@
             <param name="request">Validation request instance.</param>
             <param name="medium">CSS medium.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Profile(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.CssProfile})">
             <summary>
@@ -209,6 +215,7 @@
             <param name="request">Validation request instance.</param>
             <param name="profile">CSS profile.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Warnings(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.WarningsLevel})">
             <summary>
@@ -217,6 +224,7 @@
             <param name="request">Validation request instance.</param>
             <param name="level">Level of warnings severity.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:W3CValidator.Css.ICssValidationResult">
             <summary>
@@ -279,6 +287,7 @@
             <param name="validator"></param>
             <param name="action"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:W3CValidator.Css.IError">
             <summary>
@@ -711,6 +720,7 @@
             <param name="executor"></param>
             <param name="url"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If either <paramref name="executor"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:W3CValidator.IResultable`1">
             <summary>
@@ -843,6 +853,7 @@
             <param name="request">Validation request instance.</param>
             <param name="encoding">Character encoding.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:W3CValidator.Markup.IMarkupValidationResult">
             <summary>
@@ -915,6 +926,7 @@
             <param name="validator"></param>
             <param name="action"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
         </member>
         <member name="T:W3CValidator.Markup.ErrorsCollection">
             <summary>
@@ -1201,6 +1213,8 @@
             <param name="name"></param>
             <param name="value"></param>
             <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="name"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">If <paramref name="name"/> is invalid string.</exception>
         </member>
         <member name="T:W3CValidator.Validator">
             <summary>

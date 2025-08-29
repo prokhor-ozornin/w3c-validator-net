@@ -14,5 +14,6 @@ public static class IMarkupValidationRequestExtensions
   /// <param name="request">Validation request instance.</param>
   /// <param name="encoding">Character encoding.</param>
   /// <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
   public static IMarkupValidationRequest Encoding(this IMarkupValidationRequest request, Encoding encoding) => request is not null ? request.Encoding(encoding?.WebName) : throw new ArgumentNullException(nameof(request));
 }

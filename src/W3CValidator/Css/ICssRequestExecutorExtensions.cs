@@ -12,6 +12,7 @@ public static class ICssRequestExecutorExtensions
   /// <param name="executor"></param>
   /// <param name="document"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If either <paramref name="executor"/> or <paramref name="document"/> is <see langword="null"/>.</exception>
   public static ICssValidationResult Document(this ICssRequestExecutor executor, string document)
   {
     if (executor is null) throw new ArgumentNullException(nameof(executor));
@@ -26,6 +27,7 @@ public static class ICssRequestExecutorExtensions
   /// <param name="executor"></param>
   /// <param name="url"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If either <paramref name="executor"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
   public static ICssValidationResult Url(this ICssRequestExecutor executor, Uri url)
   {
     if (executor is null) throw new ArgumentNullException(nameof(executor));

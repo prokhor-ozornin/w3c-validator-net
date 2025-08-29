@@ -20,6 +20,8 @@ public abstract class ValidationRequest : IValidationRequest
   /// <param name="name"></param>
   /// <param name="value"></param>
   /// <returns></returns>
+  /// <exception cref="ArgumentNullException">If <paramref name="name"/> is <see langword="null"/>.</exception>
+  /// <exception cref="ArgumentException">If <paramref name="name"/> is invalid string.</exception>
   public IValidationRequest WithParameter(string name, object value)
   {
     if (name is null) throw new ArgumentNullException(nameof(name));
