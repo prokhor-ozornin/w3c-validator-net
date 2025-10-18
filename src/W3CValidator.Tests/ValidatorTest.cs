@@ -8,6 +8,7 @@ namespace W3CValidator.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="Validator"/>.</para>
 /// </summary>
+/// <seealso cref="Validator"/>
 public sealed class ValidatorTest : Test
 {
   /// <summary>

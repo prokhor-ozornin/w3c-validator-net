@@ -13,6 +13,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupRequestExecutor"/>.</para>
 /// </summary>
+/// <seealso cref="MarkupRequestExecutor"/>
 public sealed class MarkupRequestExecutorTest : Test
 {
   /// <summary>

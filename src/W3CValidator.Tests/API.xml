@@ -8,6 +8,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.CssException"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.CssException"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.CssValidationExceptionTest.Constructors">
             <summary>
@@ -19,6 +20,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.ICssRequestExecutorExtensions"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.ICssRequestExecutorExtensions"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.ICssRequestExecutorExtensionsTest.Document_Method">
             <summary>
@@ -34,6 +36,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.ICssValidationRequestExtensions"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.ICssValidationRequestExtensions"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.ICssValidationRequestExtensionsTest.Language_Method">
             <summary>
@@ -59,6 +62,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.ICssValidatorExtensions"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.ICssValidatorExtensions"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.ICssValidatorExtensionsTest.Request_Method">
             <summary>
@@ -69,6 +73,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.CssRequestExecutor"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.CssRequestExecutor"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.CssRequestExecutorTest.DocumentAsync_Method">
             <summary>
@@ -84,6 +89,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.CssValidationRequest"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.CssValidationRequest"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.CssValidationRequestTest.Constructors">
             <summary>
@@ -115,6 +121,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.CssValidationResult"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.CssValidationResult"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.CssValidationResultTest.Constructors">
             <summary>
@@ -185,6 +192,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.CssValidator"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.CssValidator"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.CssValidatorTest.Request_Method">
             <summary>
@@ -195,6 +203,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.ErrorsGroup"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.ErrorsGroup"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.ErrorsGroupTest.Constructors">
             <summary>
@@ -233,6 +242,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.Error"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.Error"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.ErrorTest.Constructors">
             <summary>
@@ -289,6 +299,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.Issues"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.Issues"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.IssuesTest.Constructors">
             <summary>
@@ -325,6 +336,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.WarningsGroup"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.WarningsGroup"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.WarningsGroupTest.Constructors">
             <summary>
@@ -363,6 +375,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.Warning"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.Warning"/>
         </member>
         <member name="M:W3CValidator.Tests.Css.WarningTest.Constructors">
             <summary>
@@ -404,6 +417,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.IMarkupRequestExecutorExtensions"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.IMarkupRequestExecutorExtensions"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.IMarkupRequestExecutorExtensionsTest.Url_Method">
             <summary>
@@ -414,6 +428,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.IMarkupValidationRequestExtensions"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.IMarkupValidationRequestExtensions"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.IMarkupValidationRequestExtensionsTest.Encoding_Method">
             <summary>
@@ -424,6 +439,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.IMarkupValidatorExtensions"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.IMarkupValidatorExtensions"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.IMarkupValidatorExtensionsTest.Request_Method">
             <summary>
@@ -434,6 +450,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.ErrorsCollection"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.ErrorsCollection"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.ErrorsCollectionTest.Constructors">
             <summary>
@@ -451,6 +468,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.ErrorsGroup"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.ErrorsGroup"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.ErrorsGroupTest.Constructors">
             <summary>
@@ -479,6 +497,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.Issue"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.Issue"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.IssueTest.Constructors">
             <summary>
@@ -530,6 +549,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Css.MarkupRequestExecutor"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Css.MarkupRequestExecutor"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.MarkupRequestExecutorTest.UrlAsync_Method">
             <summary>
@@ -540,6 +560,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.MarkupValidationRequest"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.MarkupValidationRequest"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.MarkupValidationRequestTest.Constructors">
             <summary>
@@ -561,6 +582,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.MarkupValidationResult"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.MarkupValidationResult"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.MarkupValidationResultTest.Constructors">
             <summary>
@@ -641,6 +663,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.MarkupValidator"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.MarkupValidator"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.MarkupValidatorTest.Request_Method">
             <summary>
@@ -651,6 +674,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.WarningsCollection"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.WarningsCollection"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.WarningsCollectionTest.Constructors">
             <summary>
@@ -668,6 +692,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.WarningsGroup"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.WarningsGroup"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.WarningsGroupTest.Constructors">
             <summary>
@@ -696,6 +721,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Markup.MarkupException"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Markup.MarkupException"/>
         </member>
         <member name="M:W3CValidator.Tests.Markup.MarkupExceptionTest.Constructors">
             <summary>
@@ -707,6 +733,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.ValidationException"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.ValidationException"/>
         </member>
         <member name="M:W3CValidator.Tests.ValidationExceptionTest.Constructors">
             <summary>
@@ -718,6 +745,7 @@
             <summary>
               <para>Tests set for class <see cref="T:W3CValidator.Validator"/>.</para>
             </summary>
+            <seealso cref="T:W3CValidator.Validator"/>
         </member>
         <member name="M:W3CValidator.Tests.ValidatorTest.For_Property">
             <summary>

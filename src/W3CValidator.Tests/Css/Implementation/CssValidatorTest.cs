@@ -9,6 +9,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssValidator"/>.</para>
 /// </summary>
+/// <seealso cref="CssValidator"/>
 public sealed class CssValidatorTest : Test
 {
   /// <summary>

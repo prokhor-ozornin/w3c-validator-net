@@ -10,6 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="Warning"/>.</para>
 /// </summary>
+/// <seealso cref="Warning"/>
 public sealed class WarningTest : Test
 {
   /// <summary>

@@ -10,6 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="WarningsCollection"/>.</para>
 /// </summary>
+/// <seealso cref="WarningsCollection"/>
 public sealed class WarningsCollectionTest : Test
 {
   /// <summary>

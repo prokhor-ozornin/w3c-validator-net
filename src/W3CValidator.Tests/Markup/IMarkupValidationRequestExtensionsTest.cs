@@ -10,6 +10,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="IMarkupValidationRequestExtensions"/>.</para>
 /// </summary>
+/// <seealso cref="IMarkupValidationRequestExtensions"/>
 public sealed class IMarkupValidationRequestExtensionsTest : Test
 {
   /// <summary>

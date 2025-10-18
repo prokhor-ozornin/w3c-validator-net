@@ -11,6 +11,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="CssRequestExecutor"/>.</para>
 /// </summary>
+/// <seealso cref="CssRequestExecutor"/>
 public sealed class CssRequestExecutorTest : Test
 {
   /// <summary>

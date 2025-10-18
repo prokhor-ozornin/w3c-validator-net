@@ -7,6 +7,7 @@ namespace W3CValidator.Tests;
 /// <summary>
 ///   <para>Tests set for class <see cref="ValidationException"/>.</para>
 /// </summary>
+/// <seealso cref="ValidationException"/>
 public sealed class ValidationExceptionTest : Test
 {
   /// <summary>

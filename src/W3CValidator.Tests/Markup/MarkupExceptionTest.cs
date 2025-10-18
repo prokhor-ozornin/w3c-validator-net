@@ -8,6 +8,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupException"/>.</para>
 /// </summary>
+/// <seealso cref="MarkupException"/>
 public sealed class MarkupExceptionTest : Test
 {
   /// <summary>

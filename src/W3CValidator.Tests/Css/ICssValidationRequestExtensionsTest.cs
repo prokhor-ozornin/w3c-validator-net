@@ -10,6 +10,7 @@ namespace W3CValidator.Tests.Css;
 /// <summary>
 ///   <para>Tests set for class <see cref="ICssValidationRequestExtensions"/>.</para>
 /// </summary>
+/// <seealso cref="ICssValidationRequestExtensions"/>
 public sealed class ICssValidationRequestExtensionsTest : Test
 {
   /// <summary>

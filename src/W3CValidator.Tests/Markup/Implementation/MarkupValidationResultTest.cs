@@ -11,6 +11,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="MarkupValidationResult"/>.</para>
 /// </summary>
+/// <seealso cref="MarkupValidationResult"/>
 public sealed class MarkupValidationResultTest : Test
 {
   /// <summary>

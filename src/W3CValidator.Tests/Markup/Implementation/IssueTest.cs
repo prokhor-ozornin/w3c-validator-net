@@ -11,6 +11,7 @@ namespace W3CValidator.Tests.Markup;
 /// <summary>
 ///   <para>Tests set for class <see cref="Issue"/>.</para>
 /// </summary>
+/// <seealso cref="Issue"/>
 public sealed class IssueTest : Test
 {
   /// <summary>
