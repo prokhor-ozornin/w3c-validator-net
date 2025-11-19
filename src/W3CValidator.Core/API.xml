@@ -134,19 +134,26 @@
             <seealso cref="T:W3CValidator.Css.ICssRequestExecutor"/>
         </member>
         <member name="M:W3CValidator.Css.ICssRequestExecutorExtensions.Document(W3CValidator.Css.ICssRequestExecutor,System.String)">
+            <inheritdoc cref="M:W3CValidator.Css.ICssRequestExecutorExtensions.&lt;G&gt;$539DCB315B71E3F3B6829EC28FF32B13.Document(System.String)"/>
+        </member>
+        <member name="M:W3CValidator.Css.ICssRequestExecutorExtensions.Url(W3CValidator.Css.ICssRequestExecutor,System.Uri)">
+            <inheritdoc cref="M:W3CValidator.Css.ICssRequestExecutorExtensions.&lt;G&gt;$539DCB315B71E3F3B6829EC28FF32B13.Url(System.Uri)"/>
+        </member>
+        <member name="T:W3CValidator.Css.ICssRequestExecutorExtensions.&lt;G&gt;$539DCB315B71E3F3B6829EC28FF32B13.&lt;M&gt;$C94F1E6E87B404843AF8F9827FCE6627">
+            <param name="executor"></param>
+        </member>
+        <member name="M:W3CValidator.Css.ICssRequestExecutorExtensions.&lt;G&gt;$539DCB315B71E3F3B6829EC28FF32B13.Document(System.String)">
             <summary>
               <para></para>
             </summary>
-            <param name="executor"></param>
             <param name="document"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="executor"/> or <paramref name="document"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:W3CValidator.Css.ICssRequestExecutorExtensions.Url(W3CValidator.Css.ICssRequestExecutor,System.Uri)">
+        <member name="M:W3CValidator.Css.ICssRequestExecutorExtensions.&lt;G&gt;$539DCB315B71E3F3B6829EC28FF32B13.Url(System.Uri)">
             <summary>
               <para></para>
             </summary>
-            <param name="executor"></param>
             <param name="url"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="executor"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
@@ -191,37 +198,48 @@
             <seealso cref="T:W3CValidator.Css.ICssValidationRequest"/>
         </member>
         <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Language(W3CValidator.Css.ICssValidationRequest,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Language(System.Globalization.CultureInfo)"/>
+        </member>
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Medium(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.CssMedium})">
+            <inheritdoc cref="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Medium(System.Nullable{W3CValidator.Css.CssMedium})"/>
+        </member>
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Profile(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.CssProfile})">
+            <inheritdoc cref="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Profile(System.Nullable{W3CValidator.Css.CssProfile})"/>
+        </member>
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Warnings(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.WarningsLevel})">
+            <inheritdoc cref="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Warnings(System.Nullable{W3CValidator.Css.WarningsLevel})"/>
+        </member>
+        <member name="T:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.&lt;M&gt;$73A2F26B0371F4F3706B903BC5412642">
+            <param name="request">Validation request instance.</param>
+        </member>
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Language(System.Globalization.CultureInfo)">
             <summary>
               <para>Specifies language locale/culture to be used for description of validation issues.</para>
             </summary>
-            <param name="request">Validation request instance.</param>
             <param name="culture">Text culture.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Medium(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.CssMedium})">
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Medium(System.Nullable{W3CValidator.Css.CssMedium})">
             <summary>
               <para>Specifies CSS medium to use in validation process.</para>
             </summary>
-            <param name="request">Validation request instance.</param>
             <param name="medium">CSS medium.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Profile(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.CssProfile})">
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Profile(System.Nullable{W3CValidator.Css.CssProfile})">
             <summary>
               <para>Specifies CSS standard version (profile) to be used in validation process.</para>
             </summary>
-            <param name="request">Validation request instance.</param>
             <param name="profile">CSS profile.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
         </member>
-        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.Warnings(W3CValidator.Css.ICssValidationRequest,System.Nullable{W3CValidator.Css.WarningsLevel})">
+        <member name="M:W3CValidator.Css.ICssValidationRequestExtensions.&lt;G&gt;$C72AD9EB7775F9B486A59294EDCE690B.Warnings(System.Nullable{W3CValidator.Css.WarningsLevel})">
             <summary>
               <para>Specifies level of warnings to be included. Only the ones whose level is under or equal to the value specified in the request will be displayed.</para>
             </summary>
-            <param name="request">Validation request instance.</param>
             <param name="level">Level of warnings severity.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
