@@ -111,7 +111,7 @@ public sealed class CssValidationResultTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, CssValidationResult result) => result.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -128,6 +128,6 @@ public sealed class CssValidationResultTest : Test
 
     return;
 
-    static void Test(ICssValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(ICssValidationResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

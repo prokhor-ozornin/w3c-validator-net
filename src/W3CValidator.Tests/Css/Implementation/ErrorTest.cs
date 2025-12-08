@@ -94,7 +94,7 @@ public sealed class ErrorTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, Error error) => error.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -111,6 +111,6 @@ public sealed class ErrorTest : Test
 
     return;
 
-    static void Test(IError instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IError error) => error.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

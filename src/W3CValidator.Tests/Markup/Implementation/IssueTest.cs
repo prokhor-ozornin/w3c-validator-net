@@ -85,7 +85,7 @@ public sealed class IssueTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, Issue issue) => issue.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -102,6 +102,6 @@ public sealed class IssueTest : Test
 
     return;
 
-    static void Test(IIssues instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IIssues issues) => issues.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 } 

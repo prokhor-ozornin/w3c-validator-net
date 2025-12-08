@@ -69,7 +69,7 @@ public sealed class WarningTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, Warning warning) => warning.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -86,6 +86,6 @@ public sealed class WarningTest : Test
 
     return;
 
-    static void Test(IWarning instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IWarning warning) => warning.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

@@ -123,7 +123,7 @@ public sealed class MarkupValidationResultTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, MarkupValidationResult result) => result.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -140,6 +140,6 @@ public sealed class MarkupValidationResultTest : Test
 
     return;
 
-    static void Test(IMarkupValidationResult instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IMarkupValidationResult result) => result.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

@@ -54,6 +54,6 @@ public sealed class ErrorsCollectionTest : Test
 
     return;
 
-    static void Test(IList<IIssue> instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IList<IIssue> issues) => issues.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }

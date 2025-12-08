@@ -83,7 +83,7 @@ public sealed class ErrorsGroupTest : Test
 
     return;
 
-    static void Test(string value, object instance) => instance.ToString().Should().Be(value);
+    static void Test(string value, ErrorsGroup group) => group.ToString().Should().Be(value);
   }
 
   /// <summary>
@@ -100,6 +100,6 @@ public sealed class ErrorsGroupTest : Test
 
     return;
 
-    static void Test(IErrorsGroup instance) => instance.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
+    static void Test(IErrorsGroup group) => group.To<object>().Should().BeDataContractSerializable().And.BeXmlSerializable();
   }
 }
