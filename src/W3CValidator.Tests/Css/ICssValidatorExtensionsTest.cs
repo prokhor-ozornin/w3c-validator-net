@@ -1,7 +1,7 @@
 ﻿using Catharsis.Extensions;
-using W3CValidator.Css;
 using FluentAssertions;
 using FluentAssertions.Execution;
+using W3CValidator.Css;
 using Xunit;
 
 namespace W3CValidator.Tests.Css;

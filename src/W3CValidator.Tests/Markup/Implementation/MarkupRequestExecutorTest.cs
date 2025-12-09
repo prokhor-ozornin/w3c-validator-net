@@ -1,10 +1,10 @@
-﻿using W3CValidator.Css;
-using FluentAssertions;
-using Xunit;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using Catharsis.Fixture;
+using FluentAssertions;
 using FluentAssertions.Execution;
+using W3CValidator.Css;
 using W3CValidator.Markup;
+using Xunit;
 using ErrorsGroup = W3CValidator.Markup.ErrorsGroup;
 using WarningsGroup = W3CValidator.Markup.WarningsGroup;
 

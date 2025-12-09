@@ -1,9 +1,9 @@
-﻿using W3CValidator.Css;
-using FluentAssertions;
-using Xunit;
-using FluentAssertions.Execution;
-using Catharsis.Extensions;
+﻿using Catharsis.Extensions;
 using Catharsis.Fixture;
+using FluentAssertions;
+using FluentAssertions.Execution;
+using W3CValidator.Css;
+using Xunit;
 
 namespace W3CValidator.Tests.Css;
 

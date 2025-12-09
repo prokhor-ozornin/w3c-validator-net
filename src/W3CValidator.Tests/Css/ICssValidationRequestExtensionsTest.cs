@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
-using W3CValidator.Css;
-using FluentAssertions;
-using Xunit;
 using Catharsis.Extensions;
+using FluentAssertions;
 using FluentAssertions.Execution;
+using W3CValidator.Css;
+using Xunit;
 
 namespace W3CValidator.Tests.Css;
 

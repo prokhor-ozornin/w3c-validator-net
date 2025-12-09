@@ -1,10 +1,10 @@
 ﻿using Catharsis.Extensions;
 using Catharsis.Fixture;
-using W3CValidator.Markup;
 using FluentAssertions;
 using FluentAssertions.Execution;
-using Xunit;
 using W3CValidator.Css;
+using W3CValidator.Markup;
+using Xunit;
 
 namespace W3CValidator.Tests.Markup;
 

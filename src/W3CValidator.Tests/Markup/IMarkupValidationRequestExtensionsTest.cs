@@ -1,9 +1,9 @@
 ﻿using System.Text;
-using W3CValidator.Markup;
+using Catharsis.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
+using W3CValidator.Markup;
 using Xunit;
-using Catharsis.Extensions;
 
 namespace W3CValidator.Tests.Markup;
 
