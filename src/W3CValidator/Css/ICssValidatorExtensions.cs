@@ -6,21 +6,24 @@
 /// <seealso cref="ICssValidator"/>
 public static class ICssValidatorExtensions
 {
-  /// <summary>
-  ///   <para></para>
-  /// </summary>
   /// <param name="validator"></param>
-  /// <param name="action"></param>
-  /// <returns></returns>
-  /// <exception cref="ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
-  public static ICssRequestExecutor Request(this ICssValidator validator, Action<ICssValidationRequest> action = null)
+  extension(ICssValidator validator)
   {
-    if (validator is null) throw new ArgumentNullException(nameof(validator));
+    /// <summary>
+    ///   <para></para>
+    /// </summary>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
+    public ICssRequestExecutor Request(Action<ICssValidationRequest> action = null)
+    {
+      if (validator is null) throw new ArgumentNullException(nameof(validator));
 
-    var request = new CssValidationRequest();
+      var request = new CssValidationRequest();
 
-    action?.Invoke(request);
+      action?.Invoke(request);
 
-    return validator.Request(request);
+      return validator.Request(request);
+    }
   }
 }

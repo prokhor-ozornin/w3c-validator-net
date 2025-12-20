@@ -299,10 +299,15 @@
             <seealso cref="T:W3CValidator.Css.ICssValidator"/>
         </member>
         <member name="M:W3CValidator.Css.ICssValidatorExtensions.Request(W3CValidator.Css.ICssValidator,System.Action{W3CValidator.Css.ICssValidationRequest})">
+            <inheritdoc cref="M:W3CValidator.Css.ICssValidatorExtensions.&lt;G&gt;$4C6E6E4FB60CF41C69137542CBA406FF.Request(System.Action{W3CValidator.Css.ICssValidationRequest})"/>
+        </member>
+        <member name="T:W3CValidator.Css.ICssValidatorExtensions.&lt;G&gt;$4C6E6E4FB60CF41C69137542CBA406FF.&lt;M&gt;$D93A0C1942D3A3511CEF9B65EC32C053">
+            <param name="validator"></param>
+        </member>
+        <member name="M:W3CValidator.Css.ICssValidatorExtensions.&lt;G&gt;$4C6E6E4FB60CF41C69137542CBA406FF.Request(System.Action{W3CValidator.Css.ICssValidationRequest})">
             <summary>
               <para></para>
             </summary>
-            <param name="validator"></param>
             <param name="action"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
@@ -732,10 +737,15 @@
             <seealso cref="T:W3CValidator.Css.IMarkupRequestExecutor"/>
         </member>
         <member name="M:W3CValidator.Css.IMarkupRequestExecutorExtensions.Url(W3CValidator.Css.IMarkupRequestExecutor,System.Uri)">
+            <inheritdoc cref="M:W3CValidator.Css.IMarkupRequestExecutorExtensions.&lt;G&gt;$78DC3000CC67999BC751F1999B3C2841.Url(System.Uri)"/>
+        </member>
+        <member name="T:W3CValidator.Css.IMarkupRequestExecutorExtensions.&lt;G&gt;$78DC3000CC67999BC751F1999B3C2841.&lt;M&gt;$5B95270B4DD16CA671F321E7A0782689">
+            <param name="executor"></param>
+        </member>
+        <member name="M:W3CValidator.Css.IMarkupRequestExecutorExtensions.&lt;G&gt;$78DC3000CC67999BC751F1999B3C2841.Url(System.Uri)">
             <summary>
               <para></para>
             </summary>
-            <param name="executor"></param>
             <param name="url"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If either <paramref name="executor"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
@@ -865,10 +875,15 @@
             <seealso cref="T:W3CValidator.Markup.IMarkupValidationRequest"/>
         </member>
         <member name="M:W3CValidator.Markup.IMarkupValidationRequestExtensions.Encoding(W3CValidator.Markup.IMarkupValidationRequest,System.Text.Encoding)">
+            <inheritdoc cref="M:W3CValidator.Markup.IMarkupValidationRequestExtensions.&lt;G&gt;$6E2F6BDEEDC33ECBA32D1C21461A5195.Encoding(System.Text.Encoding)"/>
+        </member>
+        <member name="T:W3CValidator.Markup.IMarkupValidationRequestExtensions.&lt;G&gt;$6E2F6BDEEDC33ECBA32D1C21461A5195.&lt;M&gt;$B7C916E9B3B6A98AB27E3DCA404B1D1F">
+            <param name="request">Validation request instance.</param>
+        </member>
+        <member name="M:W3CValidator.Markup.IMarkupValidationRequestExtensions.&lt;G&gt;$6E2F6BDEEDC33ECBA32D1C21461A5195.Encoding(System.Text.Encoding)">
             <summary>
               <para>Specifies the character encoding to use when parsing the document.</para>
             </summary>
-            <param name="request">Validation request instance.</param>
             <param name="encoding">Character encoding.</param>
             <returns>Back reference to the provided validation <paramref name="request"/>.</returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="request"/> is <see langword="null"/>.</exception>
@@ -938,10 +953,15 @@
             <seealso cref="T:W3CValidator.Markup.IMarkupValidator"/>
         </member>
         <member name="M:W3CValidator.Markup.IMarkupValidatorExtensions.Request(W3CValidator.Markup.IMarkupValidator,System.Action{W3CValidator.Markup.IMarkupValidationRequest})">
+            <inheritdoc cref="M:W3CValidator.Markup.IMarkupValidatorExtensions.&lt;G&gt;$FE56D073E5926E5F5EF84C6DCD4B44D0.Request(System.Action{W3CValidator.Markup.IMarkupValidationRequest})"/>
+        </member>
+        <member name="T:W3CValidator.Markup.IMarkupValidatorExtensions.&lt;G&gt;$FE56D073E5926E5F5EF84C6DCD4B44D0.&lt;M&gt;$5CC2D7A0E3A68F7F664F39925B0A044E">
+            <param name="validator"></param>
+        </member>
+        <member name="M:W3CValidator.Markup.IMarkupValidatorExtensions.&lt;G&gt;$FE56D073E5926E5F5EF84C6DCD4B44D0.Request(System.Action{W3CValidator.Markup.IMarkupValidationRequest})">
             <summary>
               <para></para>
             </summary>
-            <param name="validator"></param>
             <param name="action"></param>
             <returns></returns>
             <exception cref="T:System.ArgumentNullException">If <paramref name="validator"/> is <see langword="null"/>.</exception>
