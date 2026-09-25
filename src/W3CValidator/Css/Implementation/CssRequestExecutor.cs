@@ -14,7 +14,7 @@ internal sealed class CssRequestExecutor : ICssRequestExecutor
   public async Task<ICssValidationResult> DocumentAsync(string document, CancellationToken cancellation = default)
   {
     if (document is null) throw new ArgumentNullException(nameof(document));
-    if (document.IsEmpty()) throw new ArgumentException(nameof(document));
+    if (document.IsEmpty) throw new ArgumentException(nameof(document));
 
     var parameters = new Dictionary<string, object> {{"text", document}};
 

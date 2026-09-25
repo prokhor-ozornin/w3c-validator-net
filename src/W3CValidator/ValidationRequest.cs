@@ -25,7 +25,7 @@ public abstract class ValidationRequest : IValidationRequest
   public IValidationRequest WithParameter(string name, object value)
   {
     if (name is null) throw new ArgumentNullException(nameof(name));
-    if (name.IsEmpty()) throw new ArgumentException(nameof(name));
+    if (name.IsEmpty) throw new ArgumentException(nameof(name));
 
     _parameters[name] = value;
 
