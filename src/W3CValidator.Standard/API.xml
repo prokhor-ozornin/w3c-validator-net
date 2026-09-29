@@ -439,14 +439,14 @@
               <para>Determines whether two <see cref="T:W3CValidator.Css.ICssValidationResult"/> instances are equal.</para>
             </summary>
             <param name="other">The instance to compare with the current one.</param>
-            <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
+            <returns><see langword="true"/> if specified instance is equal to the current, <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:W3CValidator.Css.CssValidationResult.Equals(System.Object)">
             <summary>
               <para>Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.</para>
             </summary>
             <param name="other">The object to compare with the current object.</param>
-            <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
+            <returns><see langword="true"/> if the specified object is equal to the current object, <see langword="false"/>.</returns>
         </member>
         <member name="M:W3CValidator.Css.CssValidationResult.GetHashCode">
             <summary>
@@ -459,6 +459,22 @@
               <para>Returns a <see cref="T:System.String"/> that represents the current <see cref="T:W3CValidator.Css.CssValidationResult"/> instance.</para>
             </summary>
             <returns>A string that represents the current <see cref="T:W3CValidator.Css.CssValidationResult"/>.</returns>
+        </member>
+        <member name="M:W3CValidator.Css.CssValidationResult.op_Equality(W3CValidator.Css.CssValidationResult,W3CValidator.Css.CssValidationResult)">
+            <summary>
+              <para>Logical equality operator for two objects.</para>
+            </summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> in case of logical equality of <paramref name="left"/> and <paramref name="right"/> objects, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:W3CValidator.Css.CssValidationResult.op_Inequality(W3CValidator.Css.CssValidationResult,W3CValidator.Css.CssValidationResult)">
+            <summary>
+              <para>Logical inequality operator for two objects.</para>
+            </summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> in case of logical inequality of <paramref name="left"/> and <paramref name="right"/> objects, <see langword="false"/> otherwise.</returns>
         </member>
         <member name="T:W3CValidator.Css.Error">
             <summary>
@@ -1119,14 +1135,14 @@
               <para>Determines whether two <see cref="T:W3CValidator.Markup.IMarkupValidationResult"/> instances are equal.</para>
             </summary>
             <param name="other">The instance to compare with the current one.</param>
-            <returns><c>true</c> if specified instance is equal to the current, <c>false</c> otherwise.</returns>
+            <returns><see langword="true"/> if specified instance is equal to the current, <see langword="false"/> otherwise.</returns>
         </member>
         <member name="M:W3CValidator.Markup.MarkupValidationResult.Equals(System.Object)">
             <summary>
               <para>Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.</para>
             </summary>
             <param name="other">The object to compare with the current object.</param>
-            <returns><c>true</c> if the specified object is equal to the current object, <c>false</c>.</returns>
+            <returns><see langword="true"/> if the specified object is equal to the current object, <see langword="false"/>.</returns>
         </member>
         <member name="M:W3CValidator.Markup.MarkupValidationResult.GetHashCode">
             <summary>
@@ -1139,6 +1155,22 @@
               <para>Returns a <see cref="T:System.String"/> that represents the current <see cref="T:W3CValidator.Markup.MarkupValidationResult"/> instance.</para>
             </summary>
             <returns>A string that represents the current <see cref="T:W3CValidator.Markup.MarkupValidationResult"/>.</returns>
+        </member>
+        <member name="M:W3CValidator.Markup.MarkupValidationResult.op_Equality(W3CValidator.Markup.MarkupValidationResult,W3CValidator.Markup.MarkupValidationResult)">
+            <summary>
+              <para>Logical equality operator for two objects.</para>
+            </summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> in case of logical equality of <paramref name="left"/> and <paramref name="right"/> objects, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:W3CValidator.Markup.MarkupValidationResult.op_Inequality(W3CValidator.Markup.MarkupValidationResult,W3CValidator.Markup.MarkupValidationResult)">
+            <summary>
+              <para>Logical inequality operator for two objects.</para>
+            </summary>
+            <param name="left">The left operand.</param>
+            <param name="right">The right operand.</param>
+            <returns><see langword="true"/> in case of logical inequality of <paramref name="left"/> and <paramref name="right"/> objects, <see langword="false"/> otherwise.</returns>
         </member>
         <member name="T:W3CValidator.Markup.WarningsCollection">
             <summary>
